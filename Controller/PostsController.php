@@ -3,15 +3,13 @@
         
        
 
-        function index() {
+        function index_blog() {
+            $this->layout='index_blog';
             $this->set('posts', $this->Post->find('all'));
             $users = $this->Post->allProjects();
             $this->set('users', $users);
         }
 
-        public function index_posts() {
-            
-        }
 
         public function view($id = null) {
            $this->set('post', $this->Post->findById($id)); 

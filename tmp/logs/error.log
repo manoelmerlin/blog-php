@@ -3698,3 +3698,180 @@ Stack Trace:
 #5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #7 {main}
+2019-07-12 20:06:52 Error: [MissingActionException] Action UsersController::add.ctp() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add.ctp',
+)
+Request URL: /Users/add.ctp
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 20:12:26 Error: [MissingActionException] Action UsersController::add.ctp() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add.ctp',
+)
+Request URL: /Users/add.ctp
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 20:15:05 Error: [MissingViewException] View file "Users/add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/add.ctp',
+)
+Request URL: /Users/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Users/add')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-07-12 20:15:12 Error: [MissingActionException] Action UsersController::add() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add',
+)
+Request URL: /Users/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 20:16:06 Error: [MissingActionException] Action UsersController::add() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add',
+)
+Request URL: /users/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 20:20:57 Error: [ParseError] syntax error, unexpected '?>', expecting ',' or ')'
+Request URL: /users/add_user
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(546): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/View/View.php(481): View->renderLayout('<h1>Criar usu\xC3\xA1...', 'add_user')
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, 'add_user')
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-07-12 20:32:04 Error: [MissingActionException] Action UsersController::add() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add',
+)
+Request URL: /Users/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 20:32:06 Error: [MissingActionException] Action UsersController::add() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add',
+)
+Request URL: /Users/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 20:32:09 Error: [MissingActionException] Action UsersController::add() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add',
+)
+Request URL: /Users/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 20:32:48 Error: [MissingActionException] Action UsersController::add() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add',
+)
+Request URL: /Users/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 21:17:22 Error: [MissingActionException] Action PostsController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'index',
+)
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 21:17:54 Error: [MissingActionException] Action PostsController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'index',
+)
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 21:17:56 Error: [MissingActionException] Action PostsController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'index',
+)
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 21:17:58 Error: [MissingActionException] Action PostsController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'index',
+)
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 21:17:59 Error: [MissingActionException] Action PostsController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'index',
+)
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-07-12 21:17:59 Error: [MissingActionException] Action PostsController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'index',
+)
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

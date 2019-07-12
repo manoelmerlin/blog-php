@@ -69,7 +69,7 @@
 							</div>
 
 							<div class='col-6  px-5 text-left'>
-								<?php echo $this->Html->link('Cadastrar-se', array('controller' => 'Users', 'action' => 'add'), array('class' => 'bg-primary border border-primary text-ligh rounded btn btn-success', 'style' => 'text-decoration:none; font-size:30px; width:300px; height:65px')); ?>
+								<?php echo $this->Html->link('Cadastrar-se', array('controller' => 'Users', 'action' => 'add_user'), array('class' => 'bg-primary border border-primary text-ligh rounded btn btn-success', 'style' => 'text-decoration:none; font-size:30px; width:300px; height:65px')); ?>
 							</div>
 							<div>
 							</div>

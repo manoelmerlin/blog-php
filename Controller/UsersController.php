@@ -17,7 +17,8 @@
             $this->set('user', $this->User->findById($id));
         }
 
-        public function add() {
+        public function add_user() {
+            $this->layout = 'add_user';
             if($this->request->is('post')) {
                 $this->User->create();
                 if($this->User->Save($this->request->data)) {
@@ -85,7 +86,7 @@
         }
 
         public function beforeFilter() {
-            $this->Auth->allow(array('login', 'index', 'add', 'forgot'));
+            $this->Auth->allow(array('login', 'index', 'add_user', 'forgot'));
         }
 
         public function forgot(){

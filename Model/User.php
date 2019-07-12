@@ -16,6 +16,37 @@
             )
               
         ),
+        'first_name' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Nome é obrigatório'
+            )
+                
+        ),
+        
+        'last_name' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Sobrenome é obrigatório'
+            )
+            
+        ),
+
+        'email' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Email é obrigatório'
+            )
+        ),
+
+        'phone' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'Telefone é obrigatório'
+            )
+         ),
+
+
             'role' => array(
                 'valid' => array(
                     'rule' => array('inList', array('admin', 'author')),
