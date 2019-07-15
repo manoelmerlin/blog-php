@@ -36,22 +36,31 @@
 		echo $this->fetch('script');
 	?>
 </head>
-<body>
+<body class="bg-success" >
 	<div id="container">
 		<div id="header">
 		</div>
-		<div id="content">
+		<center>
+		<div class="users form bg-success">
+			<div class=" p-5">
+			<div id="content">
 
-			<?php echo $this->Flash->render(); ?>
+				<?php echo $this->Flash->render(); ?>
 
-			<?php echo $this->fetch('content'); ?>
+				<?php echo $this->fetch('content'); ?>
+			</div>
+
 		</div>
+		</center>
+        
+       
+        
+		
 		<div id="footer">
 		
 		</div>
 	</div>
 
 	<!-- Debug sql -->
-	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>

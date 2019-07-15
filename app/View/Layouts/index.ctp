@@ -36,10 +36,48 @@
 		echo $this->fetch('script');
 	?>
 </head>
-<body>
+<body class="bg-success" >
 	<div id="container">
 		<div id="header">
+        <html>
+    <head>
+        <link rel="stylesheet" href= "css/estilo.css">
+        <link rel="stylesheet" href= "css/bootstrap.css">
+    </head>
+
+   
+    <body>
+        
+    <header>
+
+    <div class="border border-dark p-4" style="background-color: #262626">
+        <div>
+            <div>
+            <a style="float:left" href="?pagina=home"><img src= "imagens/imga.png" title = "Logo" alt = "logo" width ="120px 50px"heigh = 500px></a>
+
+                <center>
+                <div id="topo">
+                    <a class="text-light mr-5" style="text-decoration:none; font-size:30px" href="?pg=pagina" >Home</a>
+                    <a class="text-light mr-5" style="text-decoration:none; font-size:30px" href="?pg=eventos" >Eventos</a>
+                    <a class="text-light mr-5" style="text-decoration:none; font-size:30px" href="#" >Usuarios</a>
+                </div>
+                </center>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
 		</div>
+	
+        
+       
+        
 		<div id="content">
 
 			<?php echo $this->Flash->render(); ?>
