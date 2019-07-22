@@ -3,9 +3,10 @@
 
 <div class="col-6 bg-white border border-dark shadow border p-1 ">
     <div>
-        <?php echo $this->Form->create('User'); ?>
+     
 
         <div class='my-1'>
+        <?php echo $this->Form->create('User'); ?>
             <?php echo $this->Form->input('first_name', array('label' => '', 'placeholder' => 'Insira seu nome ',  'class' => 'form-control   p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
         </div>
 
@@ -35,7 +36,7 @@
         
 
         <div class="my-5">
-            <?php echo $this->Form->submit('Cadastrar', array('action' => 'add_user','class' => 'form-control bg-primary text-light border border-primary border-solid ', 'style' => 'width:180px; height:40px')) ;?>
+            <?php echo $this->Form->submit('Cadastrar', array('controller' => 'users','action' => 'add_user','class' => 'form-control bg-primary text-light border border-primary border-solid ', 'style' => 'width:180px; height:40px')) ;?>
         </div>
 
         <div>

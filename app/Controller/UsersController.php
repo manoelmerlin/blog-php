@@ -2,11 +2,21 @@
 
     class UsersController extends AppController {
 
-        public function index_users() {
+        public function beforeFilter() {
+            parent::beforeFilter();
+            $this->Auth->allow('add_user', 'index'); // Permitindo que os usuários se registrem
+            }
+
+        
+        public $uses = array (
+            'Post', 
+            'User'
+            
+        );
+        
+
+        public function index() {
             $this->layout='index';
-            $this->set('users', $this->User->Find('all'));
-            $this->User->recursive= 0;
-            $this->set('users', $this->paginate());
         }
 
         public function view($id = null) {
@@ -18,12 +28,14 @@
         }
 
         public function add_user() {
-            $this->layout = 'add_user';
-            if($this->request->is('post')) {
+            $this->layout = 'add_user';            
+           
+            if($this->request->is('post') || $this->request->is('put')) {
+               
                 $this->User->create();
-                if($this->User->Save($this->request->data)) {
+                if($this->User->save($this->request->data)) {
                     $this->Flash->success(__('O cadastro foi realalizado com sucesso'));
-                    return $this->redirect(array('action' => 'index'));
+                    return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
                 }
                 $this->Flash->error(__('Não foi possível realizar o cadastro, tente denovo.')
 
@@ -32,15 +44,14 @@
         }
 
         public function editUser($id = null){
-            $this->layout = 'add_user';
-            $this->User->id = $id;
+            $this->User->id = AuthComponent::user('id');
             if (!$this->User->exists()) {
                 throw new NotFoundException(__('Usuário invalido'));
             }
             if ($this->request->is('post') || $this->request->is('put')) {
                 if ($this->User->save($this->request->data)) {
-                    $this->Flash->success(__('O usuário foi salvo com sucesso'));
-                    return $this->redirect(array('action' => 'index'));
+                    $this->Flash->success(__('Senha trocada com sucesso'));
+                    return $this->redirect(array('controller' => 'Posts', 'action' => 'index'));
                 }
                 $this->Flash->erro(__('O usuário não pode ser salvo, tente outra vez'));
             } else {
@@ -86,15 +97,18 @@
             return $this->redirect($this->Auth->logout());
         }
 
-        public function beforeFilter() {
-            $this->Auth->allow(array('login', 'index', 'add_user', 'forgot'));
-        }
+     
 
         public function forgot(){
             
         }
-            
+      
+        public function userPanel() {
+        $this->set('users', $this->User->Find('all'));
+
     }
+
+}
     
 
        

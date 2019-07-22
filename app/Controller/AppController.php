@@ -33,19 +33,16 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     public $helpers = array ('Form', 'Html');
 
-    public function beforeFilter() {
-        $this->Auth->allow(array('index', 'add_user', 'forgot'));
-    }
-    
 
     public $components = array(
         'Flash',
         'Session',
+        'Paginator',
 
         'Auth' => array(
         'loginRedirect' => array(
             'controller' => 'posts',
-            'action' => 'index_logado'
+            'action' => 'index'
         ),
 
         'logoutRedirect' => array(
@@ -58,7 +55,14 @@ class AppController extends Controller {
             'passwordHasher' => 'Blowfish'
             ))
         )
+
     );
+
+
+    
+
+    
+
     
        
 

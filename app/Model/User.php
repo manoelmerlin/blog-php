@@ -2,18 +2,59 @@
 
     Class User Extends AppModel {
 
+       /* public $belongsTo = array('Group');
+        public $actAs = array('Acl' => array('type' => 'requester'));
+
+        public function parentNode() {
+            if (!$this->id && empty($this->data)) {
+                return null;
+            }
+            if (isset($this->data['User']['group_id'])) {
+                $groupId = $this->data['User']['group_id'];
+            } else {
+                $groupId = $this->field('group_id');
+            }
+            if (!$groupId) {
+                return null;
+            }
+                return array('Group' => array('id' => $groupId));
+            }
+*/
       public $validate = array('username' => array(
           'required' => array(
               'rule' => 'compareUser',
-              'message' => 'Nome de usuário é obrigatorio'
-            )
-              
+              'message' => 'Usuário já existe por favor insira outro'
+          ),
+          'Validar letras e números' => array(
+              'rule' => '/^[a-zA-Z0-9]+$/',
+              'message' => 'Usúario não pode possuir caracteres especiais'  
+          ),
+          'Mínimo caracteres' => array(
+            'rule' => array('minLength', 8),
+            'message' => 'Usuário deve conter no minímo 8 caracteres'
+          ),
+          'Máximo caracteres' => array(
+            'rule' => array('maxLength', 20),
+            'message' => 'Senha deve conter no minímo 20 caracteres'
         ),
+        
+          ),
+        
           'password' => array(
-              'required' => array(
-                  'rule' => 'notBlank',
-                  'message' => 'Senha é obrigatório'
+            'required' => array(
+            'rule' => 'notBlank',
+            'message' => 'Senha é obrigatório'
+            ),
+            'Mínimo caracteres' => array(
+                'rule' => array('minLength', 8),
+                'message' => 'Senha deve conter no minímo 8 caracteres'
+            ),
+            'Máximo caracteres' => array(
+                'rule' => array ('maxLength', 20),
+                'message' => 'Senha deve conter no máximo 20 caracteres'
             )
+                
+
               
         ),
 
@@ -27,16 +68,22 @@
 
         'first_name' => array(
             'required' => array(
-                'rule' => '/[^\s]/',
-                'message' => 'Nome é obrigatório'
+                'rule' => 'notBlank',
+                'message' => 'Nome é obrigatório',
+                'rule' => '/^[a-zA-Z]+$/',
+                'message' => 'Apenas letras'
+                
             )
                 
         ),
         
+        
         'last_name' => array(
             'required' => array(
                 'rule' => 'notBlank',
-                'message' => 'Sobrenome é obrigatório'
+                'message' => 'Sobrenome é obrigatório',
+                'rule' => '/^[a-zA-Z]+$/',
+                'message' => 'Apenas letras'
             )
             
         ),
@@ -44,10 +91,10 @@
         'email' => array(
             'required' => array(
                 'rule' => 'compareEmail',
-                'message' => 'Email já existe',
-                'rule' => 'notBlank',
-                'message' => 'Preencha o campo e-mail'
+                'message' => 'email já existe',
+                
             )
+    
         ),
 
         'phone' => array(
@@ -58,26 +105,27 @@
             'numeric' => array(
                 'rule' => 'numeric',
                 'message' => 'Telefone apenas números'
-            )
+            ),
+
+            'Mincaracteris' => array(
+                'rule' => array('minLength', 8),
+                'message' => 'Número minímo de caracteris 8',
+            ),
+            'Maxcaracteris' => array(
+                'rule' => array('maxLength', 16),
+                'message' => 'Número de máximo caracteris 16',
+            ),
 
          ),
 
-
-            'role' => array(
-                'valid' => array(
-                    'rule' => array('inList', array('admin', 'author')),
-                    'message' => 'Please enter a valid role',
-                    'allowEmpty' => false
-                )
-            )
         );   
         
         
-        public function compareEmail($buscaEmail = null) {
+        public function compareEmail($compararEmail = null) {
 
-            $bucaEmail = $this->find('first', array(
+            $buscaEmail = $this->find('first', array(
                 'conditions' => array(
-                    'email' => $buscaEmail['email']      
+                    'email' => $compararEmail['email']      
                 )
                 ));
 

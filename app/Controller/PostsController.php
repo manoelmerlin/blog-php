@@ -1,33 +1,69 @@
 <?php
     class PostsController extends AppController {
-        
+
        
 
-        function index_logado() {
-            $this->set('posts', $this->Post->find('all'));
-            $users = $this->Post->allProjects();
-            $this->set('users', $users);
+        public function beforeFilter() {
+            $this->Auth->allow(array('index', 'view'));
         }
 
-        function index() {
-            $this->layout = 'index';
-            $this->set('posts', $this->Post->find('all'));
-            $users = $this->Post->allProjects();
+        
+        public $components = array('Paginator');
+        
+
+
+        function index() { 
+            //$this->layout = 'layoutindex';
+            $search = $this->Post->find('all', array(
+                'conditions' => array(
+                    'status' => 1
+                )   
+            ));
+            $this->paginate = array(
+                'coditions' => array('Post.id !=' => '6'),
+                'limit' => 4,
+                'order' => array('id' => 'desc')
+            );
+ 
+            $posts = $this->paginate('Post'); 
+            $this->set('posts', $posts);
+
+            $this->loadModel('User');
+            $users = $this->User->find('all');
             $this->set('users', $users);
+
+        
         }
 
 
         public function view($id = null) {
+            //$this->layout = 'layoutindex';
            $this->set('post', $this->Post->findById($id)); 
 
         }
 
         public function add() {
-            if ($this->request->is('post')){
+
+            if ($this->request->is('post') || $this->request->is('put')) {            
+
+                $this->request->data['Post']['created_by'] = AuthComponent::user('id');
+
+                $this->Post->create();
+                $filename = basename($this->request->data['Post']['image']['name']);
+                $this->request->data['Post']['imagem'] = $filename;
+
+            
+
                 if ($this->Post->save($this->request->data)) {
+                    move_uploaded_file($this->data['Post']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $filename);
+                   // pr($this->request->data);
+                   // die;
                     $this->Flash->success('Seu post foi salvo');
                     $this->redirect(array('action' => 'index'));
+
                 }
+                
+                $this->Flash->error('Erro ao adicionar post');
             }
         }
 
@@ -46,15 +82,27 @@
         }
 
         public function delete($id) {
-            if(!$this->request->is('post')) {
-                throw new MethodNotAllowedException();
-            }
-            if($this->Post->delete($id)) {
-                $this->Flash->success('O post ' . $id . 'Foi deletado');
-                $this->redirect(array('action' => 'index'));
-            }
+
+        $check = $this->Post->find('first', array(
+            'conditions' => array(
+                'id' => $id
+            )
+        ));
+        
+        if($check['Post']['created_by'] == AuthComponent::user('id')){
+            
+            $this->Post->delete($id);
+            $this->redirect(array('action' => 'index'));
+
+        }
+        else {
+
+            $this->Flash->error('não tem permissão para deletar');
+            $this->redirect(array('action' => 'index'));
         }
 
+          
+        }
         
 
     }
