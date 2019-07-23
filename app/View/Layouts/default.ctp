@@ -63,7 +63,6 @@
 								'class' => 'btn btn-primary p-1  border border-primary')); 
 							?>	
 
-								<?php pr($users) ?>
 
 							<!-- Se o usuário  estiver logado e for administrador mostrar botão painel e logout -->
 							<!-- Se o usuário  estiver logado e for usuário comum mostrar somente o botão logout -->

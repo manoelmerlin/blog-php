@@ -26,7 +26,8 @@
 
             echo '<div class="col-12 p-2 text-light bg-" style="">';
 
-            echo substr($post['Post']['body'], 0, 155) . '...';    
+            echo "<h5 class='red'>" . substr($post['Post']['body'], 0, 155) . '...' . "</h5>";    
+                    
 
             echo  '</div>';
 
@@ -34,7 +35,9 @@
 
              echo $this->Html->link('Continue lendo',array(
                 'action' => 'view', $post['Post']['id']), array('class' => ''));  echo '<br>';
-                echo $this->Html->link('Deletar', array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), array('confirm' => 'quer mesmo deletar?')); 
+
+            echo "<br>";
+            echo "<h5 class='text-light'>" . 'Criado em : '. $post['Post']['modified'] . "</h6>";    
 
                 echo '</div>';
                 echo '</div>';
@@ -67,5 +70,5 @@
     }
 
 
-      
+      5
     ?>

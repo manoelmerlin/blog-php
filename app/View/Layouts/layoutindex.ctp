@@ -52,14 +52,40 @@
 								'class' => 'text-muted ml-3', 'style' => 'text-decoration:none; font-size: 14px;')); ?>		
 					</div>
 					
-					<div class="" style="width:800px">
-						<?php echo $this->Html->image('logo.png', array('alt' => 'logo', 'style' => 'width:20px;', 'class' => 'float-right' )); ?>
-						<?php echo $this->Html->image('logo.png', array('alt' => 'logo', 'style' => 'width:20px;', 'class' => 'float-right' )); ?>
-						<?php echo $this->Html->image('logo.png', array('alt' => 'logo', 'style' => 'width:20px;', 'class' => 'float-right' )); ?>
-						<?php echo $this->Html->image('logo.png', array('alt' => 'logo', 'style' => 'width:20px;', 'class' => 'float-right' )); ?>
-								
+					
+					<div class="float-right" style="width:800px">
+					<?php if(!(AuthComponent::user())): ?>
+							<?= $this->Html->link('Cadastar-se', array('controller' => 'users', 'action' => 'add_user'), array(
+								'class' => 'btn btn-primary p-1 border border-primary float-right')); 
+							?>
+							<?= $this->Html->link('Logar', array('controller' => 'users', 'action' => 'login'),array(
+								'class' => 'mr-3 btn btn-primary p-1  border border-primary float-right')); 
+							?>	
+
+
+							<!-- Se o usuário  estiver logado e for administrador mostrar botão painel e logout -->
+							<!-- Se o usuário  estiver logado e for usuário comum mostrar somente o botão logout -->
+							
+							<?php endif ?>
+
+
+						<?php if(AuthComponent::user()): ?>
+						<?= $this->Html->link('Deslogar', array('controller' => 'users', 'action' => 'logout'),array(
+								'class' => 'btn btn-primary p-1 mx-3 border border-primary float-right'
+							)); ?>
+
+						<?= $this->Html->link('Painel', array('controller' => 'admins', 'action' => 'index'), array(
+								'class' => 'btn btn-primary p-1 border border-primary float-right')); 	?>
+
+							
+							
+						
+						
+
+						<?php endif; ?>
 					</div>
 
+					
 					</div>
 						
 					</div>
@@ -137,9 +163,11 @@
 				<?php echo $this->Flash->render(); ?>
 				<?php echo $this->fetch('content'); ?>	
 			</div>
-		
-			<div class="col-2 border-left p-3">
+			
 
+			<div class="col-2 border-left p-5">
+
+					<h4>Destaques</h1>
 			</div>
 			
 

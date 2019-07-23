@@ -43,5 +43,21 @@
             
         }
 
+        public function acoes() {
+            $this->layout = 'admin';
+            $this->loadModel('Post', 'User');
+            $post = $this->Post->find('all');
+
+            $this->set('posts', $post);
+
+            $user = $this->User->find('all');
+            $this->set('users', $user);
+            
+        
+
+
+
+        }
+
 
     }

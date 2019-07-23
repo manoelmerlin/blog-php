@@ -47,17 +47,33 @@
 <body>
 
     <div id="container" class='p-0'>
-		<div class="row m-0 p-0">
+		<div class="row m-0 p-0" >
 			
-			<div class='col-12 bg-white shadow p-2'>
+			<div class='col-12 bg-dark' style="";>
 				<div class='row m-0'>
-				<?= $this->Html->link('Home', array('controller' => 'posts', 'action' => 'index'), array(
-								'class' => 'ml-5 btn btn-primary p-1 border border-primary')); ?>
-					<div class='col-2 border p-2'></div>
-					<div class='col-5 border p-2'></div>
-					<div class='col-2 border p-2'>
-						<div> <?= "a"; ?></div>
+
+
+					<div class='col-5'>
+					<?php echo "<h1 class='text-light'>" . 'Seja bem vindo ' . AuthComponent::user('first_name')  . "<h1>"; ?>
+
 					</div>
+					<div class='col-2 '>
+					
+					</div>
+					<div class='col-2'>
+					</div>
+					<div class='my-3 col-1 '>
+						<?= $this->Html->link('Painel', array('controller' => 'posts', 'action' => 'index'), array(
+									'class' => 'ml-5 btn btn-primary p-1 border border-primary')); ?>
+						
+					</div>
+					
+					<div class='col-2  '>
+						<?= $this->Html->link('Logout', array('controller' => 'posts', 'action' => 'index'), array(
+									'class' => 'ml-5 my-3 btn btn-primary p-1 border border-primary')); ?>
+						
+					</div>
+
 				</div>
             </div>
             
@@ -73,66 +89,102 @@
 
 
 
-			<div class='col-2 bg-dark p-2'>
+			<div class='col-2 bg-dark p-2' style="height:500px">
                 <div class='col-12 border p-2'>
 					<?echo $this->Html->link('Adicionar Post', array('controller' => 'posts', 'action' => 'add')); ?>
 				</div>
-							<p>
-			<a class="border p-2" style="width:100%" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Minhas postagens</a>
-			</p>
+			<div class="border p-2">			
+			<a class=" " style="" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="">Postagens</a>
+			</div>	
 			<div class="row">
 			<div class="col">
-				<div class="collapse multi-collapse" id="multiCollapseExample1">
+				<div class="collapse multi-collapse accordion" id="multiCollapseExample1">
 				<div class=" ">
 					<div>
-						<?echo $this->Html->link('Minhas postagens', array('Controller' => 'admins', 'action' => 'view')); ?>
-						<?echo $this->Html->link('Editar postagens'); ?>
+						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'admins', 'action' => 'view'), array('class' => 'border p-2')); ?>
+						<?php echo $this->Html->link('Postagens favoritas', array('controller' => '', 'action' => '')); ?>
+						<?php echo $this->Html->link('Visualizar postagens', array('controller' => '', 'action' => '')); ?>
 
 					</div>
-
 				</div>
 				</div>
 			
 			</div>
 			</div>
 
-				<div class='col-12 border p-2'>
-					<?echo $this->Html->link('Minhas postagens', array('Controller' => 'admins', 'action' => 'view')); ?>
-				</div>
-				<div class='col-12 border p-2'>
-					<?echo $this->Html->link('Editar postagens'); ?>
-				</div>
-				<div class='col-12 border p-2'>
-					<?echo $this->Html->link('Permissões', array('controller' => 'admins', 'action' => 'permission')); ?>
-				</div>
-				<div class='col-12 border p-2'>
-					<?echo $this->Html->link('Minhas postagens', array('Controller' => 'admins', 'action' => 'view')); ?>
-				</div>
-				<div class='col-12 border p-2'>
-					<?echo $this->Html->link('aaaaa'); ?>
-				</div>
-				<div class='col-12 border p-2'>
-					<?echo $this->Html->link('aaaaa'); ?>
-                </div>
-               
+				<div class=''>
+				<div class="accordion" id="accordionExample">
+				<div class="card">
+					<div class=" bg-dark" id="headingOne">
+					<h5 class="mb-0 ">
+						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="multiCollapseExample1">
+							Ações
+						</button>
+					</h5>
+					</div>
 
-            </div>
+					<div id="collapseOne" class="collapse multi-collapse accordion" aria-labelledby="headingOne" data-parent="#accordionExample">
+					<div class="bg-dark">
+						<?php echo $this->Html->link('Editar postagens', array('controller' => 'admins', 'action' => 'acoes')); ?> <br>
+						<?php echo $this->Html->link('Deletar postagens', array('controller' => 'admins', 'action' => 'permission')); ?>
+					</div>
+					</div>
+				
+				</div>
+				</div>				
+			</div>
+
+			<div class="border">
+				<div class="" id="headingThree">
+				<h5 class="mb-0">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						Permissões
+					</button>
+				</h5>
+				</div>
+				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+					<div class="card-body">
+						<?php echo $this->Html->link('Editar postagens', array('controller' => 'admins', 'action' => 'permission')); ?> <br>
+						<?php echo $this->Html->link('Deletar postagens', array('controller' => 'admins', 'action' => 'permission')); ?>
+					</div>
+				</div>
+			</div>
+			
+			<div class='col-12 border p-2'>
+					<?echo $this->Html->link('Minha conta', array('controller' => 'admins', 'action' => 'index')); ?>
+				</div>
+		
+			</div>
+			
 
         </div>
         
 
+		<div id="footer">
 
-		<div id="footer" class='bg-success  p-2'>
-            <div class='row m-0 border p-2'>
-				
-			<div class='col-2 border p-2'>
-					
+<div class="p-3" style="background-color:#191919">
+<div class="row m-0">
 
+	<p style="margin:0px 0px;"> </p>	<p style="font-size:30px;" class="ml-3">NEWS</p>   <p style="color:yellow; font-size:30px;">BIT</p>	
 					</div>
-				<div class='col-2 border p-2'>
-					
+		<div class="col-2 color:white;">
+			<p class="text-light">Bit coin is an open-source, peer-to-peer, digital decentralized cryptocurrency. Powered by blockchain technology, its defining characteristic is <?php echo "<br><br>" ?>
+				Copyright ©2019 All rights reserved | This template is made with  by Colorlib</p>
+		</div>
+		<div class="border-top p-1 row m-0">
+			<?= $this->Html->link('Terms & condition ', array('controller' => 'posts', 'action' => 'index'), array(
+							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
+			<?= $this->Html->link('Privacy policy ', array('controller' => 'posts', 'action' => 'index'), array(
+							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
+			<?= $this->Html->link('Jobs advertising', array('controller' => 'posts', 'action' => 'index'), array(
+							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
+			<?= $this->Html->link('Contact us ', array('controller' => 'posts', 'action' => 'index'), array(
+							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>												
+		</div>
 
-				</div>
+	</div>
+
+	</div>
 
             </div>
 		</div>
@@ -142,3 +194,4 @@
 	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>
+

@@ -4,16 +4,15 @@
        
 
         public function beforeFilter() {
+            
             $this->Auth->allow(array('index', 'view'));
         }
 
         
         public $components = array('Paginator');
-        
-
 
         function index() { 
-            //$this->layout = 'layoutindex';
+            $this->layout = 'layoutindex';
             $search = $this->Post->find('all', array(
                 'conditions' => array(
                     'status' => 1
@@ -37,12 +36,13 @@
 
 
         public function view($id = null) {
-            //$this->layout = 'layoutindex';
+            $this->layout = 'layoutindex';
            $this->set('post', $this->Post->findById($id)); 
 
         }
 
         public function add() {
+            $this->layout = 'layoutindex';
 
             if ($this->request->is('post') || $this->request->is('put')) {            
 
@@ -56,8 +56,8 @@
 
                 if ($this->Post->save($this->request->data)) {
                     move_uploaded_file($this->data['Post']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $filename);
-                   // pr($this->request->data);
-                   // die;
+                   //pr($this->request->data);
+                   //die;
                     $this->Flash->success('Seu post foi salvo');
                     $this->redirect(array('action' => 'index'));
 
@@ -68,6 +68,8 @@
         }
 
         public function edit($id = null) {
+            $this->layout = 'layoutindex';
+
             $this->Post->id = $id;
             
             if($this->request->is('get')){
@@ -92,7 +94,7 @@
         if($check['Post']['created_by'] == AuthComponent::user('id')){
             
             $this->Post->delete($id);
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('controller' => 'admins', 'action' => 'acoes'));
 
         }
         else {
