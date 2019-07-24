@@ -49,30 +49,35 @@
     <div id="container" class='p-0'>
 		<div class="row m-0 p-0" >
 			
-			<div class='col-12 bg-dark' style="";>
+			<div class='col-12 bg-info' style="";>
 				<div class='row m-0'>
 
 
-					<div class='col-5'>
+					<div class='col-4'>
 					<?php echo "<h1 class='text-light'>" . 'Seja bem vindo ' . AuthComponent::user('first_name')  . "<h1>"; ?>
 
 					</div>
-					<div class='col-2 '>
+					<div class='col-1 '>
 					
 					</div>
-					<div class='col-2'>
+					<div class='col-3'>
 					</div>
-					<div class='my-3 col-1 '>
+					<div class='my-3 col-1  '>
+						<?= $this->Html->link('Home', array('controller' => 'posts', 'action' => 'index'), array(
+									'class' => 'my-2 ml-5 my-3 btn btn-primary p-1 border border-primary')); ?>	
+					</div>
+					<div class='my-4 col-1 '>
 						<?= $this->Html->link('Painel', array('controller' => 'posts', 'action' => 'index'), array(
-									'class' => 'ml-5 btn btn-primary p-1 border border-primary')); ?>
+									'class' => 'my-2 ml-5 btn btn-primary p-1 border border-primary')); ?>
+					</div>
+
+						
+					<div class='my-3 col-1  '>
+						<?= $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'), array(
+									'class' => 'my-2 ml-5 my-3 btn btn-primary p-1 border border-primary')); ?>
 						
 					</div>
 					
-					<div class='col-2  '>
-						<?= $this->Html->link('Logout', array('controller' => 'posts', 'action' => 'index'), array(
-									'class' => 'ml-5 my-3 btn btn-primary p-1 border border-primary')); ?>
-						
-					</div>
 
 				</div>
             </div>
@@ -101,10 +106,9 @@
 				<div class="collapse multi-collapse accordion" id="multiCollapseExample1">
 				<div class=" ">
 					<div>
-						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'admins', 'action' => 'view'), array('class' => 'border p-2')); ?>
+						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'admins', 'action' => 'view'), array('class' => '')); ?>
 						<?php echo $this->Html->link('Postagens favoritas', array('controller' => '', 'action' => '')); ?>
-						<?php echo $this->Html->link('Visualizar postagens', array('controller' => '', 'action' => '')); ?>
-
+	
 					</div>
 				</div>
 				</div>
@@ -126,7 +130,7 @@
 					<div id="collapseOne" class="collapse multi-collapse accordion" aria-labelledby="headingOne" data-parent="#accordionExample">
 					<div class="bg-dark">
 						<?php echo $this->Html->link('Editar postagens', array('controller' => 'admins', 'action' => 'acoes')); ?> <br>
-						<?php echo $this->Html->link('Deletar postagens', array('controller' => 'admins', 'action' => 'permission')); ?>
+						<?php echo $this->Html->link('Deletar postagens', array('controller' => 'admins', 'action' => 'delete')); ?>
 					</div>
 					</div>
 				
@@ -143,15 +147,15 @@
 				</h5>
 				</div>
 				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-					<div class="card-body">
-						<?php echo $this->Html->link('Editar postagens', array('controller' => 'admins', 'action' => 'permission')); ?> <br>
-						<?php echo $this->Html->link('Deletar postagens', array('controller' => 'admins', 'action' => 'permission')); ?>
+					<div class="">
+						<?php echo $this->Html->link('Listar usuários', array('controller' => 'admins', 'action' => 'listUsers')); ?> <br>
+						<?php echo $this->Html->link('Gerenciar', array('controller' => 'admins', 'action' => 'permission')); ?>
 					</div>
 				</div>
 			</div>
 			
 			<div class='col-12 border p-2'>
-					<?echo $this->Html->link('Minha conta', array('controller' => 'admins', 'action' => 'index')); ?>
+					<?echo $this->Html->link('Minha conta', array('controller' => 'admins', 'action' => 'myAccount')); ?>
 				</div>
 		
 			</div>

@@ -1,7 +1,7 @@
 
 <center>
-<h1>Selecione a postagem que você deseja editar</h1>
-  <div class="my-3">
+<h4>Selecione a postagem que você deseja editar</h1>
+  <div class="my-5">
 
   </div>
  <table class="border p-2">
@@ -11,7 +11,7 @@
         <th class="border p-1">Img</th>    
         <th class="border p-1">Título</th>    
         <th>Data de Criação</th>
-        <th class="border p-1">Editar</th>    
+        <th class="border p-1">Deletar</th>    
 
         
     </tr>
@@ -23,7 +23,7 @@
 
      <tr class="border p-1">
             <td>
-          <?php   echo '<div class=" border p-5" style="background-image:  url(../../../../img/uploads/'.$post["Post"]["imagem"].'); background-repeat: no-repeat; background-size: 100% 100%;" >'; ?>
+          <?php   echo '<div class="col-12 border p-3" style="background-image:  url(../../../../img/uploads/'.$post["Post"]["imagem"].'); background-repeat: no-repeat; background-size: 100% 100%;" >'; ?>
 
             </td>
 
@@ -32,9 +32,13 @@
                         array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
             </td>
             <td class="border p1"><?php echo $post['Post']['created']; ?></td>
-            <td>
-            <?php echo $this->Html->link('Editar', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id']), array('class' => 'm-1')); ?>
-      </tr>
+            <td><?php echo $this->Html->link('Deletar', array
+                          ('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), array
+                          ('confirm' => 'quer mesmo deletar?'));?>
+
+
+  
+    </tr>
 
     
     <?php endforeach; ?>

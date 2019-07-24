@@ -103,10 +103,25 @@
             
         }
       
-        public function userPanel() {
-        $this->set('users', $this->User->Find('all'));
+        public function deleteAccount($id) {
 
-    }
+            $check = $this->User->find('first', array(
+                'conditions' => array(
+                    'id' => $id
+                )
+            ));
+
+            if(($check['User']['id'] == AuthComponent::user('id')) && $check['User']['status'] == 1) {
+                
+                $objeto = array(
+                    'id' => $id,
+                    'status' => '0'
+                );
+    
+                $this->User->save($objeto);
+            }
+
+        }
 
 }
     

@@ -4,7 +4,7 @@
        
 
         public function beforeFilter() {
-            
+
             $this->Auth->allow(array('index', 'view'));
         }
 
@@ -13,19 +13,15 @@
 
         function index() { 
             $this->layout = 'layoutindex';
-            $search = $this->Post->find('all', array(
+                  
+             $this->paginate = array(
                 'conditions' => array(
-                    'status' => 1
-                )   
-            ));
-            $this->paginate = array(
-                'coditions' => array('Post.id !=' => '6'),
+                    'Post.status' => 1
+                ),
                 'limit' => 4,
-                'order' => array('id' => 'desc')
-            );
- 
-            $posts = $this->paginate('Post'); 
-            $this->set('posts', $posts);
+                'order' => array('Post.id' => 'desc')
+            ); 
+            $this->set('posts', $this->paginate());
 
             $this->loadModel('User');
             $users = $this->User->find('all');
@@ -91,9 +87,14 @@
             )
         ));
         
-        if($check['Post']['created_by'] == AuthComponent::user('id')){
+        if(($check['Post']['created_by'] == AuthComponent::user('id')) || AuthComponent::user('role') == 1){
             
-            $this->Post->delete($id);
+            $objeto = array(
+                'id' => $id,
+                'status' => '0'
+            );
+
+            $this->Post->save($objeto);
             $this->redirect(array('controller' => 'admins', 'action' => 'acoes'));
 
         }
@@ -104,6 +105,11 @@
         }
 
           
+        }
+
+
+        public function deletePost() {
+
         }
         
 

@@ -46,17 +46,61 @@
         public function acoes() {
             $this->layout = 'admin';
             $this->loadModel('Post', 'User');
-            $post = $this->Post->find('all');
+
+            $conditions = array(
+                'Post.status' => 1,
+            );
+
+            if(AuthComponent::user('role') != 1) {
+                $conditions['Post.created_by'] = AuthComponent::user('id') ;
+            }
+
+            $post = $this->Post->find('all',array(
+            'conditions' => $conditions
+            ));
 
             $this->set('posts', $post);
 
             $user = $this->User->find('all');
             $this->set('users', $user);
+
+        }
+
+
+        public function delete() {
+            $this->layout = 'admin';
+            $this->loadModel('Post', 'User');
+
+            $conditions = array(
+                'Post.status' => 1,
+            );
+
+            if(AuthComponent::user('role') != 1) {
+                $conditions['Post.created_by'] = AuthComponent::user('id') ;
+            }
+
+            $post = $this->Post->find('all',array(
+            'conditions' => $conditions
+            ));
+
+            $this->set('posts', $post);
+
+            $user = $this->User->find('all');
+            $this->set('users', $user);
+
+        }
+
+        public function myAccount() {
+            $this->layout = 'admin';
+            $this->loadModel('Post', 'User');
             
-        
+        }
 
+        public function listUsers() {
+            $this->layout = 'admin';
+            $this->loadModel('User');
 
-
+            $this->User->find('all');
         }
 
 

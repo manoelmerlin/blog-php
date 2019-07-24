@@ -76,10 +76,6 @@
 
 						<?= $this->Html->link('Painel', array('controller' => 'admins', 'action' => 'index'), array(
 								'class' => 'btn btn-primary p-1 border border-primary float-right')); 	?>
-
-							
-							
-						
 						
 
 						<?php endif; ?>
