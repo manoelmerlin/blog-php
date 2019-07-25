@@ -20,13 +20,16 @@
          echo '<div class="col-6 p-3">';
              echo '<div class="col-12 border p-3" style="background-image:  url(../../../../img/uploads/'.$post["Post"]["imagem"].'); background-repeat: no-repeat; background-size: 100% 100%;" >';
 
+           //  echo $this->Html->link('', array('style' => 'background-image: url(../../../../img/uploads/'.$post["Post"]["imagem"]));
+
+            //echo $this->html->link('aAAAA', array('class' => 'col-12 border p-3', 'style' => 'background-image:  url(../../../../img/uploads/'.$post["Post"]["imagem"].'); background-repeat: no-repeat; background-size: 100% 100%;'));
+            
 
                 echo $this->Html->link($post['Post']['title'],array(
-                    'action' => 'view', $post['Post']['id']), array('class' => 'text-light', 'style' => 'text-decoration:none; font-size:30px;')); echo '</p><br>';
+                    'action' => 'view', $post['Post']['id']), array('class' => 'text-light', 'style' => 'background-color: rgba(0,0,0,0.5);                    text-decoration:none; font-size:30px;')); echo '</p><br>';
 
-            echo '<div class="col-12 p-2 text-light bg-" style="">';
+            echo '<div class="col-12 p-2 text-light" style="">';
 
-            echo "<h5 class='red'>" . substr($post['Post']['body'], 0, 155) . '...' . "</h5>";    
                     
 
             echo  '</div>';
@@ -72,3 +75,5 @@
 
       5
     ?>
+
+

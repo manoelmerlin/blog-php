@@ -100,7 +100,9 @@
             $this->layout = 'admin';
             $this->loadModel('User');
 
-            $this->User->find('all');
+            $user = $this->User->find('all');
+            $this->set('users', $user);
+
         }
 
 

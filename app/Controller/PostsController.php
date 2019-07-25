@@ -33,12 +33,24 @@
 
         public function view($id = null) {
             $this->layout = 'layoutindex';
-           $this->set('post', $this->Post->findById($id)); 
 
+            $this->loadModel('Comment');
+
+            $post = $this->Post->findById($id);
+            $this->set('post', $post); 
+
+            $comentarios = $this->Comment->find('all', array(
+                'conditions' => array(
+                    'Comment.post_id' => $id
+                )
+            ));
+
+
+            $this->set('comentarios', $comentarios);
         }
 
         public function add() {
-            $this->layout = 'layoutindex';
+            $this->layout = 'admin';
 
             if ($this->request->is('post') || $this->request->is('put')) {            
 
@@ -48,7 +60,7 @@
                 $filename = basename($this->request->data['Post']['image']['name']);
                 $this->request->data['Post']['imagem'] = $filename;
 
-            
+             
 
                 if ($this->Post->save($this->request->data)) {
                     move_uploaded_file($this->data['Post']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $filename);
@@ -105,6 +117,29 @@
         }
 
           
+        }
+
+        public function comentar() {
+            $this->loadModel('Comment');
+            if($this->request->is('Post') || $this->request-is('put')) {
+                $this->request->data['Comment']['created_by'] = AuthComponent::user('id');
+                $this->request->data['Comment']['first_name'] = AuthComponent::user('first_name');
+                 $this->request->data['Comment']['first_name'] = AuthComponent::user('first_name');
+
+                $this->request->data['Comment']['created'] = AuthComponent::user('created');
+
+                $this->Comment->create();
+
+            if($this->Comment->save($this->request->data)) {
+
+                $this->redirect(array('controller' => 'posts', 'action' => 'view', $this->request->data['Comment']['post_id']));
+        
+             }
+        
+        }   
+
+
+
         }
 
 

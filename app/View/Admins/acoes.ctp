@@ -10,7 +10,7 @@
 
         <th class="border p-1">Img</th>    
         <th class="border p-1">Título</th>    
-        <th>Data de Criação</th>
+        <th class="bordder p-1">Data de Criação</th>
         <th class="border p-1">Editar</th>    
 
         

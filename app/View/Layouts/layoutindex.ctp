@@ -164,10 +164,9 @@
 			<div class="col-2 border-left p-5">
 
 					<h4>Destaques</h1>
-			</div>
-			
+					
+					
 
-		</div>
 
 	</div>
 
