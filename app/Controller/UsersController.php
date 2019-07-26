@@ -123,6 +123,46 @@
 
         }
 
+        public function setPermission($id) {
+            $check = $this->User->find('first', array(
+                'conditions' => array('id' => $id
+                
+                )
+            ));
+
+            
+
+           if($check['User']['role'] == 3){
+
+            $salvar = array(
+                'id' => $id,
+                'role' => '1'
+            );
+
+            $this->User->save($salvar);
+            $this->redirect(array('controller' => 'admins', 'action' => 'listUsers'));
+
+           }elseif($check['User']['role'] == 1) {
+
+            $salvar1 = array(
+                'id' => $id,
+                'role' => '3'
+            );
+            $this->User->save($salvar1);
+
+            $this->redirect(array('controller' => 'admins', 'action' => 'listUsers'));
+
+
+           } else {
+               $this->Flash->error('Erro');
+           }
+
+
+
+
+
+        }
+
 }
     
 

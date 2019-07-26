@@ -34,6 +34,32 @@ class AppController extends Controller {
     public $helpers = array ('Form', 'Html');
 
 
+
+
+    public function beforeRender() {
+        Controller::loadModel('Post');
+        $categories = $this->Post->find('list', array(
+            'conditions' => array(
+                'categoria !=' => ''
+            ),
+            'fields' => array(
+              'id', 'categoria'
+            )
+        ));
+        
+        $categories = array_unique($categories);
+        $this->set('categories', $categories);
+
+      /*  $post = $this->Post->find('all');
+
+        $this->set('post', $post);
+        */
+
+    }
+
+   
+
+
     public $components = array(
         'Flash',
         'Session',
@@ -57,6 +83,7 @@ class AppController extends Controller {
         )
 
     );
+
 
 
     

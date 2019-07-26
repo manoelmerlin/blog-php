@@ -9,7 +9,8 @@
     <tr>
 
         <th class="border p-1">Img</th>    
-        <th class="border p-1">Título</th>    
+        <th class="border p-1">Título</th>
+        <th class="border p-1">Categoria</th>        
         <th>Data de Criação</th>
         <th class="border p-1">Deletar</th>    
 
@@ -31,6 +32,11 @@
                     <?php echo $this->Html->link($post['Post']['title'],
                         array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
             </td>
+
+            <td>
+              <?php echo $post['Post']['categoria']; ?>
+            </td>
+
             <td class="border p1"><?php echo $post['Post']['created']; ?></td>
             <td><?php echo $this->Html->link('Deletar', array
                           ('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), array

@@ -2,7 +2,7 @@
     class PostsController extends AppController {
 
        
-
+      
         public function beforeFilter() {
 
             $this->Auth->allow(array('index', 'view'));
@@ -23,6 +23,8 @@
             ); 
             $this->set('posts', $this->paginate());
 
+            
+
             $this->loadModel('User');
             $users = $this->User->find('all');
             $this->set('users', $users);
@@ -36,7 +38,15 @@
 
             $this->loadModel('Comment');
 
-            $post = $this->Post->findById($id);
+            $post = $this->Post->find('first', array(
+                'conditions' => array(
+                    'id' => $id
+
+                )
+            ));
+
+        
+            
             $this->set('post', $post); 
 
             $comentarios = $this->Comment->find('all', array(
@@ -60,12 +70,8 @@
                 $filename = basename($this->request->data['Post']['image']['name']);
                 $this->request->data['Post']['imagem'] = $filename;
 
-             
-
                 if ($this->Post->save($this->request->data)) {
                     move_uploaded_file($this->data['Post']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $filename);
-                   //pr($this->request->data);
-                   //die;
                     $this->Flash->success('Seu post foi salvo');
                     $this->redirect(array('action' => 'index'));
 
@@ -76,7 +82,7 @@
         }
 
         public function edit($id = null) {
-            $this->layout = 'layoutindex';
+            $this->layout = 'admin';
 
             $this->Post->id = $id;
             
@@ -85,7 +91,7 @@
             } else {
                 if ($this->Post->save($this->request->data)) {
                     $this->Flash->success('Seu post foi atualizado');
-                    $this->redirect(array('action' => 'index'));
+                    $this->redirect(array('controller' => 'admins', 'action' => 'acoes'));
                 }
             }
 
@@ -107,7 +113,7 @@
             );
 
             $this->Post->save($objeto);
-            $this->redirect(array('controller' => 'admins', 'action' => 'acoes'));
+            $this->redirect(array('controller' => 'admins', 'action' => 'delete'));
 
         }
         else {
@@ -131,21 +137,28 @@
                 $this->Comment->create();
 
             if($this->Comment->save($this->request->data)) {
-
                 $this->redirect(array('controller' => 'posts', 'action' => 'view', $this->request->data['Comment']['post_id']));
-        
              }
+
+             
         
+        }   
+
+        }
+
+        public function separarCategoria ($categoria) {
+            $this->layout = 'layoutindex';
+
+         $post = $this->Post->find('all', array(
+                'conditions' => array(
+                    'categoria' => $categoria
+                )
+                ));
+        $this->set('posts', $post);        
         }   
 
 
 
-        }
-
-
-        public function deletePost() {
-
-        }
         
 
     }

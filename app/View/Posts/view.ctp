@@ -4,13 +4,15 @@
 
 <div class='ml-5'></div>
 
-    <div class='ml-5'>
+    <div class='ml-5 border p-2' >
         <p><?php echo $post['Post']['body']?></p>
     </div>
 
     <div>
-       <h5> Post criado em: <?php echo $post['Post']['created'];?></h5> <h5>Autor:<?php echo $post['Post']['first_name']; ?></h5>
+       <h5> Post criado em: <?php echo $this->Time->format($post['Post']['created'], '%B %e, %Y, as %H:%M ');;?></h5> <h5>Autor:<?php echo $post['Post']['first_name']; ?></h5>
     </div>
+
+
 
     <div class='my-4 border-top'>
 
@@ -28,7 +30,7 @@
                     <?php echo $a['Comment']['first_name'] ?>  <?php echo $a['Comment']['last_name']; ?>
 
                 </div>
-                <?= $a['Comment']['body_commit'];?>   <h6 class="float-right"> <?php echo ' Comentado : ' .  $a['Comment']['created'] ?> </h6>
+                <?= h($a['Comment']['body_commit']);?>   <h6 class="float-right"> <?php echo ' Comentado : ' .  $a['Comment']['created'] ?> </h6>
             </div>
         <?php endforeach; ?>
 

@@ -120,12 +120,12 @@
 			<div class="col">
 				<div class="dropdown">
 					<button class="btn mt-2 dropdown-toggle text-uppercase" style="font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						GUIDES & ANALITICS
+						Categorias
 					</button>
 					<div class="dropdown-menu p-3"  aria-labelledby="dropdownMenuButton">
-						<?= $this->Html->link('Posts', array('controller' => 'posts', 'action' => 'index')); ?>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
+						<?php foreach($categories as $category): ?>
+							<?= $this->Html->link($category, array('controller' => 'posts', 'action' => 'separarCategoria', $category)) . '<br/>'; ?>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
@@ -161,18 +161,25 @@
 			</div>
 			
 
-			<div class="col-2 border-left p-5">
+			<div class="col-3 border p-5 " style="height:500px">
 
 					<h4>Destaques</h1>
 					
-					
+					<?php foreach($posts as $post): ?>
 
+						<?php if($post['Post']['destaque'] == 1): ?>
+							<div class='border p-2'>
+								<?php echo $post['Post']['title'];  ?>													
+								<?php echo $post['Post']['categoria'] ?>
+								</div>
+				<?php endif; ?>
 
+				<?php endforeach; ?>
 	</div>
 
 	<div id="footer">
 
-	<div class="p-3" style="background-color:#191919">
+	<div class="p-3" style="background-color:#191919;" class="col-12">
 	<div class="row m-0">
 
 		<p style="margin:0px 0px;"> </p>	<p style="font-size:30px;" class="ml-3">NEWS</p>   <p style="color:yellow; font-size:30px;">BIT</p>	

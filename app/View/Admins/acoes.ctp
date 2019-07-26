@@ -10,6 +10,7 @@
 
         <th class="border p-1">Img</th>    
         <th class="border p-1">Título</th>    
+        <th class="border p-1">Categória</th>    
         <th class="bordder p-1">Data de Criação</th>
         <th class="border p-1">Editar</th>    
 
@@ -23,7 +24,7 @@
 
      <tr class="border p-1">
             <td>
-          <?php   echo '<div class=" border p-5" style="background-image:  url(../../../../img/uploads/'.$post["Post"]["imagem"].'); background-repeat: no-repeat; background-size: 100% 100%;" >'; ?>
+              <?php   echo '<div class=" border p-5" style="background-image:  url(../../../../img/uploads/'.$post["Post"]["imagem"].'); background-repeat: no-repeat; background-size: 100% 100%;" >'; ?>
 
             </td>
 
@@ -31,6 +32,11 @@
                     <?php echo $this->Html->link($post['Post']['title'],
                         array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
             </td>
+
+             <td>
+                <?php echo $post['Post']['categoria']; ?>
+             </td> 
+
             <td class="border p1"><?php echo $post['Post']['created']; ?></td>
             <td>
             <?php echo $this->Html->link('Editar', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id']), array('class' => 'm-1')); ?>
