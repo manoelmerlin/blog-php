@@ -4,14 +4,18 @@
        
       
         public function beforeFilter() {
-
-            $this->Auth->allow(array('index', 'view'));
+        parent::beforeFilter();
+        $this->Auth->allow(array('index', 'view'));
+        
         }
+
+      
 
         
         public $components = array('Paginator');
 
-        function index() { 
+       
+        function index() {      
             $this->layout = 'layoutindex';
                   
              $this->paginate = array(
@@ -22,8 +26,6 @@
                 'order' => array('Post.id' => 'desc')
             ); 
             $this->set('posts', $this->paginate());
-
-            
 
             $this->loadModel('User');
             $users = $this->User->find('all');
@@ -45,8 +47,6 @@
                 )
             ));
 
-        
-            
             $this->set('post', $post); 
 
             $comentarios = $this->Comment->find('all', array(
@@ -84,6 +84,18 @@
         public function edit($id = null) {
             $this->layout = 'admin';
 
+            $a = $this->Post->find('first', array(
+                'conditions' => array(
+                    'id' => $id,
+                    'created_by' => AuthComponent::user('id')
+                ),
+                'fields' => array(
+                    'created_by')
+            ));
+            $a = array_unique($a);
+
+            $this->set('post', $a);
+
             $this->Post->id = $id;
             
             if($this->request->is('get')){
@@ -92,6 +104,9 @@
                 if ($this->Post->save($this->request->data)) {
                     $this->Flash->success('Seu post foi atualizado');
                     $this->redirect(array('controller' => 'admins', 'action' => 'acoes'));
+                }else{
+                    $this->redirect(array('controller' => 'admins', 'action' => 'index'));
+
                 }
             }
 
@@ -101,10 +116,11 @@
 
         $check = $this->Post->find('first', array(
             'conditions' => array(
-                'id' => $id
+                'id' => $id,
+                
             )
         ));
-        
+
         if(($check['Post']['created_by'] == AuthComponent::user('id')) || AuthComponent::user('role') == 1){
             
             $objeto = array(

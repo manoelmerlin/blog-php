@@ -1,3 +1,12 @@
+  <?php if($post['Post']['created_by'] != AuthComponent::user('id')): ?>
+  <script>window.location.replace('index');</script>
+
+
+<?php endif; ?>
+
+
+
+
 <center><h1>Editar post</h1></center>
 
   
@@ -29,3 +38,4 @@
     </form>
 
   <script>CKEDITOR.replace($('#PostBody').get(0));</script>
+

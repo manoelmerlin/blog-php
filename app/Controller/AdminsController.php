@@ -69,6 +69,7 @@
 
         public function delete() {
             $this->layout = 'admin';
+
             $this->loadModel('Post', 'User');
 
             $conditions = array(
@@ -89,6 +90,8 @@
             $this->set('users', $user);
 
         }
+
+        
 
         public function myAccount() {
             $this->layout = 'admin';

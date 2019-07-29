@@ -37,6 +37,11 @@
 	?>
 </head>
 <body class="bg-success" >
+		<div>
+		<?php echo $this->Html->link('Continuar para o site', array('controller' => 'posts', 'action' => 'index')); ?>
+
+		</div>
+
 	<div id="container">
 		<div id="header">
 		</div>

@@ -33,8 +33,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     public $helpers = array ('Form', 'Html');
 
-
-
+  
 
     public function beforeRender() {
         Controller::loadModel('Post');
@@ -50,7 +49,7 @@ class AppController extends Controller {
         $categories = array_unique($categories);
         $this->set('categories', $categories);
 
-      /*  $post = $this->Post->find('all');
+       /*   $post = $this->Post->find('all');
 
         $this->set('post', $post);
         */

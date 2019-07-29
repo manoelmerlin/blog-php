@@ -1,6 +1,12 @@
+<?php if(AuthComponent::user('role') != 1 && AuthComponent::user('role') != 2): ?>
+  <script>window.location.replace('index');</script>
+  
+<?php else: ?>
+
+
 <center><h1>Adicionar Post</h1></center>
 
-  
+
     <center>
     <div style="font-size:25px">
 
@@ -20,17 +26,6 @@
       
       echo $this->Form->select('categoria', $options, array('label' => 'categoria')); ?>
 
-    <?php 
-
-    echo "Deseja marcar a noticia como destaque ? ";
-
-    
-      $options = array(1 => 'Sim', 2 => 'Não');
-      $selected = array(1, 2);
-      echo $this->Form->input('Post.destaque', array('multiple' => 'checkbox', 'options' => $options, 'selected' => $selected));
-    
-
-    ?>
 
       <?php echo $this->Form->submit('Enviar'); ?>
 
@@ -42,3 +37,5 @@
     </form>
 
   <script>CKEDITOR.replace($('#PostBody').get(0));</script>
+
+<?php endif; ?>

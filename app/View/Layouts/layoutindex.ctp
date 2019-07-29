@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +11,10 @@
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
 		echo $this->Html->css(array(
 			'estilo', 
 			'bootstrap'
 		));
-
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -151,31 +148,22 @@
 
         </div>
 
-
-	<div id="content" class="">
-
-		<div class="row m-0">
-			<div class="col p-3 ">
+		<div class="row m-0 ">
+			<div class="col   border border-danger">
 				<?php echo $this->Flash->render(); ?>
 				<?php echo $this->fetch('content'); ?>	
+
 			</div>
+
 			
 
-			<div class="col-3 border p-5 " style="height:500px">
+			
+			
+			</div>
+		
+			</div>
+	
 
-					<h4>Destaques</h1>
-					
-					<?php foreach($posts as $post): ?>
-
-						<?php if($post['Post']['destaque'] == 1): ?>
-							<div class='border p-2'>
-								<?php echo $post['Post']['title'];  ?>													
-								<?php echo $post['Post']['categoria'] ?>
-								</div>
-				<?php endif; ?>
-
-				<?php endforeach; ?>
-	</div>
 
 	<div id="footer">
 

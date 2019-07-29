@@ -4,10 +4,15 @@
 
         public function beforeFilter() {
             parent::beforeFilter();
-            $this->Auth->allow('add_user', 'index'); // Permitindo que os usuários se registrem
-            }
+           $this->Auth->allow('add_user', 'index'); // Permitindo que os usuários se registrem
 
-        
+      
+
+        }
+
+
+
+
         public $uses = array (
             'Post', 
             'User'
@@ -16,7 +21,7 @@
         
 
         public function index() {
-            $this->layout='index';
+            $this->layout='layoutindex';
         }
 
         public function view($id = null) {
@@ -28,6 +33,8 @@
         }
 
         public function add_user() {
+
+
             $this->layout = 'add_user';            
            
             if($this->request->is('post') || $this->request->is('put')) {
@@ -41,6 +48,7 @@
 
                 );
             }
+
         }
 
         public function editUser($id = null){
