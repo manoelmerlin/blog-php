@@ -105,11 +105,13 @@
 				<div class="collapse multi-collapse accordion" id="multiCollapseExample1">
 				<div class=" ">
 					<div>
-						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'admins', 'action' => 'view'), array('class' => '')); ?>
-						<?php echo $this->Html->link('Postagens favoritas', array('controller' => '', 'action' => '')); ?>
 						<?php if(AuthComponent::user('role') == 1 || AuthComponent::user('role') == 2): ?>		
-							<?php echo $this->Html->link('Adicionar Post', array('controller' => 'posts', 'action' => 'add')); ?>
+							<?php echo $this->Html->link('Adicionar Post', array('controller' => 'posts', 'action' => 'add')); ?> <br>
+						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'posts', 'action' => 'allposts'), array('class' => '')); ?> <br>
 						<?php endif; ?>	
+
+						<?php echo $this->Html->link('Postagens favoritas', array('controller' => '', 'action' => '')); ?>
+						
 					</div>
 				</div>
 				</div>
@@ -117,48 +119,31 @@
 			</div>
 			</div>
 
-
-			<div class="border">
-				<div class="" id="headingThree">
-				<h5 class="mb-0">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-						Permissões
-					</button>
-				</h5>
-				</div>
-				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-					<div class="">
-						<?php echo $this->Html->link('Listar usuários', array('controller' => 'admins', 'action' => 'listUsers')); ?> <br>
-						<?php echo $this->Html->link('Gerenciar', array('controller' => 'admins', 'action' => 'permission')); ?>
-					</div>
-				</div>
-			</div>
-			
-			<div class='col-12 border p-2'>
-					<?echo $this->Html->link('Minha conta', array('controller' => 'admins', 'action' => 'myAccount')); ?>
-				</div>
-
-			<?php if(AuthComponent::user('role') == 1 || AuthComponent::user('role') == 2): ?>
-				<div class="accordion" id="accordionExample">
+			<?php if(AuthComponent::user('role') == 1): ?>
+				<div class="accordion border" id="accordionExample">
 				<div class="card">
 					<div class=" bg-dark" id="headingOne">
 					<h5 class="mb-0 ">
 						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="multiCollapseExample1">
-							Ações
+							Permissões
 						</button>
 					</h5>
 					</div>
 
 					<div id="collapseOne" class="collapse multi-collapse accordion" aria-labelledby="headingOne" data-parent="#accordionExample">
 					<div class="bg-dark">
-						<?php echo $this->Html->link('Editar postagens', array('controller' => 'admins', 'action' => 'acoes')); ?> <br>
-						<?php echo $this->Html->link('Deletar postagens', array('controller' => 'admins', 'action' => 'delete')); ?>
+						<?php echo $this->Html->link('Gerenciar permissões', array('controller' => 'users', 'action' => 'listUsers')); ?> <br>
 					</div>
 					</div>
 				
 				</div>
 				</div>				
-						<?php endif; ?>				
+						<?php endif; ?>
+						
+				<div class='col-12 border p-2'>
+					<?echo $this->Html->link('Minha conta', array('controller' => 'users', 'action' => 'myAccount')); ?>
+				</div>	
+
 			</div>
 			
 

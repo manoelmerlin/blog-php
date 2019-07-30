@@ -138,38 +138,106 @@
                 )
             ));
 
-            
+            if(AuthComponent::user('role') != 1){
+                throw new UnauthorizedException('Você não tem permissão para acessar está página');
+            }
 
            if($check['User']['role'] == 3){
 
             $salvar = array(
                 'id' => $id,
-                'role' => '1'
+                'role' => 2
             );
 
             $this->User->save($salvar);
-            $this->redirect(array('controller' => 'admins', 'action' => 'listUsers'));
+            $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
 
-           }elseif($check['User']['role'] == 1) {
-
-            $salvar1 = array(
-                'id' => $id,
-                'role' => '3'
-            );
-            $this->User->save($salvar1);
-
-            $this->redirect(array('controller' => 'admins', 'action' => 'listUsers'));
-
-
-           } else {
+           }else {
                $this->Flash->error('Erro');
            }
 
+        }
 
+        public function promoteUser($id) {
+            $check = $this->User->find('first', array(
+                'conditions' => array('id' => $id
+                
+                )
+            ));
 
+            if(AuthComponent::user('role') != 1){
+                throw new UnauthorizedException('Você não tem permissão para acessar está página');
+            }
 
+           if($check['User']['role'] == 2){
+
+            $salvar = array(
+                'id' => $id,
+                'role' => 1
+            );
+
+            $this->User->save($salvar);
+            $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
+
+           }else {
+               $this->Flash->error('Erro');
+           }
 
         }
+
+        public function cancelPermission($id) {
+            $check = $this->User->find('first', array(
+                'conditions' => array('id' => $id
+                
+                )
+            ));
+
+            if(AuthComponent::user('role') != 1){
+                throw new UnauthorizedException('Você não tem permissão para acessar está página');
+            }
+            
+            if($check['User']['role'] == 2){
+
+                $salvar = array(
+                    'id' => $id,
+                    'role' => 3
+                );
+          
+                $this->User->save($salvar);
+                $this->Flash->success('Cargo revogado para Membro com sucesso');
+                $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
+            }    
+               if($check['User']['role'] == 1){
+                $salvar = array(
+                    'id' => $id,
+                    'role' => 2
+                );
+                $this->User->save($salvar);
+                $this->Flash->success('Cargo revogado para Moderador com sucesso');
+                $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
+               }
+               else {
+                   $this->Flash->error('Erro');
+               }
+    
+
+        } 
+
+        public function listUsers() {
+            $this->layout = 'admin';
+            $this->loadModel('User');
+
+            $user = $this->User->find('all');
+            $this->set('users', $user);
+
+        }
+
+
+        public function myAccount() {
+            $this->layout = 'admin';
+
+        }
+
 
 }
     

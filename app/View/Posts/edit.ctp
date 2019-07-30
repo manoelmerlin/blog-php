@@ -1,8 +1,3 @@
-  <?php if($post['Post']['created_by'] != AuthComponent::user('id')): ?>
-  <script>window.location.replace('index');</script>
-
-
-<?php endif; ?>
 
 
 

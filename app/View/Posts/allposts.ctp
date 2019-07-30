@@ -1,4 +1,3 @@
-
 <center>
 <h1>Selecione a postagem que você deseja editar</h1>
   <div class="my-3">
@@ -13,13 +12,17 @@
         <th class="border p-1">Categória</th>
         <th class="border p-1">Autor</th>        
         <th class="bordder p-1">Data de Criação</th>
-        <th class="border p-1">Editar</th>    
+        <th class="border p-1">Ações</th>    
 
         
     </tr>
 
+      <?php if(AuthComponent::user('role') != 1): ?>
+      <h4 class="text-success">Total de postagens <?php echo count($contPost); ?> </h4> 
 
-
+    <?php else: ?>
+      <h4 class="text-success">Total de postagens <?php echo count($posts); ?> </h4> 
+<?php endif; ?>  
 
     <?php foreach ($posts as $post): ?>
 
@@ -42,9 +45,10 @@
              </td> 
 
             <td class="border p1"><?php echo $post['Post']['created']; ?></td>
-            <td>
-            <?php echo $this->Html->link('Editar', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id']), array('class' => 'm-1')); ?>
-      </tr>
+            <td class="border">
+                <?php echo $this->Html->link('Editar', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id']), array('class' => 'm-1')); ?>
+                <?php echo $this->Html->link('Deletar', array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), array('class=' => '')); ?>
+        </tr>
 
     
     <?php endforeach; ?>

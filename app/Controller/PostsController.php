@@ -36,16 +36,21 @@
 
 
         public function view($id = null) {
-            $this->layout = 'layoutindex';
-
-            $this->loadModel('Comment');
-
             $post = $this->Post->find('first', array(
                 'conditions' => array(
                     'id' => $id
 
                 )
             ));
+
+            if($post['Post']['status'] != 1 || !$this->Post->exists($id)){
+                throw new NotFoundException("Post não existe");
+            }
+          
+            $this->layout = 'layoutindex';
+
+            $this->loadModel('Comment');
+
 
             $this->set('post', $post); 
 
@@ -54,17 +59,23 @@
                     'Comment.post_id' => $id
                 )
             ));
-
-
             $this->set('comentarios', $comentarios);
+          
         }
 
         public function add() {
             $this->layout = 'admin';
 
+
+            if(AuthComponent::user('role') != 1 && AuthComponent::user('role') != 2){
+                throw new UnauthorizedException("Sem permissão para acessar está pagina");
+        }            
+        
             if ($this->request->is('post') || $this->request->is('put')) {            
 
                 $this->request->data['Post']['created_by'] = AuthComponent::user('id');
+                $this->request->data['Post']['first_name'] = AuthComponent::user('first_name');
+
 
                 $this->Post->create();
                 $filename = basename($this->request->data['Post']['image']['name']);
@@ -82,46 +93,39 @@
         }
 
         public function edit($id = null) {
-            $this->layout = 'admin';
-
-            $a = $this->Post->find('first', array(
-                'conditions' => array(
-                    'id' => $id,
-                    'created_by' => AuthComponent::user('id')
-                ),
-                'fields' => array(
-                    'created_by')
-            ));
-            $a = array_unique($a);
-
-            $this->set('post', $a);
-
-            $this->Post->id = $id;
-            
-            if($this->request->is('get')){
-                $this->request->data = $this->Post->findById($id);
-            } else {
-                if ($this->Post->save($this->request->data)) {
-                    $this->Flash->success('Seu post foi atualizado');
-                    $this->redirect(array('controller' => 'admins', 'action' => 'acoes'));
-                }else{
-                    $this->redirect(array('controller' => 'admins', 'action' => 'index'));
-
-                }
+            $this->layout = "admin";
+            if(!$this->Post->exists($id)){
+                throw new NotFoundException("Post não existe");
             }
-
+            $post = $this->Post->findById($id);
+            if(AuthComponent::user('id') != $post['Post']['created_by'] && AuthComponent::user('role') != 1){
+                    throw new UnauthorizedException("Sem permissão para acessar está pagina");
+            }
+            if ($this->request->is('post') || $this->request->is('put')) {
+                $this->Post->id = $id;
+                    if ($this->Post->save($this->request->data)) {
+                        $this->Flash->success('Postagem atualizada com sucesso');
+                        return $this->redirect(array('action' => 'index'));
+                }
+                $this->Flash->error("Erro ao atualizar postagem");
+            }
+                $this->request->data = $post;
+                
+            
+            $this->set("post", $post);    
+            
+                
         }
+
 
         public function delete($id) {
 
-        $check = $this->Post->find('first', array(
-            'conditions' => array(
-                'id' => $id,
-                
-            )
-        ));
+            $post = $this->Post->findById($id);
 
-        if(($check['Post']['created_by'] == AuthComponent::user('id')) || AuthComponent::user('role') == 1){
+
+            if($post['Post']['created_by'] != AuthComponent::user('id') && AuthComponent::user('role') != 1){
+                throw new UnauthorizedException("Sem permissão para acessar está pagina");
+        }            
             
             $objeto = array(
                 'id' => $id,
@@ -129,17 +133,12 @@
             );
 
             $this->Post->save($objeto);
-            $this->redirect(array('controller' => 'admins', 'action' => 'delete'));
+            $this->redirect(array('controller' => 'posts', 'action' => 'allposts'));
 
         }
-        else {
+       
 
-            $this->Flash->error('não tem permissão para deletar');
-            $this->redirect(array('action' => 'index'));
-        }
-
-          
-        }
+        
 
         public function comentar() {
             $this->loadModel('Comment');
@@ -154,13 +153,12 @@
 
             if($this->Comment->save($this->request->data)) {
                 $this->redirect(array('controller' => 'posts', 'action' => 'view', $this->request->data['Comment']['post_id']));
-             }
-
-             
-        
+            }
+    
         }   
 
         }
+
 
         public function separarCategoria ($categoria) {
             $this->layout = 'layoutindex';
@@ -174,7 +172,34 @@
         }   
 
 
+    public function allPosts() {
+        $this->layout = 'admin';
 
-        
+        $conditions = array(
+            'Post.status' => 1,
+        );
+
+        if(AuthComponent::user('role') != 1) {
+            $conditions['Post.created_by'] = AuthComponent::user('id') ;
+        }
+
+        $post = $this->Post->find('all',array(
+        'conditions' => $conditions
+        ));
+
+        $this->set('posts', $post);
+
+        $check = $this->Post->find('all', array(
+            'conditions' => array(
+                'created_by' => AuthComponent::user("id")
+            )
+            ));
+        $check = $this->set("contPost", $post);    
+
+
+    }    
+     
+
+
 
     }

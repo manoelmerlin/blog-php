@@ -27,8 +27,13 @@
             <div class='border p-2 my-2'>
                 
                 <div class="my-3">
-                    <?php echo $a['Comment']['first_name'] ?>  <?php echo $a['Comment']['last_name']; ?>
-
+                    <?php echo h($a['Comment']['first_name']); ?>  <?php echo h($a['Comment']['last_name']); ?>
+                    <div>
+                      <div class=" float-right">
+                        <?php echo $this->Html->link('Deletar comentário', array('controller' => '', 'action' => ''), array(
+                            'class' => 'btn btn-danger')); ?>
+                      </div>  
+                    </div>
                 </div>
                 <?= h($a['Comment']['body_commit']);?>   <h6 class="float-right"> <?php echo ' Comentado : ' .  $a['Comment']['created'] ?> </h6>
             </div>
