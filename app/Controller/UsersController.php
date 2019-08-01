@@ -238,7 +238,17 @@
 
         }
 
+        public function profileImage() {
+            $this->layout = "admin";
 
+            if($this->request->is('post') || $this->request->is('put')) {
+                $this->User->create();
+                pr($this->request->data);
+                die;
+            }
+
+
+        }
 }
     
 

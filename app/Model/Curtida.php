@@ -1,11 +1,8 @@
 <?php
-
-    class Comment extends AppModel {
-        
+    class Curtida extends AppModel {
     public $actsAs = array('Containable');
 
     public $belongsTo = array(
         'Post'
     );
-        
     }

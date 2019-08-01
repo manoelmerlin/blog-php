@@ -1,70 +1,73 @@
-<?php
-    $paginator = $this->Paginator;
+<?php $paginator = $this->Paginator;?>
  
-    if($posts){
+    <?php   if($posts) : ?>
         
-        echo '<div id="noticias  " class="">';
-            echo '<div class="row m-0 p-2" ;>';
-        foreach( $posts as $post ){
-         echo '<div class="col-6 p-3">';
+        <div id="noticias  " class="">
+            <div class="row m-0 ">
+        <?php foreach( $posts as $post ): ?>
+         <div class="col-6 p-3">
 
-            echo '<div class="col-12 border p-3" style="background-color: rgba(0,0,0,0.25); background-image: url(../../../../img/uploads/'.$post["Post"]["imagem"].'); background-repeat: no-repeat; background-size: 100% 100%;" >';           
-           
-            echo $this->Html->link($post['Post']['title'],array('controller' => 'posts',
-                    'action' => 'view', $post['Post']['id']), array('class' => 'text-light', 'style' => 'background-color: rgba(0,0,0,0.5); text-decoration:none; font-size:30px;')); echo '</p><br>';
-                
-                echo '<div class="col-12 p-2 text-light" style="">';
+        <div class="col-12 border p-3" style="background-color: rgba(0,0,0,0.25); background-image:  url(../../img/uploads/<?= $post["Post"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;" >
         
-                
-                
-                    
-            echo  '</div>';
+            <div class="" style='height:50px; '>
+               <p style ="font-size:30px; background-color: rgba(0,0,0,0.10);" class=""><?php echo $this->Html->link($post['Post']['title'],array('controller' => 'posts',
+                    'action' => 'view', $post['Post']['id']), array('class' => 'col text-light', 'style' => ' text-decoration:none;')); echo '</p><br>'; ?>  </h6> 
+            </div>    
+                <br>
+                <br>
+            <div>
+                <div class="my-3"></div>
+            <div class="row m-0 text-light border div-cat col-12" style="background-color: rgba(0,0,0,0.5); font-size:20px">  
+                <?php echo  $this->Html->link($post['Post']['categoria'], array('controller' => 'posts', 'action' => 'separarCategoria', $post['Post']['categoria']), array('class' => 'text-light', 'style' => ' text-decoration:none;')); ?>
             
-            echo '<div class="row m-0 text-light" style="background-color: rgba(0,0,0,0.5); font-size:25px">';   
-            echo  $this->Html->link($post['Post']['categoria'], array('controller' => 'posts', 'action' => 'separarCategoria', $post['Post']['categoria']), array('class' => 'div-cat text-light', 'style' => ' text-decoration:none;')) ;
- 
-              echo $this->Html->link('Continue lendo',array(
-            'action' => 'view', $post['Post']['id']), array('class' => 'div-cat ml-5 text-light', 'style' => 'text-decoration:none;'));  echo '<br>';
-            echo '</div>';    
-            echo "<br>";
-            echo "<h5 class='text-light'>" . 'Criado em : '. $post['Post']['modified'] . "</h6>";    
-                echo '</div>';
-                echo '</div>';
+            <div class="border-left ml-5">
+                <div class="my-2">
+                    <h6 class='text-light ml-2'><?php echo "Post criado em : "; echo $this->Time->format($post['Post']['created'], '%d/%m/%Y'); ?></h5>
+                </div>        
+            </div>
+
+            </div>
+               
+            </div> 
+            <br>
+                </div>
+                </div>
         
             
-        }
-            echo '</div>';
-            echo '</div>';            
+            <?php endforeach; ?>
+            </div>
+            </div>          
          
-        echo "</table>";
+        </table>
  
-        echo "<div class='paging'>";
+            <div class='paging'>
      
              
-         echo '<center>';  
-            echo '<div class="" style="text-size:30px">'; 
-            echo '<h6>' . $paginator->numbers(array('modulus' => 0)) . '</h6>';
-            echo "</div>";
-        echo '</center>';     
+         <center>
+            <div class="my-4" style="text-size:30px">
+            <?php echo '<h6>' . $paginator->numbers(array('modulus' => 0)) . '</h6>'; ?>
+                </div>
+        </center>  
          
-        echo "</div>";
-    }
-    else{
-        echo "No users found.";
-    }
+        </div>
+    
+    <?php else: ?>
+        <?php echo "Ainda não fora feitas postagens"; ?>
+    <?php endif; ?>
       
     
     
-?>
+
 
 <?php $color = '#red'; ?>
 
 
     <style> 
     .div-cat:hover{
-        font-size:40px;
+       height: 50px;
+       background-color:black;
     }
-    .div-cata {
+    .div-cat {
         background-color: <?php echo $color ?>;
     }
     

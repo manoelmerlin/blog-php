@@ -90,7 +90,7 @@
 
 					
 
-<p style="margin:0px 35px;"> </p>	<p style="font-size:30px;" class="ml-5">NEWS</p>   <p style="color:yellow; font-size:30px;">BIT</p>	
+<p style="margin:0px 35px;"> </p>	<p style="font-size:30px;" class="ml-5">Blog</p>   <p style="color:yellow; font-size:30px;">Manoel</p>	
                 
     <div class="" style="width:1000px">
        
@@ -99,29 +99,22 @@
 		
 		<div class="row m-0">
 			<div class="col-2"></div>
-			<div class="col">
+			
+			
+			<div class="col-6">
 				<?= $this->Html->link('HOME', array('controller' => 'posts', 'action' => 'index'), array(
 				   'class' => 'mr-5 float-right my-3', 'style' => 'font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;')); ?> 
 			</div>
 
-			<div class="col">
-				<?= $this->Html->link('EXPLAINED', array('controller' => 'posts', 'action' => 'index'), array(
-            	'class' => 'mr-5 float-right my-3', 'style' => 'font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;')); ?>
-			</div>
-
-			<div class="col">
-				<?= $this->Html->link('EVENTS', array('controller' => 'font-weight: bold; posts', 'action' => 'index'), array(
-            	'class' => 'mr-5 float-right my-3', 'style' => 'font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;')); ?>
-			</div>
 
 			<div class="col">
 				<div class="dropdown">
 					<button class="btn mt-2 dropdown-toggle text-uppercase" style="font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Categorias
 					</button>
-					<div class="dropdown-menu p-3"  aria-labelledby="dropdownMenuButton">
+					<div class=" dropdown-menu p-3"  aria-labelledby="dropdownMenuButton">
 						<?php foreach($categories as $category): ?>
-							<?= $this->Html->link($category, array('controller' => 'posts', 'action' => 'separarCategoria', $category)) . '<br/>'; ?>
+							<h5><?= $this->Html->link($category, array('controller' => 'posts', 'action' => 'separarCategoria', $category), array('style' => 'text-decoration:none; font-size:20px;', 'class' => "text-dark" )) . '<br/>'; ?></h5>
 						<?php endforeach; ?>
 					</div>
 				</div>
@@ -149,13 +142,19 @@
         </div>
 
 		<div class="row m-0 ">
-			<div class="col   border border-danger">
+			<div class="col">
 				<?php echo $this->Flash->render(); ?>
 				<?php echo $this->fetch('content'); ?>	
 
 			</div>
 
+			<div class="my-5">
+
+			</div>
 			
+			<div class="col-2 border-left" style="height:400px">
+				<h1>Destaques</h1>			
+			</div>
 
 			
 			

@@ -110,7 +110,7 @@
 						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'posts', 'action' => 'allposts'), array('class' => '')); ?> <br>
 						<?php endif; ?>	
 
-						<?php echo $this->Html->link('Postagens favoritas', array('controller' => '', 'action' => '')); ?>
+						<?php echo $this->Html->link('Postagens favoritas', array('controller' => 'posts', 'action' => 'like')); ?>
 						
 					</div>
 				</div>

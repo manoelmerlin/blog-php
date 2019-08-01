@@ -9,11 +9,12 @@
             'User'
         );
 
-       
 
         public function index() {
             $this->layout = 'admin';
 
         }
+
+
 
     }

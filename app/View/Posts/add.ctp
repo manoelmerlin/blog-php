@@ -19,10 +19,10 @@
       <div class="my-3">
       <?php echo $this->Form->input('body', array('label' => '', 'style' => 'width:1200px; height:200px','rows' => '10', 'type' => 'textarea', 'class' => ' p-4')); ?>
       </div>
-      <?php echo $this->Form->file('image'); ?>
+        <?php echo $this->Form->file('image'); ?>
       <?php 
 
-        $options = array('Saúde' => 'Saúde', 'Esporte' => 'Esporte', 'Cultura' => 'Cultura', 'Viagens' => 'Viagens', 'Culinária' => 'Culinária');
+        $options = array('Saúde' => 'Saúde', 'Esporte' => 'Esporte', 'Cultura' => 'Cultura', 'Viagens' => 'Viagens', 'Culinária' => 'Culinária', 'Games' => 'Games', 'Tecnologia' => 'Tecnólogia', 'Carros' => 'Carros');
       
       echo $this->Form->select('categoria', $options, array('label' => 'categoria')); ?>
 
