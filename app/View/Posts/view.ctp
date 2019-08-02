@@ -1,13 +1,30 @@
-<?php echo  $this->Html->link('Curtir', array('controller' => 'posts', 'action' => 'enjoypost', $post['Post']['id']), array('class' => 'div-cat text-light', 'style' => 'text-decoration:none;')); ?>
 
 
 <?php echo $this->Html->image('/img/uploads/'.$post["Post"]["imagem"].')', array('class' => 'p-4')); ?>
 
+<div class="float-right">
+
+
+        <?php if(empty($check)): ?>
+            <?php echo $this->Html->link("Favoritos", array('controller' => 'posts', 'action'=> 'enjoyPost',$post['Post']['id']), array(
+                'style' => 'text-decoration:none;', 'class' => 'btn btn-success'
+            )) ?>
+
+            <?php else: ?>
+                <?php echo $this->Html->link("Remover Favoritos", array('controller' => 'posts', 'action'=> 'unlike',$check['Curtida']['id']), array(
+                'style' => 'text-decoration:none;', 'class' => 'btn btn-danger'
+            )) ?>
+            <?php endif; ?>
+    </div>
+
+
 <center><h1><?php echo $post['Post']['title']?></h1></center>
 
-<div class='ml-5'></div>
-    <div class="m-5"></div>
-    <div class='ml-5 ' >
+
+
+    <div class='ml-5'></div>
+        <div class="m-5"></div>
+            <div class='ml-5 ' >
         <p><?php echo $post['Post']['body']?></p>
     </div>
 
@@ -15,13 +32,7 @@
        <h5> Post criado em : <?php echo $this->Time->format($post['Post']['created'], '%d/%m/%Y as %T');?></h5> <h5>Autor : <?php echo $post['Post']['first_name']; echo " "; echo $post['Post']['last_name']; ?></h5>
     </div>
 
-    <div class="float-right">
-        <?php if(AuthComponent::user('id') == $check['Curtida']['user_id'] && $check['Curtida']['status'] == 1): ?>
-        <?php echo $this->Html->link("Adicionar post aos favoritos", array('controller' => 'posts', 'action'=> 'enjoyPost',$post['Post']['id']), array(
-            'style' => 'text-decoration:none;', 'class' => 'btn btn-success'
-        )) ?>
-       <?php endif; ?> 
-    </div>
+    
 
 
     <div class='my-5 border-top'>
@@ -53,7 +64,9 @@
             <div class='border p-2 my-2'>
                 
                 <div class="my-3">
-                    <?php echo h($a['Comment']['first_name']); ?>  <?php echo h($a['Comment']['last_name']); ?>
+                    <div class="row m-0">
+                        <?php echo h($a['Comment']['first_name']); ?>  <?php echo h($a['Comment']['last_name']); ?>
+                    </div>
                     <div>
                     <?php if(AuthComponent::user('id') != $a['Comment']['created_by'] && AuthComponent::user() != 1 && $post['Post']['created_by'] != AuthComponent::user('id') &&  AuthComponent::user('role') != 1): ?>
                     <?php else: ?>   

@@ -13,7 +13,7 @@
 
 
 
-        public $uses = array (
+        public $uses = array(
             'Post', 
             'User'
             
@@ -25,12 +25,37 @@
         }
 
         public function view($id = null) {
+            $this->layout = 'admin';
             $this->User->id = $id;
             if(!$this->User->exists()) {
-                throw new NotFoundException(_('Usuario invalido'));
+                throw new NotFoundException('Usuario invalido');
             }
             $this->set('user', $this->User->findById($id));
+
+            if($this->Auth->user('id') != $id)  {
+                throw new UnauthorizedException('Acesso negado');
+                $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+            }
+
+            $check = $this->User->find('first', array(
+                'conditions' => array(
+                    'id' => $id),
+                    'fields' => array(
+                        'id',
+                        'imagem',
+                        'first_name',
+                        'last_name',
+                        'email',
+                        'phone',
+                        'username'
+                    )
+                )
+            );
+
+            $this->set('check', $check);
         }
+
+        
 
         public function add_user() {
 
@@ -240,15 +265,27 @@
 
         public function profileImage() {
             $this->layout = "admin";
+            if($this->request->is('post')) {
+                $this->User->id = $this->Auth->user('id');
+                $filename = basename($this->request->data['User']['image']['name']);
+                $this->request->data['User']['imagem'] = $filename;
+               
+                if($this->request->data['User']['image']['error'] == 0) {
+                    if ($this->User->save($this->request->data)) { 
+                        move_uploaded_file($this->data['User']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'profilepic' . DS . $filename);
+                        $this->Flash->success('Sua imagem foi salva com sucesso');
+                        $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
 
-            if($this->request->is('post') || $this->request->is('put')) {
-                $this->User->create();
-                pr($this->request->data);
-                die;
+                }
+            } 
+                
+                $this->Flash->error('Erro ao adicionar imagem tente adicionar outra imagem');
             }
-
-
         }
+
+       
+
+        
 }
     
 

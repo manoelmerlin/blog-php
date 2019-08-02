@@ -1,5 +1,5 @@
 <center>
-<h1>Postagens favoritas</h1>
+<h1>Postagens favoritas <?php echo count($cont_like); ?>  </h1>
   <div class="my-3">
 
   </div>
@@ -17,9 +17,8 @@
         
     </tr>
 
-      
     <?php foreach ($curtida as $c): ?>
-    
+
      <tr class="border p-1">
             <td>
                 <?php echo 'a';?>

@@ -27,6 +27,8 @@
             $users = $this->User->find('all');
             $this->set('users', $users);
 
+            
+
         }
 
         public function view($id = null) {
@@ -70,20 +72,18 @@
             $this->set('busca', $busca);
 
             $this->loadModel('Curtida');
-            
-            $check = $this->Curtida->find('first', array(
+            $check = $this->Curtida->find('first' , array(
                 'conditions' => array(
-                    'user_id' => AuthComponent::user('id')
-                ),
-                'fields' => array(
-                    'id',
-                    'Curtida.user_id',
-                    'status'
+                    'post_id' => $id,
+                    'user_id' => $this->Auth->user('id')
                 )
-            ));
+                ));
 
-            $this->set('check', $check);
+                // $check2 = $this->Curtida->findByPostIdAndUserId($id, $this->Auth->user('id'));
+                // pr($check2);
 
+                $this->set('check', $check);
+        
           
         }
 
@@ -95,25 +95,26 @@
         }            
         
             if ($this->request->is('post') || $this->request->is('put')) {            
-
+                
                 $this->request->data['Post']['created_by'] = AuthComponent::user('id');
                 $this->request->data['Post']['first_name'] = AuthComponent::user('first_name');
                 $this->request->data['Post']['last_name'] = AuthComponent::user('last_name');
-    
-
                 $this->Post->create();
                 $filename = basename($this->request->data['Post']['image']['name']);
                 $this->request->data['Post']['imagem'] = $filename;
-
-                if ($this->Post->save($this->request->data)) { 
-                    move_uploaded_file($this->data['Post']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $filename);
-                    $this->Flash->success('Seu post foi salvo');
-                    $this->redirect(array('action' => 'index'));
+                
+                if($this->request->data['User']['image']['error'] == 0)
+                    if ($this->Post->save($this->request->data)) { 
+                        move_uploaded_file($this->data['Post']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $filename);
+                        $this->Flash->success('Seu post foi salvo');
+                        $this->redirect(array('action' => 'index'));
 
                 }
-                
                 $this->Flash->error('Erro ao adicionar post');
+
             }
+                
+            
         }
 
         public function edit($id = null) {
@@ -252,23 +253,42 @@
      
         public function enjoyPost($id) {
             $this->loadModel('Curtida');
-        
-           if(AuthComponent::user())
-            $objeto = array(
-                'status' => 1,
-                'post_id' => $id,
-                'user_id' => AuthComponent::user('id')   
-            );
+
+            $this->loadModel('Curtida');
+            $check = $this->Curtida->find('first' , array(
+                'conditions' => array(
+                    'post_id' => $id,
+                    'user_id' => $this->Auth->user('id')
+                )
+                ));
+                
+
+                $this->set('check', $check);
+                     
+
+
+                if(!empty($check))  {
+                    $this->Flash->error('Você já curtiu esse post');
+                }   else {
+                    $objeto = array(
+                        'status' => 1,
+                        'post_id' => $id,
+                        'user_id' => AuthComponent::user('id')   
+                    );
+
+                    $this->Curtida->save($objeto);
+                    $this->Flash->success('Post favoritado');
+                }     
+                
+                $this->redirect(array('controller' => 'posts', 'action' => 'view', $id));
+
+            }
             
-            $this->Curtida->save($objeto);
-            $this->redirect(array('controller' => 'posts', 'action' => 'index'));
-   
-        }
+        
 
         public function like() {
             $this->layout = "admin";
             $this->loadModel('Curtida');
-
 
             $curtida = $this->Curtida->find('all', array(
                 'conditions' => array(
@@ -286,9 +306,15 @@
                 )
             ));
 
-
             $this->set('curtida', $curtida);
 
+            $cont_like = $this->Curtida->find('all', array(
+                'conditions' => array(
+                    'user_id' => $this->Auth->user('id')
+                )
+            ));
+
+            $this->set('cont_like', $cont_like);
         }
 
         public function unlike($id) {
@@ -296,18 +322,17 @@
 
             $check = $this->Curtida->find('first', array(
                 'conditions' => array(
-                    'Curtida.user_id' => AuthComponent::user('id')
+                    'Curtida.user_id' => $this->Auth->user('id')
                 )
                 ));
 
-              
-
-
             if($check) {
                 $this->Curtida->delete($id);
-                $this->redirect(array('controller' => 'posts', 'action' => 'like'));
-                $this->Flash-success('Removido dos favoritos com sucesso');
+                $redirecionar = "<script>javascript:history.back(-2)</script>";
+                pr($redirecionar);
+            
             }    
+
 
         }
 

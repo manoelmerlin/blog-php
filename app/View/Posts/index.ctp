@@ -1,5 +1,5 @@
 <?php $paginator = $this->Paginator;?>
- 
+    
     <?php   if($posts) : ?>
         
         <div id="noticias  " class="">
@@ -7,14 +7,13 @@
         <?php foreach( $posts as $post ): ?>
          <div class="col-6 p-3">
 
-        <div class="col-12 border p-3" style="background-color: rgba(0,0,0,0.25); background-image:  url(../../img/uploads/<?= $post["Post"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;" >
+        <div class="col-12 border p-0" style="background-color: rgba(0,0,0,0.25); background-image:  url(../../img/uploads/<?= $post["Post"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;" >
         
-            <div class="" style='height:50px; '>
-               <p style ="font-size:30px; background-color: rgba(0,0,0,0.10);" class=""><?php echo $this->Html->link($post['Post']['title'],array('controller' => 'posts',
+            <div class="mt-3 mb-3 mt-sm-5 mb-sm-5 mt-md-5 mb-md-5 mt-lg-5 mb-lg-5 mt-xl-5 mb-xl-5" style=''>
+               <p style ="font-size:30px;  background-color: rgba(0,0,0,0.10);" class="text-truncate"><?php echo $this->Html->link($post['Post']['title'],array('controller' => 'posts',
                     'action' => 'view', $post['Post']['id']), array('class' => 'col text-light', 'style' => ' text-decoration:none;')); echo '</p><br>'; ?>  </h6> 
             </div>    
-                <br>
-                <br>
+              
             <div>
                 <div class="my-3"></div>
             <div class="row m-0 text-light border div-cat col-12" style="background-color: rgba(0,0,0,0.5); font-size:20px">  
@@ -22,11 +21,18 @@
             
             <div class="border-left ml-5">
                 <div class="my-2">
-                    <h6 class='text-light ml-2'><?php echo "Post criado em : "; echo $this->Time->format($post['Post']['created'], '%d/%m/%Y'); ?></h5>
-                </div>        
-            </div>
+                    <h6 class='text-light ml-2 '><?php echo "Post criado em : "; echo $this->Time->format($post['Post']['created'], '%d/%m/%Y'); ?></h5>
 
+                </div>
+                
             </div>
+                
+                <div class="border-left ">
+                  <?php  echo $this->Html->link('<i class="ml-5 far fa-heart"></i>', array('controller' => 'posts', 'action' => 'enjoypost', $post['Post']['id']), array('escapeTitle' => false)); ?>
+                </div>
+            </div>     
+                
+           
                
             </div> 
             <br>
@@ -73,3 +79,5 @@
     
     
     </style>
+
+

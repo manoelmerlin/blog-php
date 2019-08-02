@@ -41,7 +41,7 @@
 
 
 
-<?php for ($i = 0; $i < 3; $i++): ?>
+<?php for ($i = 0; $i < 2; $i++): ?>
 
 	<!-- Imagem -->
 	<div class="col-12 p-0 div-imagem my-3">

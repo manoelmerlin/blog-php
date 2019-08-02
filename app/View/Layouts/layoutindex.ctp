@@ -4,6 +4,7 @@
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/1580feb638.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -20,6 +21,9 @@
 		echo $this->fetch('script');
 	?>
 </head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 
 <body>
 	<div id="container">
@@ -71,7 +75,7 @@
 								'class' => 'btn btn-primary p-1 mx-3 border border-primary float-right'
 							)); ?>
 
-						<?= $this->Html->link('Painel', array('controller' => 'admins', 'action' => 'index'), array(
+						<?= $this->Html->link('Painel', array('controller' => 'users', 'action' => 'view', AuthComponent::user("id")), array(
 								'class' => 'btn btn-primary p-1 border border-primary float-right')); 	?>
 						
 
@@ -153,7 +157,8 @@
 			</div>
 			
 			<div class="col-2 border-left" style="height:400px">
-				<h1>Destaques</h1>			
+				<h1>Destaques</h1>		
+					
 			</div>
 
 			

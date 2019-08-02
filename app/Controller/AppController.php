@@ -48,8 +48,7 @@ class AppController extends Controller {
         
         $categories = array_unique($categories);
         $this->set('categories', $categories);
-
-
+      
     }
 
    

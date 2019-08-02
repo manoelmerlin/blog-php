@@ -68,7 +68,7 @@
 									'class' => 'my-2 ml-5 my-3 btn btn-primary p-1 border border-primary')); ?>	
 					</div>
 					<div class='my-4 col-1 '>
-						<?= $this->Html->link('Painel', array('controller' => 'posts', 'action' => 'index'), array(
+						<?= $this->Html->link('Painel', array('controller' => 'users', 'action' => 'view', AuthComponent::user("id")), array(
 									'class' => 'my-2 ml-5 btn btn-primary p-1 border border-primary')); ?>
 					</div>
 
@@ -141,7 +141,7 @@
 						<?php endif; ?>
 						
 				<div class='col-12 border p-2'>
-					<?echo $this->Html->link('Minha conta', array('controller' => 'users', 'action' => 'myAccount')); ?>
+					<?= $this->Html->link('Minha conta', array('controller' => 'users', 'action' => 'view', AuthComponent::user('id'))); ?>
 				</div>	
 
 			</div>
