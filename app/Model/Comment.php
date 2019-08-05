@@ -5,7 +5,8 @@
     public $actsAs = array('Containable');
 
     public $belongsTo = array(
-        'Post'
+        'Post',
+        
     );
         
     }

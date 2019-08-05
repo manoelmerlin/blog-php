@@ -3,15 +3,9 @@
 <center>
 <div class="col-6 bg-white border border-dark shadow border p-1 ">
     <div>
-        <?php echo $this->Form->create('User', array('url' => array('controller' => 'users', 'action' => 'editUser'))); ?>
+        <?php echo $this->Form->create('User', array('url' => array('controller' => 'users', 'action' => 'edituser'))); ?>
         
-        <div class="my-1">
-        <?php echo $this->Form->input('Email', array('label' => '', 'placeholder' => 'Insira sua senha',  'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
-        </div>
-        <div class="my-1">
-        <?php echo $this->Form->input('phone', array('label' => '', 'placeholder' => 'Insira sua senha',  'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
-        </div>
-
+       
         <div class="my-1">
         <?php echo $this->Form->input('password', array('label' => '', 'placeholder' => 'Insira sua senha',  'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
         </div>

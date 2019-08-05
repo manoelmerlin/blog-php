@@ -2,6 +2,8 @@
 
     Class User Extends AppModel {
 
+        
+
        /* public $belongsTo = array('Group');
         public $actAs = array('Acl' => array('type' => 'requester'));
 

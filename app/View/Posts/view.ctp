@@ -1,7 +1,3 @@
-
-
-<?php echo $this->Html->image('/img/uploads/'.$post["Post"]["imagem"].')', array('class' => 'p-4')); ?>
-
 <div class="float-right">
 
 
@@ -49,6 +45,7 @@
         <?php echo $this->Form->input('body_commit', array('placeholder' => 'Insira seu comentário .......', 'label' => 'Comentário : ', 'style' => 'width:500px; height: 50px')); ?>
     </div>    
         <?php echo $this->Form->hidden('post_id', array('value' => $post['Post']['id'])); ?>
+        
         <div class="" style="width:600px">
             <?php echo $this->Form->submit('Comentar', array('class' => 'float-right ml-2')) ?>
         </div>
@@ -59,13 +56,14 @@
 
     </div>
 
+
         <?php foreach($comentarios as $a): ?>
 
-            <div class='border p-2 my-2'>
-                
+            <div class='border p-2 my-4'>
                 <div class="my-3">
                     <div class="row m-0">
-                        <?php echo h($a['Comment']['first_name']); ?>  <?php echo h($a['Comment']['last_name']); ?>
+                    <?php echo $this->Html->link($this->Html->image('../img/profilepic/'.$a['Comment']['imagem'], array('alt' => 'Brownies', 'style' => 'width:70px; height:50px; border-radius: 25px;', 'class' => 'float-right my-1 ml-1')), array('controller' => 'users', 'action' => 'viewprofile', $a['Comment']['created_by']), array('escapeTitle' => false, 'title' => 'hi "howdy"'));?>				
+                        <h6 class="my-3 ml-2"><?php echo h($a['Comment']['first_name']); ?></h6>  <h6 class="my-3 ml-2"><?php echo h($a['Comment']['last_name']); ?> </h6>
                     </div>
                     <div>
                     <?php if(AuthComponent::user('id') != $a['Comment']['created_by'] && AuthComponent::user() != 1 && $post['Post']['created_by'] != AuthComponent::user('id') &&  AuthComponent::user('role') != 1): ?>
@@ -77,7 +75,6 @@
                         <?php endif; ?>     
                     </div>
                 </div>
-                <?= h($a['Comment']['body_commit']);?>   <h6 class="float-right"> <?php echo ' Comentado : ' .  $a['Comment']['created'] ?> </h6>
+                <?= h($a['Comment']['body_commit']);?>   <h6 class="float-right"> <?php echo ' Comentado : ' .   $this->Time->format($a['Comment']['created'], '%d/%m/%Y as %T'); ?> </h6>
             </div>
         <?php endforeach; ?>
-

@@ -79,14 +79,14 @@
         public function editUser($id = null){
             $this->User->id = AuthComponent::user('id');
             if (!$this->User->exists()) {
-                throw new NotFoundException(__('Usuário invalido'));
+                throw new NotFoundException('Usuário invalido');
             }
             if ($this->request->is('post') || $this->request->is('put')) {
                 if ($this->User->save($this->request->data)) {
-                    $this->Flash->success(__('Senha trocada com sucesso'));
+                    $this->Flash->success('Senha trocada com sucesso');
                     return $this->redirect(array('controller' => 'Posts', 'action' => 'index'));
                 }
-                $this->Flash->erro(__('O usuário não pode ser salvo, tente outra vez'));
+                $this->Flash->erro('O usuário não pode ser salvo, tente outra vez');
             } else {
                 $this->request->data = $this->User->findById($id);
                 unset($this->request->data['User']['password']);
@@ -250,6 +250,11 @@
 
         public function listUsers() {
             $this->layout = 'admin';
+
+            if($this->Auth->user("role") != 1 ) {
+                throw new UnauthorizedException("Você não tem permissão para acessar está pagina");
+            }
+
             $this->loadModel('User');
 
             $user = $this->User->find('all');
@@ -283,9 +288,99 @@
             }
         }
 
-       
+        public function viewProfile ($id) {
+            $this->layout = "admin";
 
-        
+            $this->loadModel('Post');
+            $count_post = $this->Post->find('all', array(
+                'conditions' => array(
+                    'Post.created_by' => $id
+                )
+            ));
+
+            $this->set('count_post', $count_post);
+            
+            $this->loadModel('Comment');
+
+            $count_comments = $this->Comment->find('all', array(
+                'conditions' => array(
+                    'Comment.created_by' => $id
+                )
+            ));
+
+            $this->set('count_comments', $count_comments);
+            
+
+            $check = $this->User->find('first', array(
+                'conditions' => array(
+                    'id' => $id,
+                    
+                )
+            ));
+
+            $this->set('check', $check);
+        }
+       
+        public function aboutMe () {
+            $this->layout = "admin";
+
+
+            $this->User->id = $this->Auth->user('id');
+            if($this->request->is('post') || $this->request->is('put')) {
+                if($this->User->save($this->request->data)) {
+                    $this->Flash->success("Sucesso");
+                    $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+
+                }   
+            }
+
+
+        }
+
+        public function changeProfession () {
+            $this->layout = "admin";
+            
+            $this->User->id = $this->Auth->user('id');
+            if($this->request->is('post') || $this->request->is('put')) {
+                if($this->User->save($this->request->data)) {
+                    $this->Flash->success("Profissão inserida / Alterada com sucesso");
+                    $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+
+                }
+            }
+
+
+        }
+
+
+        public function changePhone () {
+            $this->layout = 'admin';
+
+            $this->User->id = $this->Auth->user('id');
+            if($this->request->is('post') || $this->request->is('put')) {
+                if($this->User->save($this->request->data)) {
+                    $this->Flash->success("Telefone alterado com sucesso");
+                    $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+
+                }
+            }
+        }
+
+        public function changeEmail() {
+            $this->layout = 'admin';
+
+            $this->User->id = $this->Auth->user('id');
+            if($this->request->is('post') || $this->request->is('put')) {
+                if($this->User->save($this->request->data)) {
+                    $this->Flash->success("Telefone alterado com sucesso");
+                    $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+
+                }
+            }
+            
+        }
+
+
 }
     
 

@@ -42,12 +42,20 @@ class AppController extends Controller {
                 'categoria !=' => ''
             ),
             'fields' => array(
-              'id', 'categoria'
+              'id', 'categoria','body','title'
             )
         ));
         
         $categories = array_unique($categories);
         $this->set('categories', $categories);
+
+        $postl = $this->Post->find('all', array(
+            'conditions' => array(
+                'destaque' => 1
+            )
+        ));
+        $this->set('postl', $postl);
+
       
     }
 

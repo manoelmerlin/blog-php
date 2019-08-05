@@ -8,3 +8,11 @@
     position: absolute;
 
     }
+
+    .f20 {
+        font-size: 20px;
+    }
+
+    .div-title:hover {
+        height: 150px;
+    }

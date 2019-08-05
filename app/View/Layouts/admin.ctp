@@ -25,7 +25,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo $this->fetch('title'); ?>
@@ -143,25 +142,46 @@
 				<div class='col-12 border p-2'>
 					<?= $this->Html->link('Minha conta', array('controller' => 'users', 'action' => 'view', AuthComponent::user('id'))); ?>
 				</div>	
+				<div class='col-12 border p-2'>
+					<?= $this->Html->link('Perfil', array('controller' => 'users', 'action' => 'viewprofile', AuthComponent::user('id'))); ?>
+				</div>	
 
 			</div>
 			
 
         </div>
         
+		<div id="footer" class="">
 
-		<div id="footer">
-
-<div class="p-3" style="background-color:#191919">
+<div class="p-3 " style="background-color:#191919;" class="col-12">
 <div class="row m-0">
 
-	<p style="margin:0px 0px;"> </p>	<p style="font-size:30px;" class="ml-3">NEWS</p>   <p style="color:yellow; font-size:30px;">BIT</p>	
+	<p style="width:300px;"> </p>	<p style="font-size:30px;" class="ml-5">BLOG</p>  <p style="color:yellow; font-size:30px;">MANOEL </p> <p style="font-size:30px;" class="text-light"> - Todos os direitos reservados©.</p>	
 					</div>
-		<div class="col-2 color:white;">
-			<p class="text-light">Bit coin is an open-source, peer-to-peer, digital decentralized cryptocurrency. Powered by blockchain technology, its defining characteristic is <?php echo "<br><br>" ?>
-				Copyright ©2019 All rights reserved | This template is made with  by Colorlib</p>
+
+					
+	<div class=" row m-0">			
+		<div class="border-right my-2 col-2 color:white;">
+			<p class="text-light">O blog do Manoel foi desenvolvido no intuito de aprendizagem da linguagem php usando o framework cakePHP na versão 2.x  <?php echo "<br><br>" ?>
+				Copyright ©2019 Todos direitos reservados</p>
 		</div>
-		<div class="border-top p-1 row m-0">
+	
+
+		<div class="ml-2 ">
+		<?php foreach($categories as $category): ?>
+						<h5><?= $this->Html->link($category, array('controller' => 'posts', 'action' => 'separarCategoria', $category), array('style' => 'color:yellow; text-decoration:none; font-size:21px;', 'class' => "ml-3" )) . '<br/>'; ?></h5>
+					<?php endforeach; ?>
+		</div>	
+
+		<div>
+		</div>			
+		
+		
+
+		
+
+	</div>		
+		<div class="border-top p-1 my-2 row m-0 col-12" style="background-color:#191919;">
 			<?= $this->Html->link('Terms & condition ', array('controller' => 'posts', 'action' => 'index'), array(
 							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
 			<?= $this->Html->link('Privacy policy ', array('controller' => 'posts', 'action' => 'index'), array(
@@ -169,14 +189,21 @@
 			<?= $this->Html->link('Jobs advertising', array('controller' => 'posts', 'action' => 'index'), array(
 							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
 			<?= $this->Html->link('Contact us ', array('controller' => 'posts', 'action' => 'index'), array(
-							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>												
+							'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>	
+
+				<div style="width:700px"></div>
+			<?php echo $this->Html->link($this->Html->image('twitter.png', array('alt' => 'Brownies', 'style' => 'width:30px; height:20px;', 'class' => 'float-right my-1 ml-1')),'https://www.google.com.br/', array('escapeTitle' => false, 'title' => 'twitter"'));?>				
+			<?php echo $this->Html->link($this->Html->image('Facebook-logo-2.png', array('alt' => 'Brownies', 'style' => 'width:30px; height:20px;', 'class' => 'float-right my-1 ml-1')),'https://www.facebook.com/', array('escapeTitle' => false, 'title' => 'facebook'));?>				
+			<?php echo $this->Html->link($this->Html->image('instagram-icone-icon-2.png', array('alt' => 'Brownies', 'style' => 'width:30px; height:20px;', 'class' => 'float-right my-1 ml-1 ')),'https://www.instagram.com/', array('escapeTitle' => false, 'title' => 'instagram'));?>					
+
+														
 		</div>
 
-	</div>
+		
 
 	</div>
 
-            </div>
+	</div>
 		</div>
 	</div>
 

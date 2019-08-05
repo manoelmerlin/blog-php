@@ -1,5 +1,9 @@
 <div id="escondido">
-    Eu irei aparecer
+    <?php echo $this->Form->create('Admin'); ?>
+    <?php echo $this->Form->input("nome"); ?>
+    
+
+
 </div>
 <a href="" target="_blank" id="Clique">Clique aqui</a>
 
