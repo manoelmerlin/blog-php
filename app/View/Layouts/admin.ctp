@@ -94,10 +94,10 @@
 
 
 
-			<div class='col-2 bg-dark p-2' style="height:800px">
+			<div class='' style="height:800px">
                
-			<div class="border p-2">			
-			<a class=" " style="" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="">Postagens</a>
+			<div class="border border-success bg-success col-12">			
+			<a class="text-light col-2 ml-2" style="font-size:30px; text-decoration:none;" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="">Postagens</a>
 			</div>	
 			<div class="row">
 			<div class="col">
@@ -105,7 +105,7 @@
 				<div class=" ">
 					<div>
 						<?php if(AuthComponent::user('role') == 1 || AuthComponent::user('role') == 2): ?>		
-							<?php echo $this->Html->link('Adicionar Post', array('controller' => 'posts', 'action' => 'add')); ?> <br>
+							<?php echo $this->Html->link('Adicionar Post', array('controller' => 'posts', 'action' => 'add'), array('class' => 'ml-5 text-dark', 'style' => 'text-decoration:none;')); ?> <br>
 						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'posts', 'action' => 'allposts'), array('class' => '')); ?> <br>
 						<?php endif; ?>	
 

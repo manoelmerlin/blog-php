@@ -37,24 +37,21 @@
 					
 					<div id="menu" class="ml-3">
 						
-						<?= $this->Html->link('About', array('controller' => 'posts', 'action' => 'index'), array(
+						<?= $this->Html->link('Sobre', array('controller' => 'posts', 'action' => 'index'), array(
 							'class' => 'text-muted ml-5', 'style' => 'text-decoration:none; focus:color:red; font-size: 12px; font-family:encode sans expanded,sans-serif; hover: color:red;')); ?>
 					</div>
 					<div class="">
-						<?= $this->Html->link('Advertise ', array('controller' => 'posts', 'action' => 'index'), array(
+						<?= $this->Html->link('Avalie', array('controller' => 'posts', 'action' => 'index'), array(
 								'class' => 'text-muted ml-3', 'style' => 'text-decoration:none; font-size: 14px;')); ?>		
 					</div>
 					<div class="">
-						<?= $this->Html->link('Submit press release ', array('controller' => 'posts', 'action' => 'index'), array(
-								'class' => 'text-muted ml-3', 'style' => 'text-decoration:none; font-size: 14px;')); ?>		
-					</div>
-					<div class="">
-						<?= $this->Html->link('Contact ', array('controller' => 'posts', 'action' => 'index'), array(
+						<?= $this->Html->link('FAQ ', array('controller' => 'posts', 'action' => 'index'), array(
 								'class' => 'text-muted ml-3', 'style' => 'text-decoration:none; font-size: 14px;')); ?>		
 					</div>
 					
 					
-					<div class="float-right" style="width:800px">
+					
+					<div class="float-right col-9" style="">
 					<?php if(!(AuthComponent::user())): ?>
 							<?= $this->Html->link('Cadastar-se', array('controller' => 'users', 'action' => 'add_user'), array(
 								'class' => 'btn btn-primary p-1 border border-primary float-right')); 

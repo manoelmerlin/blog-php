@@ -6,12 +6,7 @@
             parent::beforeFilter();
            $this->Auth->allow('add_user', 'index'); // Permitindo que os usuários se registrem
 
-      
-
         }
-
-
-
 
         public $uses = array(
             'Post', 
@@ -27,6 +22,7 @@
         public function view($id = null) {
             $this->layout = 'admin';
             $this->User->id = $id;
+        
             if(!$this->User->exists()) {
                 throw new NotFoundException('Usuario invalido');
             }
@@ -39,7 +35,7 @@
 
             $check = $this->User->find('first', array(
                 'conditions' => array(
-                    'id' => $id),
+                    'User.id' => $id),
                     'fields' => array(
                         'id',
                         'imagem',
@@ -53,6 +49,8 @@
             );
 
             $this->set('check', $check);
+
+            
         }
 
         
@@ -77,21 +75,29 @@
         }
 
         public function editUser($id = null){
+            $this->layout = "add_user";
             $this->User->id = AuthComponent::user('id');
             if (!$this->User->exists()) {
                 throw new NotFoundException('Usuário invalido');
             }
+
+            if ($this->Auth->user('id') != $id) {
+                throw new UnauthorizedException("Você não tem permissão para acessar está página");
+            }
+
             if ($this->request->is('post') || $this->request->is('put')) {
                 if ($this->User->save($this->request->data)) {
-                    $this->Flash->success('Senha trocada com sucesso');
+                    $this->Flash->success('Dados atualizados com sucesso');
                     return $this->redirect(array('controller' => 'Posts', 'action' => 'index'));
                 }
-                $this->Flash->erro('O usuário não pode ser salvo, tente outra vez');
+                $this->Flash->error('Falha ao atualizar dados tente novamente');
             } else {
                 $this->request->data = $this->User->findById($id);
                 unset($this->request->data['User']['password']);
                 
             }
+
+
         }
 
         public function delete($id = null) {
@@ -318,7 +324,20 @@
                 )
             ));
 
+            $this->loadModel('Curtida');
+
+
             $this->set('check', $check);
+
+            $buscacont = $this->Curtida->find('all', array(
+                'conditions' => array(
+                    'Curtida.user_id' => $id
+                )
+                ));
+
+            
+            $this->set('buscacont', $buscacont);
+
         }
        
         public function aboutMe () {
@@ -378,6 +397,61 @@
                 }
             }
             
+        }
+
+        public function removeProfilePic () {
+            $this->layout = 'admin';
+
+            $check = $this->User->find('first', array(
+                'conditions' => array(
+                    'id' => $this->Auth->user('id')
+                )
+            ));
+            if($this->Auth->user('id') != $check['User']['id']) {
+                throw new UnauthorizedException("Você não tem permissão para fazer isto !");
+            }
+
+           
+
+            $save = array (
+                'imagem' => 'capaprofile.jpg'
+            );
+
+
+
+            if($check) {
+                
+                $this->User->id = $this->Auth->user('id');
+                $this->User->save($save);
+                $this->Flash->success('Foto removida com sucesso');
+                $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user("id")));
+            }    
+        }
+
+        public function updatePassword ($id) {
+            $this->layout = "add_user";
+            $this->User->id = AuthComponent::user('id');
+            if (!$this->User->exists()) {
+                throw new NotFoundException('Usuário invalido');
+            }
+
+            if ($this->Auth->user('id') != $id) {
+                throw new UnauthorizedException("Você não tem permissão para acessar está página");
+            }
+
+            if ($this->request->is('post') || $this->request->is('put')) {
+                if ($this->User->save($this->request->data)) {
+                    $this->Flash->success('Dados atualizados com sucesso');
+                    return $this->redirect(array('controller' => 'Posts', 'action' => 'index'));
+                }
+                $this->Flash->error('Falha ao atualizar dados tente novamente');
+            } else {
+                $this->request->data = $this->User->findById($id);
+                unset($this->request->data['User']['password']);
+                
+            }
+
+
         }
 
 

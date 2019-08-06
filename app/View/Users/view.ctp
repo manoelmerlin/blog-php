@@ -3,21 +3,75 @@
 <div class="">
     <div class="">
         <div class="float-right mr-5 p-5">
-            
-        <div class="float-right mr-5 border" style="border-radius: 50%; width: 200px;  height: 200px; overflow: hidden; position: relative; width:300px; height:200px; background-color: rgba(0,0,0,0.25); background-image: url(../../img/profilepic/<?= $check["User"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;">
-        </div>
+         <?php if($check['User']['imagem'] == 'capaprofile.jpg'): ?> 
+            <div class="float-right mr-5 border" style="border-radius: 50%; width: 200px;  height: 200px; overflow: hidden; position: relative; width:300px; height:200px; background-color: rgba(0,0,0,0.25); background-image: url(../../img/capaprofile.jpg?>); background-repeat: no-repeat; background-size: 100% 100%;">
+            </div>
+        <?php else: ?>
+            <div class="float-right mr-5 border" style="border-radius: 50%; width: 200px;  height: 200px; overflow: hidden; position: relative; width:300px; height:200px; background-color: rgba(0,0,0,0.25); background-image: url(../../img/profilepic/<?= $check["User"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;">
+
+         </div>
+<?php endif; ?>
         <div>
+
+        <?php if($check['User']['imagem'] != 'capaprofile.jpg'): ?>
+            <?php echo $this->Html->link("Remover foto de perfil", array('controller' => 'users', 'action' => 'removeprofilepic'), array('class' => 'btn btn-success')); ?>
+<?php endif; ?>
+
+        <button type="button" class="my-2 ml-5 btn btn-success"  id="Clique5">Editar imagem de perfil</button> 
+
+
+<div id="escondido5">
+<center>
+
+
+    <?php 
+
+        echo $this->Form->create('User', array('controller' => 'users', 'url' => 'profileimage', 'type' => 'file'));
+        echo $this->Form->file('image'); 
+        echo $this->Form->submit("Enviar", array('controller' => 'users', 'action' => 'profileimage'));
+        echo $this->Form->end();
+
+     ?>
+
+        </center>
+
+
+</div>
+
+
+    <script>   
+        $("#Clique5" ).click(function() {
+            $("#escondido5").toggleClass("d-block");
+        });;
+    </script> 
+
+    <style>
+    #escondido5{
+        display:none;
+    }
+    </style> 
+
+    <br> <br>
+
+
             <?php if(AuthComponent::user('id') == $check['User']['id']): ?>
-                <?php echo $this->Html->link('Editar o adicionar imagem de perfil', array('controller' => 'users', 'action' => 'profileimage'), array('class' => 'ml-4')); ?>
             <?php endif; ?>
         </div>
         </div>
     </div>
     <h5>Informações da conta</h5>
 </div>
-<?php echo 'Nome: '; echo(AuthComponent::user('first_name'));?> <br> <br> 
-<?php echo "Usuário: "; echo (AuthComponent::user('username')); ?>	 <br> <br> 
+        <h6>Nome : <?php echo $user['User']['first_name']; echo " "; echo $user['User']['last_name'];?> </h6>
+        <h6>Nome de usuário: <?php echo $user['User']['username']; ?></h6>
+        <h6>Telefone: <?php echo $user['User']['phone']; ?> </h6> 
+        <?php echo $this->Html->link('Atualiza dados', array('controller' => 'users', 'action' => 'edituser', $user['User']['id']), array('class' => 'btn btn-primary')); ?>
+        
+        <br> <br>
+
+<h6>Email atual : <?php echo $user['User']['email']; ?> </h6> 
+
 <button type="button" class="btn btn-success"  id="Clique4">Editar email</button> 
+
 
 <div id="escondido4">
 <center>
@@ -48,41 +102,10 @@
         display:none;
     }
     </style> 
-<?php echo "email : "; echo $user['User']['email']; ?>	<br> <br> 
+
+    <br> <br>
 
 
-<button type="button" class="btn btn-success"  id="Clique3">Editar telefone</button> 
-
-<div id="escondido3">
-<center>
-
-
-    <?php 
-
-    echo $this->Form->create('User', array('controller' => 'users', 'url' => 'changephone'));
-    echo $this->Form->input('phone');
-    echo $this->Form->submit('Enviar', array('controller' => 'users', 'action' => 'changephone'));
-    echo $this->Form->end();
-     ?>
-
-        </center>
-
-
-</div>
-
-
-    <script>   
-        $("#Clique3" ).click(function() {
-            $("#escondido3").toggleClass("d-block");
-        });;
-    </script> 
-
-    <style>
-    #escondido3{
-        display:none;
-    }
-    </style> 
-<?php echo "Telefone : "; echo $user['User']['phone']; ?>	<br><br> 
 <button type="button" class="btn btn-success"  id="Clique1">Editar profissão</button> 
 
 <div id="escondido1">
@@ -114,9 +137,10 @@
         display:none;
     }
     </style> 
-    <?php echo $user['User']['profession']; ?>
+    <br>
+    <h6>Profissão atual : <?php echo $user['User']['profession']; ?> </h6>
 
-<br> <br>
+        <br>
    
 <button type="button" class="btn btn-success"  id="Clique">Editar sobre mim</button>
 
@@ -153,6 +177,6 @@
 
 
 
-<?php echo $this->Html->link('Trocar senha', array('controller' => 'users', 'action' => 'edituser', $user['User']['id']), array('class' => 'btn btn-success')); ?>
+<?php echo $this->Html->link('Trocar senha', array('controller' => 'users', 'action' => 'updatepassword', $user['User']['id']), array('class' => 'btn btn-success')); ?>
 
 

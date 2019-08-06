@@ -28,9 +28,10 @@
         public function view($id = null) {
             $post = $this->Post->find('first', array(
                 'conditions' => array(
-                    'id' => $id
+                    'Post.id' => $id
                 )
             ));
+
             if($post['Post']['status'] != 1 || !$this->Post->exists($id)){
                 throw new NotFoundException("Post não existe");
             }
@@ -38,26 +39,19 @@
             $this->layout = 'layoutindex';
             $this->loadModel('Comment');
             $this->set('post', $post); 
+
+
             $comentarios = $this->Comment->find('all', array(
                 'conditions' => array(
                     'Comment.post_id' => $id
                 )
             ));
+
             $this->set('comentarios', $comentarios);
-            $busca = $this->Comment->find('first', array(
-                'conditions' => array(
-                    'Comment.id' => $id,
-                ),
-                    'contain' => array(
-                        'Post' => array(
-                            'fields' => array(
-                                'id',
-                                'created_by',
-                        )
-                    )
-                )
-            ));
-            $this->set('busca', $busca);
+
+
+        
+
             $this->loadModel('Curtida');
             $check = $this->Curtida->find('first' , array(
                 'conditions' => array(
@@ -68,7 +62,14 @@
                 // $check2 = $this->Curtida->findByPostIdAndUserId($id, $this->Auth->user('id'));
                 // pr($check2);
                 $this->set('check', $check);
-        
+
+                $contlike = $this->Curtida->find('all', array(
+                    'conditions' => array(
+                        'Curtida.post_id' => $id
+                    )
+                ));
+
+                $this->set('contlike', $contlike);        
           
         }
         public function add() {
@@ -97,14 +98,17 @@
                 
             
         }
+
         public function edit($id = null) {
             $this->layout = "admin";
-           
+            $post = $this->Post->findById($id);
+
             if(!$this->Post->exists($id)){
                 throw new NotFoundException("Post não existe");
             }
-            $post = $this->Post->findById($id);
-            if($post['Post']['created_by'] != AuthComponent::user('id')  && AuthComponent::user('role') != 1 && AuthComponent::user('role') != 2){
+
+
+            if($post['Post']['created_by'] != AuthComponent::user('id')  && AuthComponent::user('role') != 1){
                     throw new UnauthorizedException("Sem permissão para acessar está pagina");
             }
             if ($this->request->is('post') || $this->request->is('put')) {
@@ -191,7 +195,8 @@
          $post = $this->Post->find('all', array(
                 'conditions' => array(
                     'categoria' => $categoria
-            )
+                ),
+                'order' => array('Post.id' => 'desc')
          ));
             $this->set('posts', $post);        
         }   
@@ -200,19 +205,35 @@
             $conditions = array(
                 'Post.status' => 1,
             );
+
             if(AuthComponent::user('role') != 1) {
                 $conditions['Post.created_by'] = AuthComponent::user('id') ;
             }
+
             $post = $this->Post->find('all',array(
-            'conditions' => $conditions
-            ));
+            'conditions' => array(
+                'Post.status' => 1,
+                'Post.created_by' => $this->Auth->user('id')
+            ),
+            'order' => array('Post.id' => 'desc')
+
+            )
+        
+            );
+
             $this->set('posts', $post);
+            
             $check = $this->Post->find('all', array(
                 'conditions' => array(
                     'created_by' => AuthComponent::user("id")
                 )
                 ));
             $check = $this->set("contPost", $post);    
+                
+            $this->loadModel('Curtida');
+
+       
+
     }    
      
         public function enjoyPost($id) {
