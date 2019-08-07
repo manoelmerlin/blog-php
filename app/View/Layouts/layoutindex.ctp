@@ -162,7 +162,7 @@
         <?php foreach( $postl as $post ): ?>
          <div class="col p-2 ">
 
-        <div class="col border p-0" style=" background-color: rgba(0,0,0,0.25); background-image:  url(../../img/uploads/<?= $post["Post"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;" >
+        <div class="col border p-0 div-noticias" style=" background-color: rgba(0,0,0,0.25); background-image:  url(../../img/uploads/<?= $post["Post"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;" >
         
             <div class="mt-3 mb-3 mt-sm-5 mb-sm-5 mt-md-5 mb-md-5 mt-lg-5 mb-lg-5 mt-xl-5 mb-xl-5" style=''>
                <p style = "background-color: rgba(0,0,0,0.10);" class="f20 text-truncate"><?php echo $this->Html->link($post['Post']['title'],array('controller' => 'posts',

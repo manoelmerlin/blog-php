@@ -61,34 +61,35 @@
     </div>
     <h5>Informações da conta</h5>
 </div>
-        <h6>Nome : <?php echo $user['User']['first_name']; echo " "; echo $user['User']['last_name'];?> </h6>
-        <h6>Nome de usuário: <?php echo $user['User']['username']; ?></h6>
-        <h6>Telefone: <?php echo $user['User']['phone']; ?> </h6> 
+        <b>Nome : <?php echo $user['User']['first_name']; echo " "; echo $user['User']['last_name'];?> </b><br>
+        <b>Nome de usuário: <?php echo $user['User']['username']; ?></b> <br>
+        <b>Telefone: <?php echo $user['User']['phone']; ?> </b>  <br>
         <?php echo $this->Html->link('Atualiza dados', array('controller' => 'users', 'action' => 'edituser', $user['User']['id']), array('class' => 'btn btn-primary')); ?>
         
         <br> <br>
 
-<h6>Email atual : <?php echo $user['User']['email']; ?> </h6> 
+        <b class="d-block mb-2"><?php echo "Email atual :"; ?> <?php echo $user['User']['email']; ?> </b>
 
-<button type="button" class="btn btn-success"  id="Clique4">Editar email</button> 
+<button type="button" class="btn btn-primary d-block"  id="Clique4">Editar email</button> 
 
 
-<div id="escondido4">
-<center>
+<div id="escondido4" class="mt-4 border col-4 p-3">
 
 
     <?php 
 
     echo $this->Form->create('User', array('controller' => 'users', 'url' => 'changeemail'));
-    echo $this->Form->input('email');
-    echo $this->Form->submit('Enviar', array('controller' => 'users', 'action' => 'changeemail'));
+    echo $this->Form->input('email', array('label' => 'Email : ', 'placeholder' => 'Digite seu novo email...', 'class' => 'form-control'));
+    echo $this->Form->submit('Atualizar e-mail', array( 'controller' => 'users', 'action' => 'changeemail', 'class' => 'mt-3 form-control bg-success text-light border border-success border-solid w-50', 'style' => ' height:40px'));
     echo $this->Form->end();
      ?>
 
-        </center>
-
 
 </div>
+    
+<br>
+
+<b class=""><?php echo "Profissão atual :"; ?> <?php echo $user['User']['profession']; ?> </h6></b>
 
 
     <script>   
@@ -103,27 +104,23 @@
     }
     </style> 
 
-    <br> <br>
 
-
-<button type="button" class="btn btn-success"  id="Clique1">Editar profissão</button> 
-
-<div id="escondido1">
-<center>
-
-
-    <?php 
-
-    echo $this->Form->create('User', array('controller' => 'users', 'url' => 'changeprofession'));
-    echo $this->Form->input('profession');
-    echo $this->Form->submit('Enviar', array('controller' => 'users', 'action' => 'changeprofession'));
-    echo $this->Form->end();
-     ?>
-
-        </center>
+<div class="my-2">
 
 
 </div>
+<button type="button" class="btn btn-primary"  id="Clique1">Editar profissão</button> 
+
+    <div id="escondido1"  class="mt-4 border col-4 p-3">
+
+
+    <?php echo $this->Form->create('User', array('controller' => 'users', 'url' => 'changeprofession')); ?>
+        <?php echo $this->Form->input('profession', array('placeholder' => 'Atualizar profissão', 'label' => 'Profissão  :', 'class' => 'form-control my-3', 'style' => '')); ?>
+        <?php echo $this->Form->submit('Atualizar profissão', array('controller' => 'users', 'action' => 'changeprofession', 'class' => 'w-50 form-control bg-success text-light border border-success border-solid ', 'style' => 'width:150px; height:40px')); ?>
+        <?php echo $this->Form->end(); ?>
+
+    </div>
+
 
 
     <script>   
@@ -138,16 +135,16 @@
     }
     </style> 
     <br>
-    <h6>Profissão atual : <?php echo $user['User']['profession']; ?> </h6>
 
         <br>
+
+        <b class=""><?php echo "Sobre mim : ";  echo $user['User']['about_me']; ?></b> 	<br><br>
    
-<button type="button" class="btn btn-success"  id="Clique">Editar sobre mim</button>
+   
+<button type="button" class="btn btn-primary"  id="Clique">Editar sobre mim</button>
 
 <div id="escondido">
 <center>
-
-<h2 class="">Sobre mim... </h2>
 
     <?php 
     echo $this->Form->create('User', array('controller' => 'users', 'url' => 'aboutme'));
@@ -172,11 +169,12 @@
     #escondido{
         display:none;
     }
-    </style> 
-<?php echo "Sobre mim : ";  echo $user['User']['about_me']; ?> 	<br><br>  
+    </style>  <br> <br>
 
 
 
-<?php echo $this->Html->link('Trocar senha', array('controller' => 'users', 'action' => 'updatepassword', $user['User']['id']), array('class' => 'btn btn-success')); ?>
+<?php echo $this->Html->link('Trocar senha', array('controller' => 'users', 'action' => 'updatepassword', $user['User']['id']), array('class' => 'btn btn-primary')); ?>
 
 
+
+<center> <?php echo $this->Html->link('Deletar conta', array('controller' => 'users', 'action' => 'deleteaccount', $user['User']['id']), array('class' => 'btn btn-danger', 'confirm' => 'Você tem certeza que deseja deletar está postagem?')); ?> </center>

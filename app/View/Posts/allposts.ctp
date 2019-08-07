@@ -33,7 +33,7 @@
             </td>
 
             <td class="border p-1">
-                    <?php echo $this->Html->link($post['Post']['title'],
+                    <?php echo $this->Html->link(substr($post['Post']['title'],0,50),
                         array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
             </td>
 
@@ -47,7 +47,7 @@
             <td class="border p1"><?php echo $post['Post']['created']; ?></td>
             <td class="border">
                 <?php echo $this->Html->link('Editar', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id']), array('class' => 'm-1')); ?>
-                <?php echo $this->Html->link('Deletar', array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), array('style' => 'text-decoration:none', 'confirm' => 'Are you sure?')); ?>
+                <?php echo $this->Html->link('Deletar', array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), array('style' => 'text-decoration:none', 'confirm' => 'Você tem certeza que deseja deletar está postagem?')); ?>
         </tr>
 
     

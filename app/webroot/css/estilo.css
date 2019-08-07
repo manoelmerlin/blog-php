@@ -4,8 +4,7 @@
 
 
     #noticias {
-        
-    position: absolute;
+        position: relative;
 
     }
 
@@ -13,6 +12,24 @@
         font-size: 20px;
     }
 
-    .div-title:hover {
-        height: 150px;
+    .div-noticias {
+        position: relative;
+        top: 0px;
+        transition: all 200ms linear;
     }
+
+    .div-noticias:hover {
+        position: relative;
+        top: -8px;
+        box-shadow: 2px 2px 20px 2px rgba(0,0,0,0.5);
+        transition: all 200ms linear;
+
+    }
+
+    .div-menu:hover {
+        background-color:#218838 ;
+        border-color: #1e7e34;
+    }
+
+   
+

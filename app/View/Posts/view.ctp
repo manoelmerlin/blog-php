@@ -13,9 +13,13 @@
             <?php endif; ?>
     </div>
 
+    <div class="my-5">
 
-<center><h1><?php echo $post['Post']['title']?></h1></center>
+    </div>
 
+    <div class="mx-auto border" style="width:800px">     
+        <b style="font-size:30px" class="col"><?= $post['Post']['title'];?></b>
+    </div>          
 
 
     <div class='ml-5'></div>
@@ -65,11 +69,12 @@
             <div class='border p-2 my-4'>
                 <div class="my-3">
                     <div class="row m-0">
-                    <?php echo $this->Html->link($this->Html->image('../img/profilepic/'.$a['User']['imagem'], array('alt' => 'Brownies', 'style' => 'width:70px; height:50px; border-radius: 25px;', 'class' => 'float-right my-1 ml-1')), array('controller' => 'users', 'action' => 'viewprofile', $a['Comment']['created_by']), array('escapeTitle' => false, 'title' => 'Profile pic'));?>				
-                        <h6 class="my-3 ml-2"><?php echo h($a['User']['first_name']); ?></h6>  <h6 class="my-3 ml-2"><?php echo h($a['Comment']['last_name']); ?> </h6>
+                        <?php echo $this->Html->link($this->Html->image('../img/profilepic/'.$a['User']['imagem'], array('alt' => 'Brownies', 'style' => 'width:70px; height:50px; border-radius: 25px;', 'class' => 'float-right my-1 ml-1')), array('controller' => 'users', 'action' => 'viewprofile', $a['Comment']['created_by']), array('escapeTitle' => false, 'title' => 'Profile pic'));?>				
+                          <h6 class="my-3 ml-2"><?php echo h($a['User']['first_name']); ?></h6>  <h6 class="my-3 ml-2"><?php echo h($a['Comment']['last_name']); ?> </h6>
                     </div>
                     <div>
                     <?php if(AuthComponent::user('id') != $a['Comment']['created_by'] && AuthComponent::user() != 1 && $post['Post']['created_by'] != AuthComponent::user('id') &&  AuthComponent::user('role') != 1): ?>
+
                     <?php else: ?>   
                         <div class=" float-right">
                         <?php echo $this->Html->link('Deletar comentário', array('controller' => 'posts', 'action' => 'deletecomment', $a['Comment']['id']), array(

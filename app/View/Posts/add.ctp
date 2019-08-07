@@ -14,21 +14,23 @@
 
       <?php echo $this->Form->create('Post', array('type' => 'file')); ?>
      
-       <?php echo $this->Form->input('title', array('label' => '', 'placeholder' => 'Titulo', 'type' => 'text', 'class' => '', 'style' => 'width:600px')); ?>
+       <?php echo $this->Form->input('title', array('label' => '', 'placeholder' => 'Titulo', 'type' => 'text', 'class' => 'form-control', 'style' => 'width:600px; height:50px')); ?>
     
       <div class="my-3">
-      <?php echo $this->Form->input('body', array('label' => '', 'style' => 'width:1200px; height:200px','rows' => '10', 'type' => 'textarea', 'class' => ' p-4')); ?>
+        <?php echo $this->Form->input('body', array('required' => true, 'label' => '', 'rows' => '50', 'type' => 'textarea', 'class' => ' p-4')); ?>
       </div>
-        <?php echo $this->Form->file('image'); ?>
-      <?php 
+      <div>
+          <?php echo $this->Form->file('image'); ?>
+      </div>  
+        <div class="float-right">
+          <?php $options = array('Saúde' => 'Saúde', 'Esporte' => 'Esporte', 'Cultura' => 'Cultura', 'Viagens' => 'Viagens', 'Culinária' => 'Culinária', 'Games' => 'Games', 'Tecnologia' => 'Tecnólogia', 'Carros' => 'Carros'); ?>
 
-        $options = array('Saúde' => 'Saúde', 'Esporte' => 'Esporte', 'Cultura' => 'Cultura', 'Viagens' => 'Viagens', 'Culinária' => 'Culinária', 'Games' => 'Games', 'Tecnologia' => 'Tecnólogia', 'Carros' => 'Carros');
-      
-      echo $this->Form->select('categoria', $options, array('label' => 'categoria')); ?>
+          <?php echo $this->Form->input('categoria', array('options' => $options, 'empty' => 'Selecione', 'required' => true), array('label' => 'Categoria : ')); ?>
+         </div>
 
-
-      <?php echo $this->Form->submit('Enviar'); ?>
-
+      <div style="">
+        <?php echo $this->Form->submit('Enviar postagem', array('class' => 'text-light form-control my-5 bg-success', 'div' => array('style' => 'width:300px'))); ?>
+      </div>
     <?php echo $this->Form->end(); ?>
     
 

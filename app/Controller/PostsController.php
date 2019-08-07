@@ -93,7 +93,6 @@
                         $this->Flash->success('Seu post foi salvo');
                         $this->redirect(array('action' => 'index'));
                 }
-                $this->Flash->error('Erro ao adicionar post');
             }
                 
             
@@ -190,6 +189,7 @@
             $this->Flash->error("Não foi possivel deletar o comentario");
             }
     }
+
         public function separarCategoria ($categoria) {
             $this->layout = 'layoutindex';
          $post = $this->Post->find('all', array(
@@ -200,6 +200,7 @@
          ));
             $this->set('posts', $post);        
         }   
+        
         public function allPosts() {
             $this->layout = 'admin';
             $conditions = array(
@@ -271,6 +272,8 @@
                 'conditions' => array(
                     'user_id' => AuthComponent::user('id')
                 ),
+                'order' => array('Curtida.id' => 'desc'),
+
                 'contain' => array(
                     'Post' => array(
                         'fields' => array(
@@ -281,7 +284,7 @@
                             'imagem',
                             'created'
                         )
-                    )
+                    ),
                 )
             ));
             $this->set('curtida', $curtida);
@@ -294,6 +297,7 @@
             $post = $this->Post->find('all');
             $this->set('posts', $post);
         }
+        
         public function unlike($id) {
             $this->loadModel('Curtida');
             $check = $this->Curtida->find('first', array(

@@ -19,8 +19,17 @@
             'Curtida'
         );
 
-        public $validate = array('title' => array('rule' => 'notBlank'), 'body' => array('rule' => 'notBlank')
-        
+        public $validate = array(
+            'title' => array(
+                'between' => array(
+                    'rule' => array('lengthBetween', 20, 200),
+                    'message' => 'Titúlo deve possuir entre 20 e 200 caracteres'
+                )
+            ),
+            'Body' => array(
+                'required' => true
+            )
+            
         );
 
     }

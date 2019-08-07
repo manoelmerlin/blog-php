@@ -119,14 +119,32 @@
 
         public function login() {
             $this->layout='login';
+
+            $shearch = $this->User->find('all');
+            $this->set('busca', $shearch);
+
             if($this->Auth->user('id')){
                 $this->redirect(array('controller' => 'posts', 'action' => 'index'));
-            }
+            } 
+
             if ($this->request->is('post') || $this->request->is('put')) {
+              
+                $conditions = $this->User->find('first', array(
+
+                   'conditions' => array(
+                        'username' => $this->request->data['User']['username'],
+                        'User.status' => 1
+                    )
+                    )
+                    );
+                if($conditions) {     
+                    
                 if ($this->Auth->login()) {
                     return $this->redirect($this->Auth->redirectUrl());
+                }   
+                    $this->Flash->error("Usuário ou senha incorretos");
                 }else{
-                    $this->Flash->error(__('Invalid username or password, try again'));
+                    $this->Flash->success("Está conta foi deletada");
                 }
             }
          
@@ -144,6 +162,10 @@
       
         public function deleteAccount($id) {
 
+            if($this->Auth->user('id') != $id) {
+                throw new UnauthorizedException("Você não tem permissão para acessar está página");
+            }
+
             $check = $this->User->find('first', array(
                 'conditions' => array(
                     'id' => $id
@@ -158,6 +180,8 @@
                 );
     
                 $this->User->save($objeto);
+                $this->Flash->success("Conta deletada com sucesso");
+                $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user("id")));
             }
 
         }
@@ -386,8 +410,6 @@
         }
 
         public function changeEmail() {
-            $this->layout = 'admin';
-
             $this->User->id = $this->Auth->user('id');
             if($this->request->is('post') || $this->request->is('put')) {
                 if($this->User->save($this->request->data)) {

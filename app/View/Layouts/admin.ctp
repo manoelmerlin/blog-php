@@ -46,21 +46,21 @@
 </head>
 <body>
 
-    <div id="container" class='p-0'>
+    <div id="container" class='position-fixed overflow-auto p-0 h-100'>
 		<div class="row m-0 p-0" >
 			
 			<div class='col-12 bg-info' style="";>
 				<div class='row m-0'>
 
 
-					<div class='col-4'>
-					<?php echo "<h1 class='text-light'>" . 'Seja bem vindo ' . AuthComponent::user('first_name')  . "<h1>"; ?>
+					<div class='row my-4'>
+						<h6 style="font-size:30px;" class="ml-5">BLOG</h6>  <h6 style="color:yellow; font-size:30px;">MANOEL </h6>	
 
 					</div>
 					<div class='col-1 '>
 					
 					</div>
-					<div class='col-3'>
+					<div class='col-5'>
 					</div>
 					<div class='my-3 col-1  '>
 						<?= $this->Html->link('Home', array('controller' => 'posts', 'action' => 'index'), array(
@@ -84,33 +84,32 @@
             
            
 
-            <div class='col p-4'>
+            <div class='col p-4 '>
                 <?php echo $this->Flash->render(); ?>
                 <?php echo $this->fetch('content'); ?>
             </div>
 
-
-
-
-
-
-			<div class='' style="height:800px">
+			<div class=' bg-dark position-relative' style="height:800px; width:200px">
                
-			<div class="border border-success bg-success col-12">			
-			<a class="text-light col-2 ml-2" style="font-size:30px; text-decoration:none;" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="">Postagens</a>
+			<div class="div-menu  border-bottom border-secondary py-2 ">			
+			<a class="ml-3 " style="text-decoration:none;" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="">Postagens</a>
 			</div>	
 			<div class="row">
 			<div class="col">
 				<div class="collapse multi-collapse accordion" id="multiCollapseExample1">
 				<div class=" ">
 					<div>
-						<?php if(AuthComponent::user('role') == 1 || AuthComponent::user('role') == 2): ?>		
-							<?php echo $this->Html->link('Adicionar Post', array('controller' => 'posts', 'action' => 'add'), array('class' => 'ml-5 text-dark', 'style' => 'text-decoration:none;')); ?> <br>
-						<?php echo $this->Html->link('Minhas postagens', array('controller' => 'posts', 'action' => 'allposts'), array('class' => '')); ?> <br>
+						<?php if(AuthComponent::user('role') == 1 || AuthComponent::user('role') == 2): ?>	
+						<div class="div-menu pl-2  border-top-0 py-2">
+							<?php echo $this->Html->link('Adicionar Post', array('controller' => 'posts', 'action' => 'add'), array('class' => 'ml-4 text-light', 'style' => 'text-decoration:none;')); ?> <br>
+						</div>	
+						<div class="div-menu pl-2 border-top-0 py-2">
+							<?php echo $this->Html->link('Minhas postagens', array('controller' => 'posts', 'action' => 'allposts'), array('class' => 'text-light ml-4', 'style' => 'text-decoration:none;' )); ?> <br>
+						</div>	
 						<?php endif; ?>	
-
-						<?php echo $this->Html->link('Postagens favoritas', array('controller' => 'posts', 'action' => 'like')); ?>
-						
+						<div class="div-menu  pl-2  border-top-0 py-2">	
+							<?php echo $this->Html->link('Postagens favoritas', array('controller' => 'posts', 'action' => 'like'), array('class' => 'text-light ml-4', 'style' => 'text-decoration:none;')); ?>
+						</div>
 					</div>
 				</div>
 				</div>
@@ -119,31 +118,30 @@
 			</div>
 
 			<?php if(AuthComponent::user('role') == 1): ?>
-				<div class="accordion border" id="accordionExample">
-				<div class="card">
-					<div class=" bg-dark" id="headingOne">
-					<h5 class="mb-0 ">
-						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="multiCollapseExample1">
-							Permissões
-						</button>
-					</h5>
-					</div>
+				<div class="accordion" id="accordionExample">
+					<div class="card border-0">
+						<div class=" bg-dark border-bottom border-secondary  " id="headingOne">
+								<button class="ml-1 div-menu btn btn-link " style ="text-decoration:none" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="multiCollapseExample1">
+									Permissões
+								</button>
+							
+						</div>
 
-					<div id="collapseOne" class="collapse multi-collapse accordion" aria-labelledby="headingOne" data-parent="#accordionExample">
-					<div class="bg-dark">
-						<?php echo $this->Html->link('Gerenciar permissões', array('controller' => 'users', 'action' => 'listUsers')); ?> <br>
+						<div id="collapseOne" class="bg-dark collapse multi-collapse accordion p-0" aria-labelledby="headingOne" data-parent="#accordionExample">
+							<div class="div-menu  pl-2 border border-secondary border-top-0 py-2">
+								<?php echo $this->Html->link('Gerenciar permissões', array('controller' => 'users', 'action' => 'listUsers'), array('style' => 'text-decoration:none;', 'class' => "text-light")); ?> <br>
+							</div>
+						</div>
+					
 					</div>
-					</div>
-				
-				</div>
 				</div>				
 						<?php endif; ?>
 						
-				<div class='col-12 border p-2'>
-					<?= $this->Html->link('Minha conta', array('controller' => 'users', 'action' => 'view', AuthComponent::user('id'))); ?>
+				<div class='div-menu col-12 border-bottom border-secondary py-2'>
+					<?= $this->Html->link('Minha conta', array('controller' => 'users', 'action' => 'view', AuthComponent::user('id')), array('style' => 'text-decoration:none')); ?>
 				</div>	
-				<div class='col-12 border p-2'>
-					<?= $this->Html->link('Perfil', array('controller' => 'users', 'action' => 'viewprofile', AuthComponent::user('id'))); ?>
+				<div class='div-menu col-12 border-bottom border-secondary py-2'>
+					<?= $this->Html->link('Perfil', array('controller' => 'users', 'action' => 'viewprofile', AuthComponent::user('id')), array('style' =>'text-decoration:none')); ?>
 				</div>	
 
 			</div>
