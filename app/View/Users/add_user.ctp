@@ -23,16 +23,17 @@
             <?php echo $this->Form->input('username', array('label' => '', 'placeholder' => 'Insira seu usuário ',  'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
         </div>
 
+        <div class='my-1'>
+            <?php echo $this->Form->input('word_key', array('label' => '', 'placeholder' => 'Palavra-chave para recuperar senha',  'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
+        </div>
+
         <div class="my-1">
-        <?php echo $this->Form->input('password', array('label' => '', 'placeholder' => 'Insira sua senha',  'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
+            <?php echo $this->Form->input('password', array('label' => '', 'placeholder' => 'Insira sua senha',  'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px' )); ?>
         </div>
 
         <div class="my-1">
             <?php echo $this->Form->input('confirm_password', array('label' => '' , 'placeholder' => 'Confirme sua senha ', 'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px','type' => 'password')); ?> 
         </div>
-
-
-       
         
 
         <div class="my-5">

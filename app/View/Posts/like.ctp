@@ -1,3 +1,5 @@
+<center><h1 class="text-success">Postagens favoritas : <?php echo count($cont_like); ?></h1></center>
+
 <?php $paginator = $this->Paginator;?>
     
     <?php if($curtida) : ?> 
@@ -29,7 +31,7 @@
                                     
                                     <div class="border-left ">
                                         <?php   echo $this->Html->link("Remover Favoritos", array('controller' => 'posts', 'action'=> 'removefavorites',$post['Curtida']['id']), array(
-                                              'style' => 'text-decoration:none; font-size:10px;', 'class' => ''
+                                              'style' => 'text-decoration:none; font-size:10px;', 'class' => 'ml-4' , 'confirm' => 'Você tem certeza que deseja remover está postagem dos favoritos?'
                                                  )); ?>                                    
                                     </div>
                                    

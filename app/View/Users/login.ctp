@@ -1,4 +1,5 @@
 <center>
+
 		<div class="users form my-5 bg-success">
 			<div class=" p-5">
 				<div class="col-6 bg-white border border-dark shadow border p-5 my-5">
@@ -17,7 +18,7 @@
                     
 
 					<div>
-				       <?php echo $this->Html->link('Esqueceu a senha?', array('controller' => 'Users', 'action' => 'forgot', 'class' => 'm-3')); ?>
+				       <?php echo $this->Html->link('Esqueceu a senha?', array('controller' => 'Users', 'action' => 'forgot')); ?>
 
 					</div>
 					

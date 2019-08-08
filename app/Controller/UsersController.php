@@ -4,19 +4,16 @@
 
         public function beforeFilter() {
             parent::beforeFilter();
-           $this->Auth->allow('add_user', 'index'); // Permitindo que os usuários se registrem
-
+            $this->Auth->allow('add_user', 'index', 'forgot', 'viewprofile'); // Permitindo que os usuários se registrem
         }
 
         public $uses = array(
             'Post', 
-            'User'
-            
+            'User'   
         );
         
-
         public function index() {
-            $this->layout='layoutindex';
+            $this->layout='layoutindex';      
         }
 
         public function view($id = null) {
@@ -50,26 +47,18 @@
 
             $this->set('check', $check);
 
-            
         }
 
-        
-
         public function add_user() {
-
-
             $this->layout = 'add_user';            
-           
             if($this->request->is('post') || $this->request->is('put')) {
-               
                 $this->User->create();
+
                 if($this->User->save($this->request->data)) {
                     $this->Flash->success(__('O cadastro foi realalizado com sucesso'));
                     return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
                 }
-                $this->Flash->error(__('Não foi possível realizar o cadastro, tente denovo.')
-
-                );
+                $this->Flash->error(__('Não foi possível realizar o cadastro, tente novamente.'));
             }
 
         }
@@ -93,20 +82,15 @@
                 $this->Flash->error('Falha ao atualizar dados tente novamente');
             } else {
                 $this->request->data = $this->User->findById($id);
-                unset($this->request->data['User']['password']);
-                
+                unset($this->request->data['User']['password']);    
             }
-
-
         }
 
         public function delete($id = null) {
             $this->request->allowMethod('post');
-
             $this->User->id = $id;
             if (!$this->User->exists()) {
                 throw new NotFoundException(__('Usuário invalido'));
-
             }
 
             if ($this->User->Delete()) {
@@ -116,10 +100,8 @@
 
         }
 
-
         public function login() {
             $this->layout='login';
-
             $shearch = $this->User->find('all');
             $this->set('busca', $shearch);
 
@@ -133,46 +115,73 @@
 
                    'conditions' => array(
                         'username' => $this->request->data['User']['username'],
-                        'User.status' => 1
+                        'status' => 1
+                        )
                     )
-                    )
-                    );
+                );
+
                 if($conditions) {     
                     
-                if ($this->Auth->login()) {
-                    return $this->redirect($this->Auth->redirectUrl());
+                    if ($this->Auth->login()) {
+                        $this->Flash->success('Login efetuado com sucesso');
+                        return $this->redirect($this->Auth->redirectUrl());
                 }   
+
                     $this->Flash->error("Usuário ou senha incorretos");
-                }else{
-                    $this->Flash->success("Está conta foi deletada");
+
+                } else {
+                    $this->Flash->success("Conta inativa");
                 }
             }
          
         }
           
         public function logout(){
+            $this->Flash->success("Logout efetuado com sucesso");
             return $this->redirect($this->Auth->logout());
         }
 
-     
-
         public function forgot(){
-            
+            $this->layout = "add_user";    
+            if($this->request->is('post') || $this->request->is('put')) {
+                    $this->User->username = $this->request->data('username');
+                    $check = $this->User->find('first', array(
+                        'conditions' => array(
+                            'email' => $this->request->data['User']['email'],
+                            'word_key' => $this->request->data['User']['word_key']
+                            )
+                        )
+                    );              
+                      
+                if(!empty($check)) {
+                    $save = array(
+                        'User' => array(
+                            'id' => $check['User']['id'],
+                            'password' => $this->request->data['User']['password']
+                        )
+                    );
+                    $this->User->save($save);  
+                    $this->Flash->success("Senha troca com sucesso");
+                    $this->redirect(array("controller" => 'users', 'action' => 'login'));
+                } else {
+                    $this->Flash->error("usuário não encontrado");
+                }            
+            }
+
         }
       
         public function deleteAccount($id) {
-
-            if($this->Auth->user('id') != $id) {
+            if ($this->Auth->user('id') != $id) {
                 throw new UnauthorizedException("Você não tem permissão para acessar está página");
             }
-
             $check = $this->User->find('first', array(
                 'conditions' => array(
                     'id' => $id
+                    )
                 )
-            ));
+            );
 
-            if(($check['User']['id'] == AuthComponent::user('id')) && $check['User']['status'] == 1) {
+            if (($check['User']['id'] == AuthComponent::user('id')) && $check['User']['status'] == 1) {
                 
                 $objeto = array(
                     'id' => $id,
@@ -188,10 +197,9 @@
 
         public function setPermission($id) {
             $check = $this->User->find('first', array(
-                'conditions' => array('id' => $id
-                
+                'conditions' => array('id' => $id)
                 )
-            ));
+            );
 
             if(AuthComponent::user('role') != 1){
                 throw new UnauthorizedException('Você não tem permissão para acessar está página');
@@ -216,16 +224,15 @@
         public function promoteUser($id) {
             $check = $this->User->find('first', array(
                 'conditions' => array('id' => $id
-                
+                    )
                 )
-            ));
+            );
 
-            if(AuthComponent::user('role') != 1){
+            if (AuthComponent::user('role') != 1) {
                 throw new UnauthorizedException('Você não tem permissão para acessar está página');
             }
 
            if($check['User']['role'] == 2){
-
             $salvar = array(
                 'id' => $id,
                 'role' => 1
@@ -234,7 +241,7 @@
             $this->User->save($salvar);
             $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
 
-           }else {
+           } else {
                $this->Flash->error('Erro');
            }
 
@@ -252,7 +259,6 @@
             }
             
             if($check['User']['role'] == 2){
-
                 $salvar = array(
                     'id' => $id,
                     'role' => 3
@@ -263,19 +269,16 @@
                 $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
             }    
                if($check['User']['role'] == 1){
-                $salvar = array(
-                    'id' => $id,
-                    'role' => 2
-                );
-                $this->User->save($salvar);
-                $this->Flash->success('Cargo revogado para Moderador com sucesso');
-                $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
-               }
-               else {
+                    $salvar = array(
+                        'id' => $id,
+                        'role' => 2
+                    );
+                    $this->User->save($salvar);
+                    $this->Flash->success('Cargo revogado para Moderador com sucesso');
+                    $this->redirect(array('controller' => 'users', 'action' => 'listUsers'));
+               } else {
                    $this->Flash->error('Erro');
                }
-    
-
         } 
 
         public function listUsers() {
@@ -292,15 +295,9 @@
 
         }
 
-
-        public function myAccount() {
-            $this->layout = 'admin';
-
-        }
-
         public function profileImage() {
             $this->layout = "admin";
-            if($this->request->is('post')) {
+            if ($this->request->is('post')) {
                 $this->User->id = $this->Auth->user('id');
                 $filename = basename($this->request->data['User']['image']['name']);
                 $this->request->data['User']['imagem'] = $filename;
@@ -310,103 +307,85 @@
                         move_uploaded_file($this->data['User']['image']['tmp_name'], WWW_ROOT . DS . 'img' . DS . 'profilepic' . DS . $filename);
                         $this->Flash->success('Sua imagem foi salva com sucesso');
                         $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
-
-                }
-            } 
-                
+                    }   
+                }   
                 $this->Flash->error('Erro ao adicionar imagem tente adicionar outra imagem');
             }
         }
 
         public function viewProfile ($id) {
-            $this->layout = "admin";
-
+            $this->layout = "layoutindex";
             $this->loadModel('Post');
             $count_post = $this->Post->find('all', array(
                 'conditions' => array(
                     'Post.created_by' => $id
+                    )
                 )
-            ));
+            );
 
-            $this->set('count_post', $count_post);
-            
+            $this->set('count_post', $count_post);            
             $this->loadModel('Comment');
-
             $count_comments = $this->Comment->find('all', array(
                 'conditions' => array(
                     'Comment.created_by' => $id
+                    )
                 )
-            ));
-
+            );
             $this->set('count_comments', $count_comments);
-            
-
             $check = $this->User->find('first', array(
                 'conditions' => array(
                     'id' => $id,
                     
+                    )
                 )
-            ));
+            );
 
             $this->loadModel('Curtida');
-
-
             $this->set('check', $check);
-
             $buscacont = $this->Curtida->find('all', array(
                 'conditions' => array(
                     'Curtida.user_id' => $id
+                    )
                 )
-                ));
-
-            
+            );
             $this->set('buscacont', $buscacont);
-
         }
        
         public function aboutMe () {
             $this->layout = "admin";
-
-
             $this->User->id = $this->Auth->user('id');
-            if($this->request->is('post') || $this->request->is('put')) {
-                if($this->User->save($this->request->data)) {
+            if ($this->request->is('post') || $this->request->is('put')) {
+                if ($this->User->save($this->request->data)) {
                     $this->Flash->success("Sucesso");
                     $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
-
                 }   
             }
-
-
         }
 
         public function changeProfession () {
-            $this->layout = "admin";
-            
+            $this->layout = "admin";     
             $this->User->id = $this->Auth->user('id');
-            if($this->request->is('post') || $this->request->is('put')) {
-                if($this->User->save($this->request->data)) {
+            if ($this->request->is('post') || $this->request->is('put')) {
+                if ($this->User->save($this->request->data)) {
                     $this->Flash->success("Profissão inserida / Alterada com sucesso");
                     $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
 
                 }
             }
 
-
         }
-
 
         public function changePhone () {
             $this->layout = 'admin';
 
             $this->User->id = $this->Auth->user('id');
-            if($this->request->is('post') || $this->request->is('put')) {
-                if($this->User->save($this->request->data)) {
-                    $this->Flash->success("Telefone alterado com sucesso");
-                    $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+                if($this->request->is('post') || $this->request->is('put')) {
+                    if($this->User->save($this->request->data)) {
+                        $this->Flash->success("Telefone alterado com sucesso");
+                        $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
 
+                    }
                 }
-            }
         }
 
         public function changeEmail() {
@@ -415,7 +394,6 @@
                 if($this->User->save($this->request->data)) {
                     $this->Flash->success("Telefone alterado com sucesso");
                     $this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
-
                 }
             }
             
@@ -423,26 +401,20 @@
 
         public function removeProfilePic () {
             $this->layout = 'admin';
-
             $check = $this->User->find('first', array(
                 'conditions' => array(
                     'id' => $this->Auth->user('id')
+                    )
                 )
-            ));
-            if($this->Auth->user('id') != $check['User']['id']) {
+            );
+            if ($this->Auth->user('id') != $check['User']['id']) {
                 throw new UnauthorizedException("Você não tem permissão para fazer isto !");
-            }
-
-           
-
-            $save = array (
+            } 
+            $save = array(
                 'imagem' => 'capaprofile.jpg'
             );
 
-
-
-            if($check) {
-                
+            if ($check) {
                 $this->User->id = $this->Auth->user('id');
                 $this->User->save($save);
                 $this->Flash->success('Foto removida com sucesso');
@@ -470,14 +442,10 @@
             } else {
                 $this->request->data = $this->User->findById($id);
                 unset($this->request->data['User']['password']);
-                
+      
             }
-
-
         }
-
-
-}
+    }
     
 
        

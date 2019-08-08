@@ -1,5 +1,15 @@
+<?php if(AuthComponent::user('role') == 1): ?>
+    <h3>Bem vindo ao painel do Administador <?php pr(AuthComponent::user('first_name')); ?></h3>
+<?php endif; ?>
 
-<h3>Bem vindo ao painel do Administador <?php pr(AuthComponent::user('first_name')); ?></h3>
+<?php if(AuthComponent::user('role') == 2): ?>
+    <h3>Bem vindo ao painel do Autor </h3> <h3 class="text-danger"><?php pr(AuthComponent::user('first_name')); ?></h3>
+<?php endif; ?>
+
+<?php if(AuthComponent::user('role') == 3): ?>
+    <h3>Bem vindo ao painel do Usuário <?php pr(AuthComponent::user('first_name')); ?></h3>
+<?php endif; ?>
+
 <div class="">
     <div class="">
         <div class="float-right mr-5 p-5">
@@ -14,10 +24,10 @@
         <div>
 
         <?php if($check['User']['imagem'] != 'capaprofile.jpg'): ?>
-            <?php echo $this->Html->link("Remover foto de perfil", array('controller' => 'users', 'action' => 'removeprofilepic'), array('class' => 'btn btn-success')); ?>
+            <?php echo $this->Html->link("Remover foto de perfil", array('controller' => 'users', 'action' => 'removeprofilepic'), array('class' => 'btn btn-danger')); ?>
 <?php endif; ?>
 
-        <button type="button" class="my-2 ml-5 btn btn-success"  id="Clique5">Editar imagem de perfil</button> 
+        <button type="button" class="my-2 ml-5 btn btn-primary"  id="Clique5">Editar imagem de perfil</button> 
 
 
 <div id="escondido5">
@@ -28,7 +38,7 @@
 
         echo $this->Form->create('User', array('controller' => 'users', 'url' => 'profileimage', 'type' => 'file'));
         echo $this->Form->file('image'); 
-        echo $this->Form->submit("Enviar", array('controller' => 'users', 'action' => 'profileimage'));
+        echo $this->Form->button("Enviar", array('type' => 'submit', 'class' => 'my-3 btn btn-success'));
         echo $this->Form->end();
 
      ?>
@@ -61,14 +71,14 @@
     </div>
     <h5>Informações da conta</h5>
 </div>
-        <b>Nome : <?php echo $user['User']['first_name']; echo " "; echo $user['User']['last_name'];?> </b><br>
-        <b>Nome de usuário: <?php echo $user['User']['username']; ?></b> <br>
-        <b>Telefone: <?php echo $user['User']['phone']; ?> </b>  <br>
-        <?php echo $this->Html->link('Atualiza dados', array('controller' => 'users', 'action' => 'edituser', $user['User']['id']), array('class' => 'btn btn-primary')); ?>
+        <b>Nome : <?php echo h($user['User']['first_name']); echo " "; echo h($user['User']['last_name']);?> </b> <br> 
+        <b>Nome de usuário: <?php echo h($user['User']['username']); ?></b> <br>
+        <b>Telefone: <?php echo h($user['User']['phone']); ?> </b>  <br> <br>
+        <?php echo $this->Html->link('Atualiza dados', array('controller' => 'users', 'action' => 'edituser', $user['User']['id']), array('class' => 'btn btn-primary')); ?> <br>
         
-        <br> <br>
+        <br> 
 
-        <b class="d-block mb-2"><?php echo "Email atual :"; ?> <?php echo $user['User']['email']; ?> </b>
+        <b class="d-block mb-2"><?php echo "Email atual :"; ?> <?php echo h($user['User']['email']); ?> </b>
 
 <button type="button" class="btn btn-primary d-block"  id="Clique4">Editar email</button> 
 
@@ -89,7 +99,7 @@
     
 <br>
 
-<b class=""><?php echo "Profissão atual :"; ?> <?php echo $user['User']['profession']; ?> </h6></b>
+<b class=""><?php echo "Profissão atual :"; ?> <?php echo h($user['User']['profession']); ?> </h6></b>
 
 
     <script>   
@@ -138,7 +148,7 @@
 
         <br>
 
-        <b class=""><?php echo "Sobre mim : ";  echo $user['User']['about_me']; ?></b> 	<br><br>
+        <b class=""><?php echo "Sobre mim : ";  echo h($user['User']['about_me']); ?></b> 	<br><br>
    
    
 <button type="button" class="btn btn-primary"  id="Clique">Editar sobre mim</button>

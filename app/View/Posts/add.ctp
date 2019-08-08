@@ -23,7 +23,7 @@
           <?php echo $this->Form->file('image'); ?>
       </div>  
         <div class="float-right">
-          <?php $options = array('Saúde' => 'Saúde', 'Esporte' => 'Esporte', 'Cultura' => 'Cultura', 'Viagens' => 'Viagens', 'Culinária' => 'Culinária', 'Games' => 'Games', 'Tecnologia' => 'Tecnólogia', 'Carros' => 'Carros'); ?>
+          <?php $options = array('Saúde' => 'Saúde', 'Esporte' => 'Esporte', 'Cultura' => 'Cultura', 'Viagens' => 'Viagens', 'Culinária' => 'Culinária', 'Games' => 'Games', 'Tecnologia' => 'Tecnólogia', 'Carros' => 'Carros', 'Política' => 'Política'); ?>
 
           <?php echo $this->Form->input('categoria', array('options' => $options, 'empty' => 'Selecione', 'required' => true), array('label' => 'Categoria : ')); ?>
          </div>

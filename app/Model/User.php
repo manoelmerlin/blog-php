@@ -1,27 +1,7 @@
 <?php
 
-    Class User Extends AppModel {
+    class User extends AppModel {
 
-        
-
-       /* public $belongsTo = array('Group');
-        public $actAs = array('Acl' => array('type' => 'requester'));
-
-        public function parentNode() {
-            if (!$this->id && empty($this->data)) {
-                return null;
-            }
-            if (isset($this->data['User']['group_id'])) {
-                $groupId = $this->data['User']['group_id'];
-            } else {
-                $groupId = $this->field('group_id');
-            }
-            if (!$groupId) {
-                return null;
-            }
-                return array('Group' => array('id' => $groupId));
-            }
-*/
       public $validate = array('username' => array(
           'required' => array(
               'rule' => 'compareUser',
@@ -54,9 +34,7 @@
             'Máximo caracteres' => array(
                 'rule' => array ('maxLength', 20),
                 'message' => 'Senha deve conter no máximo 20 caracteres'
-            )
-                
-
+            )               
               
         ),
 
@@ -139,7 +117,6 @@
         }
 
         public function compareUser($compararUsuario = null) {
-
             $buscaUsuario = $this->find('first', array(
                 'conditions' => array(
                     'username' => $compararUsuario['username'],

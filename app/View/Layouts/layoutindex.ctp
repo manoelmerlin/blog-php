@@ -37,45 +37,34 @@
 					
 					<div id="menu" class="ml-3">
 						
-						<?= $this->Html->link('Sobre', array('controller' => 'posts', 'action' => 'index'), array(
-							'class' => 'text-muted ml-5', 'style' => 'text-decoration:none; focus:color:red; font-size: 12px; font-family:encode sans expanded,sans-serif; hover: color:red;')); ?>
+						<?= $this->Html->link('BLOGMANOEL', array('controller' => 'posts', 'action' => 'index'), array(
+							'class' => 'text-warning ml-5', 'style' => 'text-decoration:none; focus:color:red; font-size: 20px; font-family:encode sans expanded,sans-serif; hover: color:red;')); ?>
 					</div>
-					<div class="">
-						<?= $this->Html->link('Avalie', array('controller' => 'posts', 'action' => 'index'), array(
-								'class' => 'text-muted ml-3', 'style' => 'text-decoration:none; font-size: 14px;')); ?>		
-					</div>
-					<div class="">
-						<?= $this->Html->link('FAQ ', array('controller' => 'posts', 'action' => 'index'), array(
-								'class' => 'text-muted ml-3', 'style' => 'text-decoration:none; font-size: 14px;')); ?>		
-					</div>
-					
-					
 					
 					<div class="float-right col-9" style="">
-					<?php if(!(AuthComponent::user())): ?>
-							<?= $this->Html->link('Cadastar-se', array('controller' => 'users', 'action' => 'add_user'), array(
-								'class' => 'btn btn-primary p-1 border border-primary float-right')); 
-							?>
-							<?= $this->Html->link('Logar', array('controller' => 'users', 'action' => 'login'),array(
-								'class' => 'mr-3 btn btn-primary p-1  border border-primary float-right')); 
-							?>	
+						<?php if(!(AuthComponent::user())): ?>
+								<?= $this->Html->link('Cadastar-se', array('controller' => 'users', 'action' => 'add_user'), array(
+									'class' => 'btn btn-primary p-1 border border-primary float-right')); 
+								?>
+								<?= $this->Html->link('Logar', array('controller' => 'users', 'action' => 'login'),array(
+									'class' => 'mr-4 btn btn-primary p-1  border border-primary float-right')); 
+								?>	
 
 
-							<!-- Se o usuário  estiver logado e for administrador mostrar botão painel e logout -->
-							<!-- Se o usuário  estiver logado e for usuário comum mostrar somente o botão logout -->
-							
-							<?php endif ?>
+								<!-- Se o usuário  estiver logado e for administrador mostrar botão painel e logout -->
+								<!-- Se o usuário  estiver logado e for usuário comum mostrar somente o botão logout -->
+								
+								<?php endif ?>
 
 
 						<?php if(AuthComponent::user()): ?>
-						<?= $this->Html->link('Deslogar', array('controller' => 'users', 'action' => 'logout'),array(
-								'class' => 'btn btn-primary p-1 mx-3 border border-primary float-right'
-							)); ?>
+							<?= $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array(
+									'class' => 'mr-3 btn btn-danger p-1 mx-3 border border-danger float-right'
+								)); ?>
 
-						<?= $this->Html->link('Painel', array('controller' => 'users', 'action' => 'view', AuthComponent::user("id")), array(
-								'class' => 'btn btn-primary p-1 border border-primary float-right')); 	?>
-						
-
+							<?= $this->Html->link('Painel', array('controller' => 'users', 'action' => 'view', AuthComponent::user("id")), array(
+									'class' => 'btn btn-primary p-1 border border-primary float-right')); 	?>
+							
 						<?php endif; ?>
 					</div>
 
@@ -91,7 +80,6 @@
 
 					
 
-<p style="margin:0px 35px;"> </p>	<p style="font-size:30px;" class="ml-5">Blog</p>   <p style="color:yellow; font-size:30px;">Manoel</p>	
                 
     <div class="" style="width:1000px">
        
@@ -99,12 +87,11 @@
        
 		
 		<div class="row m-0">
-			<div class="col-2"></div>
 			
 			
-			<div class="col-6">
+			<div class="col-2">
 				<?= $this->Html->link('HOME', array('controller' => 'posts', 'action' => 'index'), array(
-				   'class' => 'mr-5 float-right my-3', 'style' => 'font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;')); ?> 
+				   'class' => 'float-right my-3', 'style' => 'font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;')); ?> 
 			</div>
 
 
@@ -121,11 +108,7 @@
 				</div>
 			</div>
 
-			<div class="col">
-				<?= $this->Html->link('NEWS', array('controller' => 'posts', 'action' => 'index'), array(
-           		'class' => 'mr-5 float-right my-3', 'style' => 'font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;')); ?>
-
-			</div>
+			
 
 		</div>
 
@@ -143,7 +126,7 @@
         </div>
 
 		<div class="row m-0 ">
-			<div class="col">
+			<div class="col-9">
 				<?php echo $this->Flash->render(); ?>
 				<?php echo $this->fetch('content'); ?>	
 
@@ -183,11 +166,11 @@
             </div>
                 
                 <div class="border-left ">
-                  <?php  echo $this->Html->link('<i class="my-2 ml-4 far fa-heart"></i>', array('controller' => 'posts', 'action' => 'enjoypost', $post['Post']['id']), array('escapeTitle' => false)); ?>
+					<?php if (AuthComponent::user()) : ?>
+						  <?php  echo $this->Html->link('<i class="my-2 ml-4 far fa-heart"></i>', array('controller' => 'posts', 'action' => 'enjoypost', $post['Post']['id']), array('escapeTitle' => false)); ?>
+				<?php endif; ?>						  
                 </div>
-            </div>     
-                
-           
+            </div>           
                
             </div> 
             <br>
@@ -197,7 +180,8 @@
             
             <?php endforeach; ?>
             </div>
-            </div>          
+			</div>   
+			</div>       
          
  
         </div>
@@ -229,24 +213,23 @@
 			</div>	
 
 			<div>
-			</div>			
+			</div>					
 			
-			
-
-			
+	
 
 		</div>		
 			<div class="border-top p-1 my-2 row m-0 col-12" style="background-color:#191919;">
-				<?= $this->Html->link('Terms & condition ', array('controller' => 'posts', 'action' => 'index'), array(
+				<?= $this->Html->link('Termos e condições ', array('controller' => 'posts', 'action' => 'index'), array(
 								'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
-				<?= $this->Html->link('Privacy policy ', array('controller' => 'posts', 'action' => 'index'), array(
+				<?= $this->Html->link('FAQ', array('controller' => 'posts', 'action' => 'index'), array(
 								'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
-				<?= $this->Html->link('Jobs advertising', array('controller' => 'posts', 'action' => 'index'), array(
+				<?= $this->Html->link('Propagandas', array('controller' => 'posts', 'action' => 'index'), array(
 								'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>
-				<?= $this->Html->link('Contact us ', array('controller' => 'posts', 'action' => 'index'), array(
+				<?= $this->Html->link('Entre em contato', array('controller' => 'posts', 'action' => 'index'), array(
 								'class' => 'text-muted ml-3', 'style' => 'font-size: 14px;')); ?>	
 
-					<div style="width:700px"></div>
+					<div style="width:700px">
+				</div>
 				<?php echo $this->Html->link($this->Html->image('twitter.png', array('alt' => 'Brownies', 'style' => 'width:30px; height:20px;', 'class' => 'float-right my-1 ml-1')),'https://www.google.com.br/', array('escapeTitle' => false, 'title' => 'twitter"'));?>				
 				<?php echo $this->Html->link($this->Html->image('Facebook-logo-2.png', array('alt' => 'Brownies', 'style' => 'width:30px; height:20px;', 'class' => 'float-right my-1 ml-1')),'https://www.facebook.com/', array('escapeTitle' => false, 'title' => 'facebook'));?>				
 				<?php echo $this->Html->link($this->Html->image('instagram-icone-icon-2.png', array('alt' => 'Brownies', 'style' => 'width:30px; height:20px;', 'class' => 'float-right my-1 ml-1 ')),'https://www.instagram.com/', array('escapeTitle' => false, 'title' => 'instagram'));?>					

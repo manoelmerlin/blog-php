@@ -74,7 +74,7 @@
 						
 					<div class='my-3 col-1  '>
 						<?= $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'), array(
-									'class' => 'my-2 ml-5 my-3 btn btn-primary p-1 border border-primary')); ?>
+									'class' => 'my-2 ml-5 my-3 btn btn-danger p-1 border border-danger')); ?>
 						
 					</div>
 					
@@ -120,11 +120,15 @@
 			<?php if(AuthComponent::user('role') == 1): ?>
 				<div class="accordion" id="accordionExample">
 					<div class="card border-0">
-						<div class=" bg-dark border-bottom border-secondary  " id="headingOne">
-								<button class="ml-1 div-menu btn btn-link " style ="text-decoration:none" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="multiCollapseExample1">
-									Permissões
-								</button>
-							
+						<div class="bg-dark border-bottom border-secondary  " id="headingOne">
+								<button class="col-12 div-menu btn btn-link " style ="text-decoration:none" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="multiCollapseExample1">
+									<div class="mr-5">
+										<div class="mr-5">
+											Permissão
+										</div>
+									</div>
+								</button>		
+								
 						</div>
 
 						<div id="collapseOne" class="bg-dark collapse multi-collapse accordion p-0" aria-labelledby="headingOne" data-parent="#accordionExample">

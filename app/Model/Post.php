@@ -22,7 +22,7 @@
         public $validate = array(
             'title' => array(
                 'between' => array(
-                    'rule' => array('lengthBetween', 20, 200),
+                    'rule' => array('lengthBetween', 10, 200),
                     'message' => 'Titúlo deve possuir entre 20 e 200 caracteres'
                 )
             ),
