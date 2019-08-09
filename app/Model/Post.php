@@ -1,36 +1,33 @@
 <?php
-    
-    App::uses('User', 'Model');
+	App::uses('User', 'Model');
+	class Post extends AppModel {
 
+		public $actsAs = array('Containable');
 
-    Class Post extends AppModel{
-        public $name = 'Post';
-        public $actsAs = array('Containable');
+		public $belongsTo = array(
+			'User' => array(
+				'className' => 'User',
+				'foreignKey' => 'created_by',
+			)
+		);
 
-        public $belongsTo = array(
-            'User' => array(
-                'className' => 'User',
-                'foreignKey' => 'created_by',
-            )
-        );
+		public $hasMany = array(
+			'Comment',
+			'Curtida'
+		);
 
-        public $hasMany = array(
-            'Comment',
-            'Curtida'
-        );
+		public $validate = array(
+			'title' => array(
+				'between' => array(
+					'rule' => array('lengthBetween', 10, 200),
+					'message' => 'Titúlo deve possuir entre 20 e 200 caracteres'
+				)
+			),
+			'Body' => array(
+				'required' => true
+			)
 
-        public $validate = array(
-            'title' => array(
-                'between' => array(
-                    'rule' => array('lengthBetween', 10, 200),
-                    'message' => 'Titúlo deve possuir entre 20 e 200 caracteres'
-                )
-            ),
-            'Body' => array(
-                'required' => true
-            )
-            
-        );
+		);
 
-    }
+	}
 

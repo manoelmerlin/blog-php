@@ -34,6 +34,4 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class AppModel extends Model {
 
-    
-
 }

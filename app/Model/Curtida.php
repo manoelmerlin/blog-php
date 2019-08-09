@@ -1,8 +1,9 @@
 <?php
-    class Curtida extends AppModel {
-    public $actsAs = array('Containable');
+class Curtida extends AppModel {
 
-    public $belongsTo = array(
-        'Post'
-    );
-    }
+	public $actsAs = array('Containable');
+
+	public $belongsTo = array(
+		'Post'
+	);
+}

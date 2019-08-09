@@ -31,72 +31,57 @@ App::uses('Controller', 'Controller');
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    public $helpers = array ('Form', 'Html');
 
-  
+	public $helpers = array ('Form', 'Html');
 
-    public function beforeRender() {
-        Controller::loadModel('Post');
-        $categories = $this->Post->find('list', array(
-            'conditions' => array(
-                'categoria !=' => ''
-            ),
-            'fields' => array(
-              'id', 'categoria','body','title'
-            )
-        ));
-        
-        $categories = array_unique($categories);
-        $this->set('categories', $categories);
+/**
+ * Function for set data to layouts
+ *
+ * @return void
+ */
+	public function beforeRender() {
+		Controller::loadModel('Post');
+		$categories = $this->Post->find('list', array(
+			'conditions' => array(
+				'categoria !=' => ''
+			),
+			'fields' => array(
+				'id', 'categoria', 'body', 'title'
+			)
+		));
 
-        $postl = $this->Post->find('all', array(
-            'conditions' => array(
-                'destaque' => 1
-            )
-        ));
-        $this->set('postl', $postl);
+		$categories = array_unique($categories);
+		$this->set('categories', $categories);
 
-      
-    }
+		$postl = $this->Post->find('all', array(
+			'conditions' => array(
+				'destaque' => 1
+			)
+		));
+		$this->set('postl', $postl);
+	}
 
-   
+	public $components = array(
+		'Flash',
+		'Session',
+		'Paginator',
 
+		'Auth' => array(
+		'loginRedirect' => array(
+			'controller' => 'posts',
+			'action' => 'index'
+		),
 
-    public $components = array(
-        'Flash',
-        'Session',
-        'Paginator',
+		'logoutRedirect' => array(
+			'controller' => 'posts',
+			'action' => 'index'
+		),
 
-        'Auth' => array(
-        'loginRedirect' => array(
-            'controller' => 'posts',
-            'action' => 'index'
-        ),
-
-        'logoutRedirect' => array(
-            'controller' => 'posts',
-            'action' => 'index'
-        ),
-        
-        'authenticate' => array(
-            'Form' => array(
-            'passwordHasher' => 'Blowfish'
-            ))
-        )
-
-    );
-
-
-
-    
-
-    
-
-    
-       
-
-    
-        
-        
+		'authenticate' => array(
+			'Form' => array(
+			'passwordHasher' => 'Blowfish'
+			)
+		)
+	));
 
 }
