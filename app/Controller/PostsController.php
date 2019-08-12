@@ -61,7 +61,9 @@ class PostsController extends AppController {
 		$comentarios = $this->Comment->find('all', array(
 			'conditions' => array(
 				'Comment.post_id' => $id
-			)
+			),
+			'order' => array('Comment.id' => 'desc'),
+
 		));
 
 		$this->set('comentarios', $comentarios);
@@ -421,5 +423,46 @@ class PostsController extends AppController {
 			$this->redirect(array('controller' => 'posts', 'action' => 'like'));
 		}
 			$this->set('check', $check);
+	}
+
+	public function reportComment($id) {
+		$this->loadModel('Comment');
+		$this->loadModel('Report');
+		$this->loadModel('User');
+
+		$check = $this->Comment->find('first', array(
+			'id' => $id
+		));
+
+		if ($check) {
+			$save = array(
+				'user_id' => AuthComponent::user('id'),
+				'comment_id' => $id
+			);
+			$bola = $this->Report->find('all', array(
+				'conditions' => array(
+					'Comment_id' => $id
+				),
+				'contain' => array(
+					'Comment' => array(
+						'fields' => array(
+							'id'
+						)
+					)
+				)
+			));
+
+			$banana = count($bola);
+
+			if ($banana > 1) {
+				$this->Flash->success("Comentario deletad com sucesso");
+				$this->Comment->delete($id);
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Flash->success("reportado gordo lixo");
+				$this->Report->save($save);
+				$this->redirect(array('action' => 'index'));
+			}
+		}
 	}
 }

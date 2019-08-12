@@ -2,15 +2,16 @@
 class UsersController extends AppController {
 
 /**
- * This function allow some other functions before the user login
- *
- * @return void
- * */
+ * {@inheritDoc}
+ */
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('add_user', 'index', 'forgot', 'viewprofile'); // Permitindo que os usuários se registrem
 	}
 
+/**
+ * @inheritDoc
+ */
 	public $uses = array(
 		'Post',
 		'User'
@@ -165,13 +166,12 @@ class UsersController extends AppController {
 
 			if ($conditions) {
 				if ($this->Auth->login()) {
-					$this->Flash->success('Login efetuado com sucesso');
 					return $this->redirect($this->Auth->redirectUrl());
 				}
 				$this->Flash->error("Usuário ou senha incorretos");
 
 			} else {
-				$this->Flash->success("Conta inativa");
+				$this->Flash->error("Conta inativa");
 			}
 		}
 	}

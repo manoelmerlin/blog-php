@@ -2,6 +2,9 @@
 	App::uses('User', 'Model');
 	class Post extends AppModel {
 
+/**
+ * @inheritDoc
+ */
 		public $actsAs = array('Containable');
 
 		public $belongsTo = array(
@@ -11,11 +14,17 @@
 			)
 		);
 
+/**
+ * @inheritDoc
+ */
 		public $hasMany = array(
 			'Comment',
 			'Curtida'
 		);
 
+/**
+ * @inheritDoc
+ */
 		public $validate = array(
 			'title' => array(
 				'between' => array(
