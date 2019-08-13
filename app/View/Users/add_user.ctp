@@ -3,7 +3,7 @@
 
 <div class="col-6 bg-white border border-dark shadow border p-1 ">
     <div>
-     
+
 
         <div class='my-1'>
         <?php echo $this->Form->create('User'); ?>
@@ -32,12 +32,12 @@
         </div>
 
         <div class="my-1">
-            <?php echo $this->Form->input('confirm_password', array('label' => '' , 'placeholder' => 'Confirme sua senha ', 'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px','type' => 'password')); ?> 
+            <?php echo $this->Form->input('confirm_password', array('label' => '', 'placeholder' => 'Confirme sua senha ', 'class' => 'form-control p-1 border border-rounded', 'style' => 'width: 300px','type' => 'password')); ?>
         </div>
-        
+
 
         <div class="my-5">
-            <?php echo $this->Form->submit('Cadastrar', array('controller' => 'users','action' => 'add_user','class' => 'form-control bg-primary text-light border border-primary border-solid ', 'style' => 'width:180px; height:40px')) ;?>
+            <?php echo $this->Form->submit('Cadastrar', array('controller' => 'users', 'action' => 'add_user', 'class' => 'form-control bg-primary text-light border border-primary border-solid ', 'style' => 'width:180px; height:40px')) ;?>
         </div>
 
         <div>
@@ -45,5 +45,5 @@
         </div>
 
     </div>
-    
+
 </div>

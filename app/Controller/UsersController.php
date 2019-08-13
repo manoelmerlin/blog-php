@@ -10,14 +10,6 @@ class UsersController extends AppController {
 	}
 
 /**
- * @inheritDoc
- */
-	public $uses = array(
-		'Post',
-		'User'
-	);
-
-/**
  * This function is the first executed when the user acess the blog
  *
  * @return void
@@ -61,7 +53,10 @@ class UsersController extends AppController {
 				'last_name',
 				'email',
 				'phone',
-				'username'
+				'username',
+				'about_me',
+				'profession',
+				'created'
 			)
 		));
 
@@ -97,9 +92,10 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function editUser($id = null) {
+	public function edit($id = null) {
 		$this->layout = "add_user";
 		$this->User->id = AuthComponent::user('id');
+
 		if (!$this->User->exists()) {
 			throw new NotFoundException('Usuário invalido');
 		}
@@ -111,7 +107,7 @@ class UsersController extends AppController {
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success('Dados atualizados com sucesso');
-				return $this->redirect(array('controller' => 'Posts', 'action' => 'index'));
+				return $this->redirect(array('controller' => 'users', 'action' => 'view', $id));
 			}
 			$this->Flash->error('Falha ao atualizar dados tente novamente');
 		} else {
@@ -401,7 +397,7 @@ class UsersController extends AppController {
 		}
 	}
 /**
- *Function who shows profiles of the members of the blog
+ *Function which shows profiles of the members of the blog
  *
  * @param int $id id of the user
  *
@@ -500,6 +496,39 @@ class UsersController extends AppController {
 			$this->User->save($save);
 			$this->Flash->success('Foto removida com sucesso');
 			$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user("id")));
+		}
+	}
+
+/**
+ *Function for the user update your password
+ *
+ * @param int $id this is the user id
+ *
+ * @throws NotFoundException can't find the user
+ *
+ * @throws UnauthorizedException the user don't have permission to acess this page
+ *
+ * @return void
+ */
+	public function updatePassword($id) {
+		$this->layout = "add_user";
+		$this->User->id = AuthComponent::user('id');
+		if (!$this->User->exists()) {
+			throw new NotFoundException('Usuário invalido');
+		}
+		if ($this->Auth->user('id') != $id) {
+			throw new UnauthorizedException("Você não tem permissão para acessar está página");
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->User->save($this->request->data)) {
+				$this->Flash->success('Senha atualizada com sucesso');
+				return $this->redirect(array('controller' => 'Posts', 'action' => 'index'));
+			}
+			$this->Flash->error('Falha ao atualizar senha tente novamente');
+		} else {
+			$this->request->data = $this->User->findById($id);
+			unset($this->request->data['User']['password']);
+
 		}
 	}
 }

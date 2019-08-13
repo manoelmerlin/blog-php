@@ -4,6 +4,7 @@
 		public $actsAs = array('Containable');
 
 		public $belongsTo = array(
-		'Comment'
-	);
+		'Comment',
+		'Post'
+		);
 	}

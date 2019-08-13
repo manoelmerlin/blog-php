@@ -11,7 +11,7 @@ class PostsController extends AppController {
 		$this->Auth->allow(array('index', 'view', 'separarcategoria'));
 	}
 
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'RequestHandler');
 
 /**
  * This is the first action executed when enter in post controller
@@ -261,7 +261,8 @@ class PostsController extends AppController {
 		$this->layout = 'layoutindex';
 		$post = $this->Post->find('all', array(
 			'conditions' => array(
-				'categoria' => $categoria
+				'categoria' => $categoria,
+				'Post.status' => 1
 			),
 			'order' => array('Post.id' => 'desc')
 		));
@@ -425,44 +426,61 @@ class PostsController extends AppController {
 			$this->set('check', $check);
 	}
 
+/**
+ * Function for the user report a comment
+ *
+ * @param int $id this is the comment id
+ *
+ * @return void
+ *  */
 	public function reportComment($id) {
 		$this->loadModel('Comment');
 		$this->loadModel('Report');
 		$this->loadModel('User');
 
+		$checkEqual = $this->Report->find('all', array(
+			'conditions' => array(
+				'comment_id' => $id,
+				'user_id' => AuthComponent::user('id')
+			)
+		));
+
 		$check = $this->Comment->find('first', array(
 			'id' => $id
 		));
 
-		if ($check) {
-			$save = array(
-				'user_id' => AuthComponent::user('id'),
-				'comment_id' => $id
-			);
-			$bola = $this->Report->find('all', array(
-				'conditions' => array(
-					'Comment_id' => $id
-				),
-				'contain' => array(
-					'Comment' => array(
-						'fields' => array(
-							'id'
+			if ($check && empty($checkEqual)) {
+				$save = array(
+					'user_id' => AuthComponent::user('id'),
+					'comment_id' => $id
+				);
+				$bola = $this->Report->find('all', array(
+					'conditions' => array(
+						'Comment_id' => $id
+					),
+					'contain' => array(
+						'Comment' => array(
+							'fields' => array(
+								'id'
+							)
 						)
 					)
-				)
-			));
+				));
 
-			$banana = count($bola);
+				$banana = count($bola);
 
-			if ($banana > 1) {
-				$this->Flash->success("Comentario deletad com sucesso");
-				$this->Comment->delete($id);
-				$this->redirect(array('action' => 'index'));
+				if ($banana >= 1) {
+					$this->Flash->success("Comentario deletado com sucesso");
+					$this->Comment->delete($id);
+					$this->redirect(array('action' => 'index'));
+				} else {
+					$this->Flash->success("reportado");
+					$this->Report->save($save);
+					$this->redirect(array('action' => 'index'));
+				}
 			} else {
-				$this->Flash->success("reportado gordo lixo");
-				$this->Report->save($save);
+				$this->Flash->error("Você já denunciou esté comentário");
 				$this->redirect(array('action' => 'index'));
 			}
-		}
 	}
 }

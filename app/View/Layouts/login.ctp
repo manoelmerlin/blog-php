@@ -27,7 +27,7 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array(
-			'estilo', 
+			'estilo',
 			'bootstrap'
 		));
 
@@ -45,10 +45,10 @@
 	<div id="container">
 		<div id="header">
 		</div>
-		
-        
-       
-        
+
+
+
+
 		<div id="content">
 
 			<?php echo $this->Flash->render(); ?>
@@ -56,7 +56,7 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-		
+
 		</div>
 	</div>
 

@@ -22,15 +22,22 @@
 	<b style="font-size:30px" class="col-6 px-2"><?= $post['Post']['title'];?></b>
 </div>
 
-<div class=" p-2 row m-0 border-bottom">
-	<div class="my-2 col-1 p-1  ">
+<div class=" p-2 my-5 row m-0 border-bottom">
+	<div class="my-1 col-1 p-1  ">
 		<?php echo $this->Html->link($this->Html->image('../img/profilepic/' . $post['User']['imagem'], array('alt' => 'Brownies', 'class' => 'w-100 rounded')), array('controller' => 'users', 'action' => 'viewprofile', $post['Post']['created_by']), array('escapeTitle' => false, 'title' => 'Profile pic'
 		));?>
 	</div>
 
-	<div class="col-2 my-2 p-2">
-		<?php echo $this->Html->link($post['User']['first_name'] . " " . $post['User']['last_name'], array('controller' => 'users', 'action' => 'viewprofile', $post['Post']['created_by']), array('class' => "my-1 ml-3", 'style' => 'text-decoration:none;')); ?>
+	<div class="col-2 my-2 p-0">
+		<?php echo $this->Html->link($post['User']['first_name'] . " " . $post['User']['last_name'], array('controller' => 'users', 'action' => 'viewprofile', $post['Post']['created_by']), array('class' => "text-dark my-1 ml-3", 'style' => 'text-decoration:none;')); ?>
+		<?php if($post['User']['role'] == 1): ?>
+			<p style="font-size:12px;" class="text-success ml-3">Administrador</p>
+		<?php endif; ?>
+		<?php if($post['User']['role'] == 2): ?>
+			<p style="font-size:12px;" class="text-primary ml-3">Autor</p>
+		<?php endif; ?>
 	</div>
+
 </div>
 
 <div class='ml-5'>

@@ -24,7 +24,7 @@
 	<?php
 		echo $this->Html->meta('icon');
 		echo $this->Html->css(array(
-			'estilo', 
+			'estilo',
 			'bootstrap'
 		));
 		echo $this->fetch('meta');
@@ -43,7 +43,7 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-		
+
 		</div>
 	</div>
 

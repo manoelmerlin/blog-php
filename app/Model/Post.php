@@ -7,6 +7,9 @@
  */
 		public $actsAs = array('Containable');
 
+/**
+ * @inheritDoc
+ */
 		public $belongsTo = array(
 			'User' => array(
 				'className' => 'User',

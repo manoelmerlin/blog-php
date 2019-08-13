@@ -3,7 +3,7 @@
     <?php if($posts) : ?>
         <div id="noticias">
             <div class="row m-0 ">
-                <?php foreach ($posts as $post): ?>
+                <?php foreach($posts as $post): ?>
                     <div class="col-6 p-3 ">
                         <div class="col-12 border border-white p-0 div-noticias" style="height:background-color: rgba(0,0,0,0.25); background-image:  url(../../img/uploads/<?= $post["Post"]["imagem"] ?>); background-repeat: no-repeat; background-size: 100% 100%;" >
                             <center>
@@ -27,8 +27,7 @@
                                             <div class="my-2">
                                                 <h6 class='text-light ml-2 '>
 													<?php echo "Post criado em : "; echo $this->Time->format($post['Post']['created'], '%d/
-													%m/
-													%Y'); ?>
+													%m/%Y'); ?>
 												</h5>
 											</div>
 

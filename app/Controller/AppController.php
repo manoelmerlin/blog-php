@@ -61,6 +61,9 @@ class AppController extends Controller {
 		$this->set('postl', $postl);
 	}
 
+/**
+ * @inheritDoc
+ */
 	public $components = array(
 		'Flash',
 		'Session',
