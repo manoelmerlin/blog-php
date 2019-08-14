@@ -59,6 +59,18 @@ class AppController extends Controller {
 			)
 		));
 		$this->set('postl', $postl);
+
+		$separateMonth = $this->Post->find('list', array(
+			'fields' => array(
+				'created_date'
+			)
+		));
+
+		// pr($separateMonth);
+		// die;
+		$separateMonth = array_unique($separateMonth);
+		$this->set('month', $separateMonth);
+
 	}
 
 /**

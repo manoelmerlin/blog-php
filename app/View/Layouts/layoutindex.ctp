@@ -77,7 +77,7 @@
 			<div class="my-3">
             <div class="row m-0">
 
-    <div class="" style="width:1000px">
+    <div class="col-5" style="">
 
 		<div class="row m-0">
 			<div class="col-2">
@@ -96,8 +96,22 @@
 					</div>
 				</div>
 			</div>
-		</div>
 
+			<div class="mr-5">
+				<div class="mr-5">
+					<div class="mr-4 dropdown">
+						<button class="mr-5 btn mt-2 dropdown-toggle text-uppercase" style="font-weight: bold; font-size: 14px; color:black; text-decoration:none; font-family: encode sans expanded,sans-serif;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Mês
+						</button>
+						<div class=" dropdown-menu p-3"  aria-labelledby="dropdownMenuButton">
+									<?php if($this->Time->format($month['Post']['created_date'], '%m') == '08'): ?>
+									<h5><?= $this->Html->link('Julho', array('controller' => 'posts', 'action' => 'separateMonth'), array('style' => 'text-decoration:none; font-size:20px;', 'class' => " text-dark" )) . '<br/>'; ?></h5>
+									<?php endif; ?>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 

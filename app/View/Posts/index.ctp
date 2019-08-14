@@ -26,8 +26,8 @@
 
                                             <div class="my-2">
                                                 <h6 class='text-light ml-2 '>
-													<?php echo "Post criado em : "; echo $this->Time->format($post['Post']['created'], '%d/
-													%m/%Y'); ?>
+													<?php echo "Post criado em : "; echo $this->Time->format($post['Post']['created'], '%d/%m/%Y');
+													?>
 												</h5>
 											</div>
 

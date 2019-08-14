@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="my-5">
-				<?php echo $this->Form->submit('Editar dados', array('controller' => 'users', 'action' => 'edit', 'class' => 'form-control bg-primary text-light border border-primary border-solid ', 'style' => 'width:180px; height:40px'));?>
+				<?php echo $this->Form->submit('Editar dados', array('controller' => 'users', 'action' => 'edit', 'class' => 'form-control bg-primary text-light border border-primary border-solid ', 'style' => 'width:180px; height:40px', 'confirm' => 'Você tem certeza que deseja alterar sua senha?'));?>
 			</div>
 
 			<div>

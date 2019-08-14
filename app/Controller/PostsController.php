@@ -476,6 +476,7 @@ class PostsController extends AppController {
 				} else {
 					$this->Flash->success("reportado");
 					$this->Report->save($save);
+					$location = $this->response->location();
 					$this->redirect(array('action' => 'index'));
 				}
 			} else {
@@ -483,4 +484,32 @@ class PostsController extends AppController {
 				$this->redirect(array('action' => 'index'));
 			}
 	}
+
+	// public function viewtest() {
+	// 	$post = $this->Post->find('all', array(
+	// 		'conditions' => array(
+	// 			'Post.status' => 1
+	// 		),
+	// 		'fields' => array(
+	// 			'id',
+	// 			'title',
+	// 			'imagem'
+	// 		)
+	// 	));
+	// 	$this->set('post', $post);
+	// 	$this->set('banana', 1);
+	// 	$this->set('_serialize', array_keys($this->viewVars));
+	// }
+
+	public function separeteMonth($created_date) {
+		$findmonth = $this->Post->find('all', array(
+			'conditions' => array(
+				'Post.created_date' => '2019-08-12'
+			)
+		));
+
+		pr($findmonth);
+		die;
+	}
+
 }

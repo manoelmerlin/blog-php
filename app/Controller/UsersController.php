@@ -6,7 +6,7 @@ class UsersController extends AppController {
  */
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add_user', 'index', 'forgot', 'viewprofile'); // Permitindo que os usuários se registrem
+		$this->Auth->allow('add_user', 'forgot', 'viewprofile'); // Permitindo que os usuários se registrem
 	}
 
 /**
