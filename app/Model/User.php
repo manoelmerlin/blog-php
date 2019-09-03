@@ -1,6 +1,13 @@
 <?php
 	class User extends AppModel {
 
+		public $belongsTo = array(
+			'Group' => array(
+				'className' => 'Group',
+				'foreignKey' => 'group_id'
+			)
+		);
+
 		public $validate = array(
 			'username' => array(
 				'required' => array(
@@ -161,4 +168,29 @@
 			return true;
 		}
 
+		public function parentNode() {
+			if (!$this->id && empty($this->data)) {
+				return null;
+			}
+			if (isset($this->data['User']['group_id'])) {
+				$groupId = $this->data['User']['group_id'];
+			} else {
+				$groupId = $this->field('group_id');
+			}
+			if (!$groupId) {
+				return null;
+			}
+			return array(
+				'Group' => array(
+					'id' => $groupId
+				)
+			);
+		}
+
+		public function bindNode($user) {
+			return array(
+				'model' => 'Group',
+				'foreign_key' => $user['User']['group_id']
+			);
+		}
 	}

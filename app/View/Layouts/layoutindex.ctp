@@ -104,9 +104,9 @@
 							Mês
 						</button>
 						<div class=" dropdown-menu p-3"  aria-labelledby="dropdownMenuButton">
-									<?php if($this->Time->format($month['Post']['created_date'], '%m') == '08'): ?>
-									<h5><?= $this->Html->link('Julho', array('controller' => 'posts', 'action' => 'separateMonth'), array('style' => 'text-decoration:none; font-size:20px;', 'class' => " text-dark" )) . '<br/>'; ?></h5>
-									<?php endif; ?>
+								<?php foreach($month as $m): ?>
+										<h5><?= $this->Html->link($m, array('controller' => 'posts', 'action' => 'separetemonth', $m), array('style' => 'text-decoration:none; font-size:20px;', 'class' => " text-dark" )) . '<br/>'; ?></h5>
+								<?php endforeach; ?>
 							</div>
 					</div>
 				</div>

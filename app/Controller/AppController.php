@@ -50,6 +50,7 @@ class AppController extends Controller {
 			)
 		));
 
+
 		$categories = array_unique($categories);
 		$this->set('categories', $categories);
 
@@ -61,13 +62,13 @@ class AppController extends Controller {
 		$this->set('postl', $postl);
 
 		$separateMonth = $this->Post->find('list', array(
+			'conditions' => array(
+				'created_date !=' => ''
+			),
 			'fields' => array(
 				'created_date'
 			)
 		));
-
-		// pr($separateMonth);
-		// die;
 		$separateMonth = array_unique($separateMonth);
 		$this->set('month', $separateMonth);
 
@@ -80,23 +81,28 @@ class AppController extends Controller {
 		'Flash',
 		'Session',
 		'Paginator',
-
+		'Acl',
 		'Auth' => array(
-		'loginRedirect' => array(
-			'controller' => 'posts',
-			'action' => 'index'
-		),
+			'loginRedirect' => array(
+				'controller' => 'posts',
+				'action' => 'index'
+			),
 
-		'logoutRedirect' => array(
-			'controller' => 'posts',
-			'action' => 'index'
-		),
+			'logoutRedirect' => array(
+				'controller' => 'posts',
+				'action' => 'index'
+			),
 
-		'authenticate' => array(
-			'Form' => array(
-			'passwordHasher' => 'Blowfish'
-			)
+			'authenticate' => array(
+				'Form' => array(
+					'passwordHasher' => 'Blowfish'
+				)
+			),
+			'authorize' => array(
+				'Actions' => array(
+					'actionPath' => 'controllers'
+				)
+			),
 		)
-	));
-
+	);
 }

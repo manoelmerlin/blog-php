@@ -6,7 +6,32 @@ class UsersController extends AppController {
  */
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add_user', 'forgot', 'viewprofile'); // Permitindo que os usuários se registrem
+		$this->Auth->allow('Acl', 'add_user', 'forgot', 'viewprofile'); // Permitindo que os usuários se registrem
+	}
+
+	public function acl() {
+		$group = $this->User->Group;
+
+		$group->id = 1;
+		$this->Acl->allow($group, 'Controllers');
+
+		$group->id = 2;
+		$this->Acl->deny($group, 'controllers');
+		$this->Acl->allow($group, 'controller/users/logout');
+		$this->Acl->allow($group, 'controllers/Posts/add');
+		$this->Acl->allow($group, 'controllers/Posts/delete');
+		$this->Acl->allow($group, 'controllers/Posts/comment');
+		$this->Acl->allow($group, 'controllers/Posts/deleteComment');
+		$this->Acl->allow($group, 'controllers/Users/viewprofile');
+		$this->Acl->allow($group, 'controllers/Posts/add');
+		$this->Acl->allow($group, 'controllers/Users/view');
+
+		$group->id = 3;
+		$this->Acl->deny($group, 'controllers');
+		$this->Acl->allow($group, 'controller/users/logout');
+
+		echo '<center>all done.';
+		die;
 	}
 
 /**
@@ -164,10 +189,10 @@ class UsersController extends AppController {
 				if ($this->Auth->login()) {
 					return $this->redirect($this->Auth->redirectUrl());
 				}
-				$this->Flash->error("Usuário ou senha incorretos");
+				$this->Flash->error("Usuário ou senha incorretos", array('key' => 'userError'));
 
 			} else {
-				$this->Flash->error("Conta inativa");
+				$this->Flash->error("Usuário ou senha incorretos", array('key' => 'userError'));
 			}
 		}
 	}
@@ -423,7 +448,7 @@ class UsersController extends AppController {
 		$this->set('count_comments', $countComments);
 		$check = $this->User->find('first', array(
 			'conditions' => array(
-				'id' => $id,
+				'User.id' => $id,
 
 			)
 		));

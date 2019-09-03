@@ -39610,3 +39610,1081 @@ Stack Trace:
 #1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
 #2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2019-08-15 13:29:54 Error: [ParseError] syntax error, unexpected end of file
+Request URL: /posts/separetemonth/1
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-08-15 13:34:19 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION Post.created_date does not exist
+Request URL: /posts/separetemonth/2019-03-11
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Post`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Post`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Post`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Post), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /var/www/html/projeto/app/Controller/PostsController.php(509): Model->find('all', Array)
+#7 [internal function]: PostsController->separeteMonth('2019-03-11')
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-08-15 13:38:53 Error: [ParseError] Invalid numeric literal
+Request URL: /posts/separetemonth/03
+Stack Trace:
+#0 [internal function]: App::load('PostsController')
+#1 [internal function]: spl_autoload_call('PostsController')
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('PostsController')
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-08-15 13:40:43 Error: [MissingActionException] Action PostsController::separateMonth() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'separateMonth',
+)
+Request URL: /posts/separateMonth
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-08-15 13:40:57 Error: [MissingActionException] Action PostsController::separateMonth() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'separateMonth',
+)
+Request URL: /posts/separateMonth
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-08-15 13:41:18 Error: [MissingActionException] Action PostsController::separateMonth() could not be found.
+Exception Attributes: array (
+  'controller' => 'PostsController',
+  'action' => 'separateMonth',
+)
+Request URL: /posts/separateMonth
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-08-15 13:56:09 Error: [ParseError] syntax error, unexpected '=', expecting ')'
+Request URL: /posts/add
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-08-16 14:04:52 Error: [MissingControllerException] Controller class GroupsController could not be found.
+Exception Attributes: array (
+  'class' => 'GroupsController',
+  'plugin' => NULL,
+)
+Request URL: /groups/addgroup
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-08-16 14:08:45 Error: [MissingViewException] View file "Groups/addgroup.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Groups/addgroup.ctp',
+)
+Request URL: /groups/addgroup
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Groups/addgroup')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(GroupsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-08-16 14:20:20 Error: [MissingActionException] Action GroupsController::addgroups() could not be found.
+Exception Attributes: array (
+  'controller' => 'GroupsController',
+  'action' => 'addgroups',
+)
+Request URL: /groups/addgroups
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(GroupsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-08-16 14:20:35 Error: [MissingActionException] Action GroupsController::addgroups() could not be found.
+Exception Attributes: array (
+  'controller' => 'GroupsController',
+  'action' => 'addgroups',
+)
+Request URL: /Groups/addgroups
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(GroupsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-08-16 14:25:57 Error: [MissingViewException] View file "Users/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/index.ctp',
+)
+Request URL: /users
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Users/index')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-08-16 14:26:33 Error: [MissingControllerException] Controller class IndexController could not be found.
+Exception Attributes: array (
+  'class' => 'IndexController',
+  'plugin' => NULL,
+)
+Request URL: /index
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-08-16 14:27:39 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /users/viewprofile/1
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `User`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `User`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `User`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(User), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('first', Array)
+#6 /var/www/html/projeto/app/Controller/UsersController.php(433): Model->find('first', Array)
+#7 [internal function]: UsersController->viewProfile('1')
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-08-16 14:48:01 Error: [MissingActionException] Action GroupsController::addgroups() could not be found.
+Exception Attributes: array (
+  'controller' => 'GroupsController',
+  'action' => 'addgroups',
+)
+Request URL: /Groups/addgroups
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(GroupsController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-08-16 14:49:01 Error: [MissingViewException] View file "Users/acl.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/acl.ctp',
+)
+Request URL: /users/acl
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Users/acl')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-08-16 14:54:54 Error: [MissingViewException] View file "Users/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/index.ctp',
+)
+Request URL: /users
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Users/index')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-08-16 15:44:46 Error: [MissingViewException] View file "Users/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/index.ctp',
+)
+Request URL: /users
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Users/index')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-08-16 15:48:36 Error: [MissingViewException] View file "Users/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/index.ctp',
+)
+Request URL: /users
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Users/index')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-08-19 12:43:09 Error: [MissingControllerException] Controller class ProjetotestController could not be found.
+Exception Attributes: array (
+  'class' => 'ProjetotestController',
+  'plugin' => NULL,
+)
+Request URL: /projetotest
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-08-19 13:22:21 Error: [MissingActionException] Action UsersController::register() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'register',
+)
+Request URL: /users/register
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-08-19 18:02:11 Error: [MissingControllerException] Controller class ProjetotestController could not be found.
+Exception Attributes: array (
+  'class' => 'ProjetotestController',
+  'plugin' => NULL,
+)
+Request URL: /projetotest
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-08-21 13:50:28 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /posts/comentar
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `User`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `User`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `User`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(User), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('first', Array)
+#6 /var/www/html/projeto/app/Controller/PostsController.php(195): Model->find('first', Array)
+#7 [internal function]: PostsController->comentar()
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-08-29 14:55:52 Error: [MissingControllerException] Controller class Projeto1Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Projeto1Controller',
+  'plugin' => NULL,
+)
+Request URL: /projeto1
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-08-29 15:52:23 Error: [MissingControllerException] Controller class 54544Controller could not be found.
+Exception Attributes: array (
+  'class' => '54544Controller',
+  'plugin' => NULL,
+)
+Request URL: /54544
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-08-30 15:56:44 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-08-30 15:56:46 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 12:37:20 Error: [MissingControllerException] Controller class AppListaTarefasPublicController could not be found.
+Exception Attributes: array (
+  'class' => 'AppListaTarefasPublicController',
+  'plugin' => NULL,
+)
+Request URL: /app_lista_tarefas_public
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 12:38:04 Error: [MissingControllerException] Controller class AppListaTarefasPublicController could not be found.
+Exception Attributes: array (
+  'class' => 'AppListaTarefasPublicController',
+  'plugin' => NULL,
+)
+Request URL: /app_lista_tarefas_public
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:29 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:31 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:33 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:40 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:41 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:48 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:16:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-02 15:28:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 12:55:13 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 12:56:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:33:44 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:06 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:12 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:13 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:40 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:44 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:53 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:34:56 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:35:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:35:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:35:40 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:35:54 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:35:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:35:59 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:36:05 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:36:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:16 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:31 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /users/cancelPermission/74
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `User`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `User`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `User`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(User), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('first', Array)
+#6 /var/www/html/projeto/app/Controller/UsersController.php(351): Model->find('first', Array)
+#7 [internal function]: UsersController->cancelPermission('74')
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-09-03 17:38:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:38:37 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /users/setPermission/74
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `User`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `User`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `User`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(User), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('first', Array)
+#6 /var/www/html/projeto/app/Controller/UsersController.php(284): Model->find('first', Array)
+#7 [internal function]: UsersController->setPermission('74')
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-09-03 17:38:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:42:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:42:31 Error: [MissingControllerException] Controller class CakephpprojectController could not be found.
+Exception Attributes: array (
+  'class' => 'CakephpprojectController',
+  'plugin' => NULL,
+)
+Request URL: /cakephpproject
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:42:46 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:42:49 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:42:58 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:43:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:43:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:43:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:43:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:43:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:43:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:43:16 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:53:23 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:53:25 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:56:54 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:56:55 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:56:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:07 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:18 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:29 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:57:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:59:52 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:59:53 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:59:54 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:59:56 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:59:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 17:59:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 18:00:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-03 18:00:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/twitter.png
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

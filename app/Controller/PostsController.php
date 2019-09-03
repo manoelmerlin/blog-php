@@ -96,9 +96,9 @@ class PostsController extends AppController {
  */
 	public function add() {
 		$this->layout = 'admin';
-		if (AuthComponent::user('role') != 1 && AuthComponent::user('role') != 2) {
-			throw new UnauthorizedException("Sem permissão para acessar está pagina");
-		}
+		// if (AuthComponent::user('role') != 1 && AuthComponent::user('role') != 2) {
+		// 	throw new UnauthorizedException("Sem permissão para acessar está pagina");
+		// }
 
 		if ($this->request->is('post') || $this->request->is('put')) {
 			$this->request->data['Post']['created_by'] = AuthComponent::user('id');
@@ -192,7 +192,7 @@ class PostsController extends AppController {
 
 		$teste = $this->User->find('first', array(
 			'conditions' => array(
-				'id' => $this->Auth->user('id')),
+				'User.id' => $this->Auth->user('id')),
 				'fields' => array(
 					'imagem'
 				)
@@ -501,15 +501,16 @@ class PostsController extends AppController {
 	// 	$this->set('_serialize', array_keys($this->viewVars));
 	// }
 
-	public function separeteMonth($created_date) {
+	public function separeteMonth($createdDate) {
+		$this->layout = 'layoutindex';
 		$findmonth = $this->Post->find('all', array(
 			'conditions' => array(
-				'Post.created_date' => '2019-08-12'
+				'Post.created_date' => $createdDate,
+				'Post.status' => 1
 			)
 		));
 
-		pr($findmonth);
-		die;
+		$this->set('posts', $findmonth);
 	}
 
 }
