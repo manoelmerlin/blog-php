@@ -6,7 +6,7 @@ class UsersController extends AppController {
  */
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add_user', 'forgot', 'viewprofile'); // Permitindo que os usuários se registrem
+		$this->Auth->allow('add_user', 'forgot', 'viewprofile', 'writeEmail'); // Permitindo que os usuários se registrem
 	}
 
 /**
@@ -189,28 +189,22 @@ class UsersController extends AppController {
  * */
 	public function forgot() {
 		$this->layout = "add_user";
-		if ($this->request->is('post') || $this->request->is('put')) {
-				$this->User->username = $this->request->data('username');
-				$check = $this->User->find('first', array(
-					'conditions' => array(
-						'email' => $this->request->data['User']['email'],
-						'word_key' => $this->request->data['User']['word_key']
-					)
-				));
+		$hash = $this->_hashDecrypt($this->request->query['key']);
 
-			if (!empty($check)) {
+		$hash = explode('batata', $hash);
+
+		if ($this->request->is('post') || $this->request->is('put')) {
+
 				$save = array(
 					'User' => array(
-						'id' => $check['User']['id'],
+						'id' => $hash[0],
 						'password' => $this->request->data['User']['password']
 					)
 				);
 				$this->User->save($save);
 				$this->Flash->success("Senha troca com sucesso");
 				$this->redirect(array("controller" => 'users', 'action' => 'login'));
-			} else {
-				$this->Flash->error("usuário não encontrado");
-			}
+
 		}
 	}
 
@@ -531,4 +525,63 @@ class UsersController extends AppController {
 
 		}
 	}
+
+	protected function _sendEmail($params) {
+		$Email = new CakeEmail('gmail');
+		$Email->from(array('manoelteste2526@gmail.com' => 'Manoel'));
+		$Email->to($params['to']);
+		$Email->subject($params['about']);
+		if ($Email->send($params['body'])) {
+			echo 'Enviado com sucesso';
+		}
+	}
+
+	protected function _hashEncrypt($id, $other = null) {
+		return base64_encode($id . "batata" . $other);
+	}
+
+	protected function _hashDecrypt($hash) {
+		return base64_decode($hash);
+	}
+
+	public function writeEmail() {
+		$this->layout = 'add_user';
+
+		if ($this->request->is('post') || $this->request->is('put')) {
+
+			$checkEmail = $this->User->find('first', array(
+				'fields' => array(
+					'User.id',
+					'User.first_name'
+				),
+				'conditions' => array(
+					'User.email' => $this->request->data['User']['email']
+				),
+				'contains' => array(
+					'User'
+				)
+			));
+
+			if (!empty($checkEmail)) {
+				$hash = $this->_hashEncrypt($checkEmail['User']['id'], $checkEmail['User']['first_name']);
+				$redirect = Router::url(array('controller' => 'users', 'action' => 'forgot', '?' => array('key' => $hash)), true);
+
+				$params = array(
+					'to' => $this->request->data['User']['email'],
+					'about' => 'Recuperar senha',
+					'body' => 'Seu link para recuperação é ' . $redirect
+				);
+				$this->_sendEmail($params);
+
+			} else {
+
+				$this->Flash->error('Email não encontrado');
+				return false;
+			}
+
+
+		}
+
+	}
+
 }
