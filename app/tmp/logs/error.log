@@ -421,3 +421,540 @@ Stack Trace:
 #8 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #9 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #10 {main}
+2019-09-05 12:51:40 Error: [MissingControllerException] Controller class PwsController could not be found.
+Exception Attributes: array (
+  'class' => 'PwsController',
+  'plugin' => NULL,
+)
+Request URL: /pws
+Stack Trace:
+#0 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-30 15:05:33 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 15:07:30 Error: [ParseError] syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')'
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 15:19:13 Error: [NotFoundException] Not Found
+Request URL: /posts/index/page:2?post_name=teste
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Controller/Controller.php(1107): PaginatorComponent->paginate(Object(Post), Array, Array)
+#1 /var/www/html/projeto/app/Controller/PostsController.php(47): Controller->paginate()
+#2 [internal function]: PostsController->index()
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-09-30 15:19:23 Error: [NotFoundException] Not Found
+Request URL: /posts/index/page:2?post_name=teste+postagem+nome+grande
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Controller/Controller.php(1107): PaginatorComponent->paginate(Object(Post), Array, Array)
+#1 /var/www/html/projeto/app/Controller/PostsController.php(47): Controller->paginate()
+#2 [internal function]: PostsController->index()
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-09-30 15:23:25 Error: [ParseError] syntax error, unexpected ';', expecting ')'
+Request URL: /posts?post_name=teste
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:07:44 Error: [Error] Call to undefined function arrays_keys()
+Request URL: /users/listUsers?member_name=&member=0
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(971): include()
+#1 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#2 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-09-30 16:07:57 Error: [Error] Call to undefined function arrays_values()
+Request URL: /users/listUsers?member_name=&member=0
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(971): include()
+#1 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#2 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-09-30 16:10:26 Error: [ParseError] syntax error, unexpected ';', expecting ')'
+Request URL: /users/listUsers?member_name=&member=2
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:10:31 Error: [ParseError] syntax error, unexpected ';', expecting ')'
+Request URL: /users/listUsers?member_name=&member=2
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:10:39 Error: [ParseError] syntax error, unexpected ';', expecting ')'
+Request URL: /users/listUsers?member_name=&member=2
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:19:02 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /users/listUsers?member_name=&member=2
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:32:34 Error: [ParseError] syntax error, unexpected 'echo' (T_ECHO)
+Request URL: /users/listUsers?member_name=&member=0
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:38:31 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'User.name' in 'where clause'
+Request URL: /users/listUsers?member_name=&member=0
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `User`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `User`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `User`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(User), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /var/www/html/projeto/app/Controller/UsersController.php(372): Model->find('all', Array)
+#7 [internal function]: UsersController->listUsers()
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-09-30 16:43:23 Error: [ParseError] syntax error, unexpected '!'
+Request URL: /users/listUsers?member_name=&member=73
+Stack Trace:
+#0 [internal function]: App::load('UsersController')
+#1 [internal function]: spl_autoload_call('UsersController')
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('UsersController')
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:43:25 Error: [ParseError] syntax error, unexpected '!'
+Request URL: /users/listUsers?member_name=Manoel&member=
+Stack Trace:
+#0 [internal function]: App::load('UsersController')
+#1 [internal function]: spl_autoload_call('UsersController')
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('UsersController')
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-30 16:43:30 Error: [ParseError] syntax error, unexpected '{'
+Request URL: /users/listUsers?member_name=Manoel&member=
+Stack Trace:
+#0 [internal function]: App::load('UsersController')
+#1 [internal function]: spl_autoload_call('UsersController')
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('UsersController')
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-10-03 16:45:33 Error: [ArgumentCountError] Too few arguments to function PostsController::separeteMonth(), 0 passed and exactly 1 expected
+Request URL: /posts/separeteMonth
+Stack Trace:
+#0 [internal function]: PostsController->separeteMonth()
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 16:47:12 Error: [ArgumentCountError] Too few arguments to function PostsController::separeteMonth(), 0 passed and exactly 1 expected
+Request URL: /posts/separeteMonth
+Stack Trace:
+#0 [internal function]: PostsController->separeteMonth()
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 16:47:26 Error: [ArgumentCountError] Too few arguments to function PostsController::separeteMonth(), 0 passed and exactly 1 expected
+Request URL: /posts/separeteMonth
+Stack Trace:
+#0 [internal function]: PostsController->separeteMonth()
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 16:48:04 Error: Fatal Error (64): Cannot use [] for reading in [/var/www/html/projeto/app/View/Layouts/layoutindex.ctp, line 110]
+2019-10-03 16:48:04 Error: [FatalErrorException] Cannot use [] for reading
+Request URL: /posts/view/203
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Error/ErrorHandler.php(212): ErrorHandler::handleFatalError(64, 'Cannot use [] f...', '/var/www/html/p...', 110)
+#1 /var/www/html/projeto/lib/Cake/Core/App.php(970): ErrorHandler::handleError(64, 'Cannot use [] f...', '/var/www/html/p...', 110, Array)
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2019-10-03 16:56:03 Error: [ArgumentCountError] Too few arguments to function PostsController::separeteMonth(), 0 passed and exactly 1 expected
+Request URL: /posts/separeteMonth
+Stack Trace:
+#0 [internal function]: PostsController->separeteMonth()
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 17:01:32 Error: [MissingViewException] View file "Posts/separete_month.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Posts/separete_month.ctp',
+)
+Request URL: /posts/separeteMonth/01
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Posts/separete_...')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 17:02:33 Error: [MissingViewException] View file "Posts/separete_month.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Posts/separete_month.ctp',
+)
+Request URL: /posts/separeteMonth/01
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Posts/separete_...')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 17:02:50 Error: [MissingViewException] View file "Posts/separete_month.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Posts/separete_month.ctp',
+)
+Request URL: /posts/separeteMonth/03
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Posts/separete_...')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 17:03:41 Error: [MissingViewException] View file "Posts/separete_month.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Posts/separete_month.ctp',
+)
+Request URL: /posts/separeteMonth/03
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Posts/separete_...')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 17:05:11 Error: [MissingViewException] View file "Posts/separete_month.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Posts/separete_month.ctp',
+)
+Request URL: /posts/separeteMonth/03
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Posts/separete_...')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 17:05:34 Error: [MissingViewException] View file "Posts/separete_month.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Posts/separete_month.ctp',
+)
+Request URL: /posts/separeteMonth/03
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Posts/separete_...')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 17:05:59 Error: [MissingViewException] View file "Posts/separete_month.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Posts/separete_month.ctp',
+)
+Request URL: /posts/separeteMonth/01
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(470): View->_getViewFileName('Posts/separete_...')
+#1 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, NULL)
+#2 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#4 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-03 18:10:06 Error: [ParseError] syntax error, unexpected ','
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(546): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/View/View.php(481): View->renderLayout('<form action="/...', 'layoutindex')
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, 'layoutindex')
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-10-03 18:12:09 Error: [ParseError] syntax error, unexpected '['
+Request URL: /posts
+Stack Trace:
+#0 [internal function]: App::load('AppController')
+#1 /var/www/html/projeto/app/Controller/PostsController.php(2): spl_autoload_call('AppController')
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(567): include('/var/www/html/p...')
+#3 [internal function]: App::load('PostsController')
+#4 [internal function]: spl_autoload_call('PostsController')
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('PostsController')
+#6 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#7 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2019-10-03 18:12:09 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2019-10-03 18:12:09 Error: [FatalErrorException] Exception thrown without a stack frame
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Error/ErrorHandler.php(212): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /var/www/html/projeto/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2019-10-03 18:31:59 Error: [ParseError] syntax error, unexpected '$countPost' (T_VARIABLE), expecting ')'
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(546): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/View/View.php(481): View->renderLayout('<form action="/...', 'layoutindex')
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, 'layoutindex')
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-10-03 18:33:44 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.countOctuber' in 'field list'
+Request URL: /posts/separeteMonth/01
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Post`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Post`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Post`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Post), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('list', Array)
+#6 /var/www/html/projeto/app/Controller/AppController.php(79): Model->find('list', Array)
+#7 /var/www/html/projeto/lib/Cake/Event/CakeEventManager.php(244): AppController->beforeRender(Object(CakeEvent))
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(941): CakeEventManager->dispatch(Object(CakeEvent))
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-10-03 18:33:47 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.countOctuber' in 'field list'
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Post`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Post`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Post`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Post), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('list', Array)
+#6 /var/www/html/projeto/app/Controller/AppController.php(79): Model->find('list', Array)
+#7 /var/www/html/projeto/lib/Cake/Event/CakeEventManager.php(244): AppController->beforeRender(Object(CakeEvent))
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(941): CakeEventManager->dispatch(Object(CakeEvent))
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-10-03 18:37:10 Error: [ParseError] syntax error, unexpected ''Post.countOutubro'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 [internal function]: App::load('AppController')
+#1 /var/www/html/projeto/app/Controller/PostsController.php(2): spl_autoload_call('AppController')
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(567): include('/var/www/html/p...')
+#3 [internal function]: App::load('PostsController')
+#4 [internal function]: spl_autoload_call('PostsController')
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('PostsController')
+#6 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#7 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2019-10-03 18:37:10 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2019-10-03 18:37:10 Error: [FatalErrorException] Exception thrown without a stack frame
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Error/ErrorHandler.php(212): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /var/www/html/projeto/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2019-10-03 18:37:33 Error: [ParseError] syntax error, unexpected ''Post.countOutubro'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 [internal function]: App::load('AppController')
+#1 /var/www/html/projeto/app/Controller/PostsController.php(2): spl_autoload_call('AppController')
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(567): include('/var/www/html/p...')
+#3 [internal function]: App::load('PostsController')
+#4 [internal function]: spl_autoload_call('PostsController')
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('PostsController')
+#6 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#7 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2019-10-03 18:37:33 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2019-10-03 18:37:33 Error: [FatalErrorException] Exception thrown without a stack frame
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Error/ErrorHandler.php(212): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /var/www/html/projeto/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2019-10-03 18:37:49 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Fevereiro.countFevereiro' in 'field list'
+Request URL: /posts/separeteMonth/10
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Post`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Post`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Post`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Post), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('list', Array)
+#6 /var/www/html/projeto/app/Controller/AppController.php(79): Model->find('list', Array)
+#7 /var/www/html/projeto/lib/Cake/Event/CakeEventManager.php(244): AppController->beforeRender(Object(CakeEvent))
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(941): CakeEventManager->dispatch(Object(CakeEvent))
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-10-03 18:43:57 Error: [ParseError] syntax error, unexpected '$countPost' (T_VARIABLE)
+Request URL: /posts
+Stack Trace:
+#0 [internal function]: App::load('AppController')
+#1 /var/www/html/projeto/app/Controller/PostsController.php(2): spl_autoload_call('AppController')
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(567): include('/var/www/html/p...')
+#3 [internal function]: App::load('PostsController')
+#4 [internal function]: spl_autoload_call('PostsController')
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('PostsController')
+#6 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#7 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2019-10-03 18:43:57 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2019-10-03 18:43:57 Error: [FatalErrorException] Exception thrown without a stack frame
+Request URL: /posts
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Error/ErrorHandler.php(212): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /var/www/html/projeto/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2019-10-04 17:26:04 Error: [ParseError] syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting '('
+Request URL: /posts/separeteMonth/02
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#1 /var/www/html/projeto/lib/Cake/View/View.php(546): View->_render('/var/www/html/p...')
+#2 /var/www/html/projeto/lib/Cake/View/View.php(481): View->renderLayout('<form action="/...', 'layoutindex')
+#3 /var/www/html/projeto/lib/Cake/Controller/Controller.php(968): View->render(NULL, 'layoutindex')
+#4 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#6 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2019-10-04 17:47:40 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.countJaneiro' in 'field list'
+Request URL: /posts/separeteMonth/02
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Post`.`...', Array)
+#2 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Post`.`...', Array, Array)
+#3 /var/www/html/projeto/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Post`.`...', Array)
+#4 /var/www/html/projeto/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Post), Array)
+#5 /var/www/html/projeto/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /var/www/html/projeto/app/Controller/AppController.php(79): Model->find('all', Array)
+#7 /var/www/html/projeto/lib/Cake/Event/CakeEventManager.php(244): AppController->beforeRender(Object(CakeEvent))
+#8 /var/www/html/projeto/lib/Cake/Controller/Controller.php(941): CakeEventManager->dispatch(Object(CakeEvent))
+#9 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#10 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#11 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2019-10-04 18:08:36 Error: [ParseError] syntax error, unexpected ''Post.countJaneiro'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+Request URL: /posts/separeteMonth/02
+Stack Trace:
+#0 [internal function]: App::load('AppController')
+#1 /var/www/html/projeto/app/Controller/PostsController.php(2): spl_autoload_call('AppController')
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(567): include('/var/www/html/p...')
+#3 [internal function]: App::load('PostsController')
+#4 [internal function]: spl_autoload_call('PostsController')
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('PostsController')
+#6 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#7 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2019-10-04 18:08:36 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2019-10-04 18:08:36 Error: [FatalErrorException] Exception thrown without a stack frame
+Request URL: /posts/separeteMonth/02
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Error/ErrorHandler.php(212): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /var/www/html/projeto/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2019-10-04 18:21:17 Error: [ParseError] syntax error, unexpected 'unset' (T_UNSET)
+Request URL: /posts/separeteMonth/02
+Stack Trace:
+#0 [internal function]: App::load('AppController')
+#1 /var/www/html/projeto/app/Controller/PostsController.php(2): spl_autoload_call('AppController')
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(567): include('/var/www/html/p...')
+#3 [internal function]: App::load('PostsController')
+#4 [internal function]: spl_autoload_call('PostsController')
+#5 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(266): class_exists('PostsController')
+#6 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#7 /var/www/html/projeto/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/html/projeto/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2019-10-04 18:21:17 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2019-10-04 18:21:17 Error: [FatalErrorException] Exception thrown without a stack frame
+Request URL: /posts/separeteMonth/02
+Stack Trace:
+#0 /var/www/html/projeto/lib/Cake/Error/ErrorHandler.php(212): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /var/www/html/projeto/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /var/www/html/projeto/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}

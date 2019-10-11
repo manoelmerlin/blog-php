@@ -48,31 +48,64 @@ class AppController extends Controller {
 				'categoria !=' => ''
 			),
 			'fields' => array(
-				'id', 'categoria', 'body', 'title'
+				'id', 'categoria', 'body', 'title', 'created_date'
 			)
 		));
 
 		$categories = array_unique($categories);
-		$this->set('categories', $categories);
 
 		$postl = $this->Post->find('all', array(
 			'conditions' => array(
 				'destaque' => 1
 			)
 		));
-		$this->set('postl', $postl);
 
-		$separateMonth = $this->Post->find('list', array(
+		$countPost = '';
+		$this->Post->virtualFields['1'] = 1;
+		$this->Post->virtualFields['countJaneiro'] = 'SUM(Post.created_date = 01)';
+		$this->Post->virtualFields['countFevereiro'] = 'SUM(Post.created_date = 02)';
+		$this->Post->virtualFields['countMarco'] = 'SUM(Post.created_date = 03)';
+		$this->Post->virtualFields['countMaio'] = 'SUM(Post.created_date = 04)';
+		$this->Post->virtualFields['countAbril'] = 'SUM(Post.created_date = 05)';
+		$this->Post->virtualFields['countJunho'] = 'SUM(Post.created_date = 06)';
+		$this->Post->virtualFields['countJulho'] = 'SUM(Post.created_date = 07)';
+		$this->Post->virtualFields['countAgosto'] = 'SUM(Post.created_date = 08)';
+		$this->Post->virtualFields['countSetembro'] = 'SUM(Post.created_date = 09)';
+		$this->Post->virtualFields['countOutubro'] = 'SUM(Post.created_date = 10)';
+		$this->Post->virtualFields['countNovembro'] = 'SUM(Post.created_date = 11)';
+		$this->Post->virtualFields['countDezembro'] = 'SUM(Post.created_date = 12)';
+
+		$countPost = $this->Post->find('all', array(
 			'fields' => array(
-				'created_date'
+				'Post.1',
+				'Post.countJaneiro',
+				'Post.countFevereiro',
+				'Post.countMarco',
+				'Post.countMaio',
+				'Post.countAbril',
+				'Post.countJunho',
+				'Post.countJulho',
+				'Post.countAgosto',
+				'Post.countSetembro',
+				'Post.countOutubro',
+				'Post.countNovembro',
+				'Post.countDezembro'
+			),
+			'contain' => array(
+
 			)
 		));
 
-		// pr($separateMonth);
-		// die;
-		$separateMonth = array_unique($separateMonth);
-		$this->set('month', $separateMonth);
+		foreach ($countPost as $countPost) {
 
+			$countPost = array_values($countPost['Post']);
+
+			unset($countPost[0]);
+
+
+		}
+
+		$this->set(compact('categories', 'postl', 'countPost'));
 	}
 
 /**

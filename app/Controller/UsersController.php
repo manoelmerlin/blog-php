@@ -363,8 +363,28 @@ class UsersController extends AppController {
 			throw new UnauthorizedException("Você não tem permissão para acessar está pagina");
 		}
 
+		if	(isset($this->request->query['member_name']) && !empty($this->request->query['member_name']))  {
+			$member_name = $this->request->query['member_name'];
+
+			$user = $this->User->find('all', array(
+				'conditions' => array(
+					'User.first_name LIKE' => '%' . $member_name . '%'
+				)
+			));
+
+		} elseif (isset($this->request->query['member']) && !empty($this->request->query['member'])) {
+			$member = $this->request->query['member'];
+
+			$user = $this->User->find('all', array(
+				'conditions' => array(
+					'User.id =' => $member
+				)
+			));
+		} else {
+			$user = $this->User->find('all');
+		}
+
 		$this->loadModel('User');
-		$user = $this->User->find('all');
 		$this->set('users', $user);
 	}
 

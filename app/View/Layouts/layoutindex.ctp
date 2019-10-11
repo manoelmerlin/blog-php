@@ -104,17 +104,24 @@
 							Mês
 						</button>
 						<div class=" dropdown-menu p-3"  aria-labelledby="dropdownMenuButton">
-									<?php if($this->Time->format($month['Post']['created_date'], '%m') == '08'): ?>
-									<h5><?= $this->Html->link('Julho', array('controller' => 'posts', 'action' => 'separateMonth'), array('style' => 'text-decoration:none; font-size:20px;', 'class' => " text-dark" )) . '<br/>'; ?></h5>
-									<?php endif; ?>
+								<?php
+								$mes = Configure::read('meses');
+
+
+								$countPost = array_merge($mes, $countPost);
+
+									pr($countPost);
+
+									foreach ($mes as $key => $mes) {
+										$numeroMes = $key;
+										echo $this->Html->link($mes, array('action' => 'separeteMonth', $numeroMes), array('style' => 'text-decoration:none; font-size:20px;', 'class' => "text-dark" )) . '<br>';
+									}
+								?>
 							</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-
     </div>
 
 </div>

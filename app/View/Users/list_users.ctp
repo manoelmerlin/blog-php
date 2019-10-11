@@ -1,6 +1,16 @@
 <center>
-<h1>Selecione a postagem que você deseja editar</h1>
-  <div class="my-3">
+<?= $this->Form->create('User', array('type' => 'get')); ?>
+	<div class='row m-0'>
+		<?= $this->Form->input('member_name', array('label' => '', 'placeholder' => "Nome do membro", 'class' => 'form-control col-12', 'style' => 'width:500px;')); ?>
+		<?php $options = array(); ?>
+
+		<?= $this->Form->input('member', array('empty' => true, 'placeholder' => 'ID', 'label' => '', 'class' => 'form-control col-3')); ?>
+		<?= $this->Form->end('pesquisar', array(), array('class' => 'btn-success')); ?>
+
+	</div>
+
+
+<div class="my-3">
 
   </div>
  <table class=" ">
@@ -18,9 +28,6 @@
 
     </tr>
 
-
-
-
     <?php foreach ($users as $user): ?>
 
      <tr class="">
@@ -29,7 +36,7 @@
             </td>
 
             <td class="border p-1">
-                <?= $user['User']['first_name']; echo $user['User']['last_name']; ?>
+                <?= $user['User']['first_name'] . " " . $user['User']['last_name']; ?>
             </td>
                 <td class="border p-1">
                 <?= $user['User']['email']; ?>

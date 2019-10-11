@@ -66,7 +66,7 @@
         </div>
 
     <?php else: ?>
-        <?php echo "Ainda não fora feitas postagens"; ?>
+        <?php echo "Ainda não foram feitas postagens"; ?>
     <?php endif;
 
 

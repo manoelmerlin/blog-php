@@ -20,13 +20,29 @@ class PostsController extends AppController {
  */
 	public function index() {
 		$this->layout = 'layoutindex';
-		$this->paginate = array(
-			'conditions' => array(
-				'Post.status' => 1
-			),
-			'limit' => 4,
-			'order' => array('Post.id' => 'desc'),
-		);
+
+		if (isset($this->request->query['post_name'])) {
+			$post_name = $this->request->query['post_name'];
+
+			$posts = $this->paginate = array(
+				'conditions' => array(
+					'Post.status' => 1,
+					'Post.title LIKE' => '%' . $post_name . '%'
+				),
+				'limit' => 4,
+				'order' => array('Post.id' => 'desc'),
+			);
+
+		} else {
+			$posts = $this->paginate = array(
+				'conditions' => array(
+					'Post.status' => 1
+				),
+				'limit' => 4,
+				'order' => array('Post.id' => 'desc'),
+			);
+		}
+
 
 		$this->set('posts', $this->paginate());
 		$this->loadModel('User');
@@ -101,6 +117,8 @@ class PostsController extends AppController {
 		}
 
 		if ($this->request->is('post') || $this->request->is('put')) {
+			$this->request->data['Post']['created_date'] = date('m');
+			$this->request->data['Post']['created_date'] = date('m');
 			$this->request->data['Post']['created_by'] = AuthComponent::user('id');
 			$this->request->data['Post']['first_name'] = AuthComponent::user('first_name');
 			$this->request->data['Post']['last_name'] = AuthComponent::user('last_name');
@@ -502,14 +520,15 @@ class PostsController extends AppController {
 	// }
 
 	public function separeteMonth($created_date) {
-		$findmonth = $this->Post->find('all', array(
+		$this->layout = 'layoutindex';
+		$separarMes = $this->Post->find('all', array(
 			'conditions' => array(
-				'Post.created_date' => '2019-08-12'
+				'Post.created_date' => $created_date
 			)
 		));
 
-		pr($findmonth);
-		die;
+
+		$this->set('posts', $separarMes);
 	}
 
 }

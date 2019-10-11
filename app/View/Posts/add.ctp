@@ -22,7 +22,7 @@
 						<?php $options = array('Saúde' => 'Saúde', 'Esporte' => 'Esporte', 'Cultura' => 'Cultura', 'Viagens' => 'Viagens', 'Culinária' => 'Culinária', 'Games' => 'Games', 'Tecnologia' => 'Tecnólogia', 'Carros' => 'Carros', 'Política' => 'Política'); ?>
 						<?php echo $this->Form->input('categoria', array('options' => $options, 'empty' => 'Selecione', 'required' => true), array('label' => 'Categoria : ')); ?>
 					</div>
-
+					<?= $this->Form->input('created_date', array('type' => 'hidden')); ?>
 					<div style="">
 						<?php echo $this->Form->submit('Enviar postagem', array('class' => 'text-light form-control my-5 bg-success', 'div' => array('style' => 'width:300px'))); ?>
 					</div>
